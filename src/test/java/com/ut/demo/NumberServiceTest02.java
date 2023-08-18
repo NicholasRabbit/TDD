@@ -1,5 +1,7 @@
 package com.ut.demo;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -14,10 +16,18 @@ public class NumberServiceTest02 {
     @Spy
     NumberService numberServiceSpy;
 
+    //@BeforeEach注解，跟AOP中的@Before注解一样，在所有方法执行之前执行
+    @BeforeEach
+    public void beforeEach(){
+        MockitoAnnotations.openMocks(this);
+        System.out.println("beforeEach execute!");
+    }
+
+
     @Test
     public void testAdd2(){
-        //开启注解，一般写在@Before注解里
-        MockitoAnnotations.openMocks(this);
+        //开启注解，一般写在@BeforeEach注解里
+        //MockitoAnnotations.openMocks(this);
 
         /*
          * 3,@Mock和@Spy注解的区别：
@@ -29,8 +39,15 @@ public class NumberServiceTest02 {
         System.out.println("@Mock result==>" + mockResult);
 
         int spyResult = numberServiceSpy.add(20, 30);
-        System.out.println("spyResult==>" + spyResult);
+        System.out.println("@Spy Result==>" + spyResult);
 
+
+    }
+
+    //在所有方法之后执行
+    @AfterEach
+    public void afterEach(){
+        System.out.println("afterEach execute");
 
     }
 
