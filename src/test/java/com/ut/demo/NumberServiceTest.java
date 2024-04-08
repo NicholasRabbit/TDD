@@ -16,7 +16,7 @@ public class NumberServiceTest {
         //1,第一种获取待测试类的方式：Mockito.mock(..)
         //使用Mockito模拟一个类
         NumberService numberService = Mockito.mock(NumberService.class);
-        //模拟好的类，调用其中的方法时，返回的是返回值数据类型的默认值，需要打桩才可
+        //注意：模拟好的类，调用其中的方法时，返回的是返回值数据类型的默认值，需要打桩才可
         int defaultResult =  numberService.add(10,20);
         System.out.println("defaultResult ==> " + defaultResult);
         //这里是进行打桩，即规定好预想的返回值
