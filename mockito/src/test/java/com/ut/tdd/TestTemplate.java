@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class TestTemplate {
 
     /**
-     * 1, Write test first and then write the codes such as EmailTemplate.java.
+     * 1, Write test first and then write the codes of EmailTemplate.
      * */
     @Test
     public void oneVariable() throws Exception {
