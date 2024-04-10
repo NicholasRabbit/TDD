@@ -52,4 +52,19 @@ public class TestTemplate {
 
     }
 
+    /**
+     * After five steps of test, there are still hard codes in our EmailTemplate, namely "\\$\\{name\\}".
+     * Then we should squeeze out the fake stuff.
+     * 6, Write a test for multiple variables. Apparently, it will fail at first time.
+     * */
+    @Test
+    public void testMultipleVariables() throws Exception {
+        EmailTemplate template = new EmailTemplate("${one}, ${two}, ${three}");
+        template.set("one", "1");
+        template.set("two", "2");
+        template.set("three", "3");
+        assertEquals("1, 2, 3", template.evaluate());
+
+    }
+
 }
