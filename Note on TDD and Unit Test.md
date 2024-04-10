@@ -4,7 +4,7 @@
 2. 写测试会减少bug；
 3. 写测试会提升写程序的幸福感。
 
-#### 2，单元测试和概念
+#### 2，The definition of a good test
 
 参考：
 
@@ -15,6 +15,11 @@
 - 单元测试只是针对的项目中最小的单元，即方法或单个类，进行测试，测试这个方法是否是执行你预期的功能。
 - 好的单元测试耗时仅几毫秒(A good unit test only takes milliseconds.)
 - 单元测试时不要每次都启动整个项目注入属性，当整个项目增大后会很耗费时间。
+
+What are the properties of a good test?
+
+- A good test is atomic.
+- A good test is isolated.
 
 #### 3，如何写好单元测试
 
@@ -54,16 +59,11 @@ In Test driven development, you should write test first, and then write codes to
 
 3. How can we write tests when there is not any code?
    
-
 4. 
 
-   
 
-   
+#### 6, Unite Test
 
-#### 6, The definition of a good test
+1. What is a fixture in unit test?
 
-What are the properties of a good test?
-
-- A good test is atomic.
-- A good test is isolated.
+   A method with an annotation name @Before.

@@ -20,6 +20,8 @@ public class TestTemplate {
      * 4, Keep on triangulating. To pass the second test with minimal effort we should use a variable to replace "Reader".
      * 5, Write the third test to use "Hi" instead of "Hello". Presumably, the test will fail.
      *    Add more faking details to pass the test.
+     *
+     *  I refactor in another testing class named "TestTemplateRefactor" in order to compare these two testing classes.
      * */
     @Test
     public void oneVariable() throws Exception {
@@ -65,6 +67,18 @@ public class TestTemplate {
         template.set("two", "2");
         template.set("three", "3");
         assertEquals("1, 2, 3", template.evaluate());
+
+    }
+
+    /**
+     * 7, Test unknown variables.
+     * */
+    @Test
+    public void unknownVariablesAreIgnored(){
+        EmailTemplate template = new EmailTemplate("Hello, ${name}");
+        template.set("name", "Reader");
+        template.set("does not exist", "Tom");
+        assertEquals("Hello, Reader", template.evaluate());
 
     }
 
