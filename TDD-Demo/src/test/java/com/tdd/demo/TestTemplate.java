@@ -56,6 +56,7 @@ public class TestTemplate {
      * After five steps of test, there are still hard codes in our EmailTemplate, namely "\\$\\{name\\}".
      * Then we should squeeze out the fake stuff.
      * 6, Write a test for multiple variables. Apparently, it will fail at first time.
+     *    Now write codes to pass the test.
      * */
     @Test
     public void testMultipleVariables() throws Exception {
