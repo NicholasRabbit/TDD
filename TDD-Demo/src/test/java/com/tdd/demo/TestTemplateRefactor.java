@@ -11,7 +11,7 @@ public class TestTemplateRefactor {
     private EmailTemplate template;
 
     /**
-     * Refactor TestTemplate.
+     * 7, Refactor TestTemplate.
      *
      * The method annotated by @Before is invoked by Junit before each method annotated by @Test.
      * */
@@ -36,6 +36,28 @@ public class TestTemplateRefactor {
 
     private void assertTemplateEvaluatesTo(String expected){
         assertEquals(expected, template.evaluate());
+    }
+
+    /**
+     * 8, Handle expected exceptions by evaluating "${foo}" which is not a variable in EmailTemplate.
+     *    8.1 Remember that write the "MissValueException.java" first and then generate it with IDE. We should write test first, shouldn't we?
+     * 9, Start to refactor evaluate() to throw an exception when there are variables left in the template.
+     *
+     * By now we have got we wanted-an expected exception-and the next to do is refactoring because evaluate() has too many line of codes and
+     * the readability is terrible. The consistency of the abstraction level of the code is essential for a good programme.
+     *
+     *
+     *
+     *
+     * */
+    @Test
+    public void missingValueRaisesException() throws Exception {
+        try {
+            new EmailTemplate("${foo}").evaluate();
+            fail("evaluate() should throw an exception if a variable was left without a value");   // fail() is a method of JUnit with given message manually.
+        } catch (MissValueException e) {   //8.1
+            e.printStackTrace();
+        }
     }
 
 }

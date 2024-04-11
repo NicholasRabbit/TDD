@@ -51,7 +51,7 @@ In Test driven development, you should write test first, and then write codes to
    > In other words, instead of the traditional “the system shall calculate tax” pattern familiar in
    > requirements documents, specification by example promotes expressing the requirement through examples such as “for a \$20 subscription with a tax rate of 10%, the system charges a total of ​\$22 from the user’s account.”  
 
-   -- Quoted from "TDD" P64. 
+   -- Quoted from "Test-Driven-Tdd-and-Acceptance-TDD-for-Java-Developers" P64. 
 
 2. From requirements to tests.
 
@@ -66,4 +66,4 @@ In Test driven development, you should write test first, and then write codes to
 
 1. What is a fixture in unit test?
 
-   A method with an annotation name @Before.
+   Such as a method with an annotation name @Before. A fixture is a starting point for all methods in the same class.

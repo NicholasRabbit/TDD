@@ -25,12 +25,40 @@ public class EmailTemplate {
         //return "Hello, " + variableValue;   //Step 4
         //return this.templateText.replaceAll("\\$\\{name\\}", variableValue);   //Step 5
 
+        //9.2 keep on refactoring.
+        /*String result = templateText;
+        for(Map.Entry<String, String> entry : variables.entrySet()){
+            String regex = "\\$\\{" + entry.getKey() + "\\}";
+            result = result.replaceAll(regex, entry.getValue());
+        }*/
+
+        //9.1 refactor
+        /*if(templateText.matches(".*\\$\\{.+\\}.*")){
+            throw new MissValueException();
+        }*/
+        //This method is so cluttered and is needed to be refactored after so many lines written above.
+
+        String result = replaceVariables(templateText);
+        checkForMissingValues(result);
+
+        return result;
+
+    }
+
+    //9.2
+    private String replaceVariables(String templateText){
         String result = templateText;
         for(Map.Entry<String, String> entry : variables.entrySet()){
             String regex = "\\$\\{" + entry.getKey() + "\\}";
             result = result.replaceAll(regex, entry.getValue());
         }
         return result;
+    }
 
+    //9.1 refactor
+    private void checkForMissingValues(String result){
+        if(result.matches(".*\\$\\{.+\\}.*")){
+            throw new MissValueException();
+        }
     }
 }
