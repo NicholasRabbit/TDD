@@ -2,6 +2,8 @@ package com.tdd.demo;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EmailTemplate {
 
@@ -57,8 +59,16 @@ public class EmailTemplate {
 
     //9.1 refactor
     private void checkForMissingValues(String result){
-        if(result.matches(".*\\$\\{.+\\}.*")){
+        /*if(result.matches(".*\\$\\{.+\\}.*")){   //using regular expression to match "xxx${xxx}xxx".
             throw new MissValueException();
+        }*/
+
+        //10.2 Detailed and meaningful exception message as expected.
+        Pattern pattern = Pattern.compile("\\$\\{.+\\}");
+        Matcher matcher = pattern.matcher(result);
+        if(matcher.find()){
+            throw new MissValueException("No value for " + matcher.group());
         }
+
     }
 }
