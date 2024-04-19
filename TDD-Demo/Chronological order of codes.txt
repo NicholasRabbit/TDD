@@ -4,3 +4,4 @@ Chronological order of codes.
 2, TestTemplateRefactor
 3, TestTemplatePerformance
 4, RegexLearningTest
+5, TestTemplateParse
