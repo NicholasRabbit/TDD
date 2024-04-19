@@ -1,10 +1,10 @@
 package com.tdd.demo;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class TestTemplateRefactor {
 
@@ -65,6 +65,24 @@ public class TestTemplateRefactor {
             assertEquals("No value for ${foo}", e.getMessage());  //10.1
             e.printStackTrace();
         }
+    }
+
+
+
+    /**
+     * 11, If the values contain "${}", what would happen?
+     * It throws out an exception which is "No group with name..."
+     *
+     * Now we should dig into regex of Java API to see if we can find something useful to solve
+     * the problem we have. See RegexLearningTest.java.
+     * */
+    @Test
+    public void variablesGetProcessJustOnce(){
+        template.set("one", "${one}");
+        template.set("two", "${two}");
+        template.set("three", "${three}");
+        assertTemplateEvaluatesTo("${one}, ${two}, ${three}");
+
     }
 
 }

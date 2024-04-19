@@ -62,8 +62,9 @@ In Test driven development, you should write test first, and then write codes to
 4. 
 
 
-#### 6, Unite Test
+#### 6, Unit Test
 
 1. What is a fixture in unit test?
 
    Such as a method with an annotation name @Before. A fixture is a starting point for all methods in the same class.
+
