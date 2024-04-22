@@ -73,8 +73,13 @@ public class TestTemplateRefactor {
      * 11, If the values contain "${}", what would happen?
      * It throws out an exception which is "No group with name..."
      *
+     * Reason for that.
+     * After reading the source code of Java SE-'Matcher.appendReplacement(Matcher.java:849)' where the exception was threw,
+     * I find that symbols such as "${}" of the values will be skipped and that leads to this exception.
+     *
      * Now we should dig into regex of Java API to see if we can find something useful to solve
-     * the problem we have. See RegexLearningTest.java.
+     * the problem we currently have. See RegexLearningTest.java.
+     *
      * */
     @Test
     public void variablesGetProcessJustOnce(){

@@ -2,6 +2,7 @@ package com.tdd.demo;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -22,10 +23,14 @@ public class TestTemplateParse {
      * */
     @Test
     public void emptyTemplateRenderWithEmptyString(){
-        EmailTemplateParse parse = new EmailTemplateParse();
-        List<String> segments = parse.parse("");
-        assertEquals("Number of segments", 1, segments.size());
-        assertEquals("", segments.get(0));
+        //EmailTemplateParse parse = new EmailTemplateParse();
+        //List<String> segments = parse.parse("");
+        //3.1, refactoring
+        List<String> segments = parse("");
+        //assertEquals("Number of segments", 1, segments.size());
+        //assertEquals("", segments.get(0));
+        //3.2, refactoring
+        assertSegments(segments, "");
     }
 
     /**
@@ -35,10 +40,28 @@ public class TestTemplateParse {
      * */
     @Test
     public void templateWithOnlyPlainText(){
-        EmailTemplateParse parse = new EmailTemplateParse();
-        List<String> segments = parse.parse("plain text only");
-        assertEquals("Number of segments", 1, segments.size());
-        assertEquals("plain text only", segments.get(0));
+        //EmailTemplateParse parse = new EmailTemplateParse();
+        //List<String> segments = parse.parse("plain text only");
+        //3, refactoring
+        List<String> segments = parse("plain text only");
+        //assertEquals("Number of segments", 1, segments.size());
+        //assertEquals("plain text only", segments.get(0));
+        //3.2 refactoring
+        assertSegments(segments, "plain text only");
+    }
+
+    /**
+     * 3, Refactoring is essential when there are duplicate codes in this test.
+     *    3.1 Refactoring parse(...)
+     *    3.2 Then we use variable-length argument lists to refactor those 'assertEquals(...)'.
+     * */
+    private List<String> parse(String template){
+        return new EmailTemplateParse().parse(template);
+    }
+
+    private void assertSegments(List<? extends Object> actual, Object... expected){
+        assertEquals("Number of segments doesn't match.", expected.length, actual.size());
+        assertEquals(Arrays.asList(expected), actual);
     }
 
 
