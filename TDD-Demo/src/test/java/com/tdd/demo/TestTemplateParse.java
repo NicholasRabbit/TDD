@@ -76,13 +76,18 @@ public class TestTemplateParse {
      * */
     @Test
     public void parsingMultipleVariables() throws Exception{
-        List<String> segments = parse("${a}:${b}:${c} text at tail");
-        assertSegments(segments, "${a}", "${b}", "${c}");
+        List<String> segments = parse("text at head, ${a}:${b}:${c}, text at tail");
+        assertSegments(segments, "text at head, ", "${a}",":", "${b}", ":", "${c}", ", text at tail");
     }
 
 
     /**
-     * 5, Then we refactor EmailTemplate.java to pass the test "parsingMultipleVariables()" in 4.
+     * 5, Then we refactor EmailTemplate.java to pass the test "parsingMultipleVariables()" in 4. See refactoring code in EmailTemplateParse.java.
+     * */
+
+    /**
+     * 6, After passing NO. 4 test, we are sure about that we can refactor the evaluate() in "EmailTemplate.java"
+     *    with our new parse() in EmailTemplateParse.java.
      * */
 
 

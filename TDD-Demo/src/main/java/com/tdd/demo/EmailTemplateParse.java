@@ -13,6 +13,7 @@ public class EmailTemplateParse {
 
     public List<String> parse(String template) {
         //return Collections.singletonList(template);   //A simple implement to pass the test as quickly as possible.
+        //5, Refactoring
         List<String> segments = new ArrayList<>();
         int index = collectSegments(segments, template);
         addTailText(segments, template, index);  //add the plain text if there any of them.

@@ -1,6 +1,7 @@
 package com.tdd.demo;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,10 +41,22 @@ public class EmailTemplate {
         }*/
         //This method is so cluttered and is needed to be refactored after so many lines written above.
 
-        String result = replaceVariables(templateText);
-        checkForMissingValues(result);
+        //String result = replaceVariables(templateText);
+        //checkForMissingValues(result);
 
-        return result;
+        //return result;
+        //==================
+
+        /*
+         * "TestTemplateParse.java" 6. Refactoring.
+         * */
+        EmailTemplateParse parse = new EmailTemplateParse();
+        List<String> segments = parse.parse(templateText);
+        StringBuilder result = new StringBuilder();
+        for(String s : segments){
+            append(s, result);
+        }
+        return result.toString();
 
     }
 
@@ -71,4 +84,20 @@ public class EmailTemplate {
         }
 
     }
+
+    private void append(String segment, StringBuilder result){
+        if(segment.startsWith("${") && segment.endsWith("}")){
+            String key = segment.substring(2, segment.length() - 1);
+            if(!variables.containsKey(key)){
+                throw  new MissValueException("No value for " + segment);
+            }
+
+            String value = variables.get(key);
+            result.append(value);
+        }else {
+            result.append(segment);
+        }
+
+    }
+
 }
