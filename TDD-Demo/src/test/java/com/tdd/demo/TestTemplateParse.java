@@ -12,6 +12,9 @@ import static org.junit.Assert.*;
  *
  * After dig into regex of Java, we write a new class name EmailTemplateParse to parse the template.
  * If the new class were good enough, we would swap the implementation in evaluate() of EmailTemplate.
+ *
+ * What to do?
+ * Parse "${a}:${b}:${c}" into a list which consists of "${a}",":","${b}"...
  * */
 public class TestTemplateParse {
 
@@ -63,6 +66,26 @@ public class TestTemplateParse {
         assertEquals("Number of segments doesn't match.", expected.length, actual.size());
         assertEquals(Arrays.asList(expected), actual);
     }
+
+
+    /**
+     * 4, Parsing multiple variables.
+     * We expected that the input would be split by colon ":" and it should become an array after being parsed.
+     * Presumably, the following test failed. Because at this point, in order to pass the test quickly,
+     * we only write an implement as simple as it is in parse(...)  of EmailTemplate.java.
+     * */
+    @Test
+    public void parsingMultipleVariables() throws Exception{
+        List<String> segments = parse("${a}:${b}:${c} text at tail");
+        assertSegments(segments, "${a}", "${b}", "${c}");
+    }
+
+
+    /**
+     * 5, Then we refactor EmailTemplate.java to pass the test "parsingMultipleVariables()" in 4.
+     * */
+
+
 
 
 }

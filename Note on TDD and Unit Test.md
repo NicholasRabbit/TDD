@@ -68,3 +68,30 @@ In Test driven development, you should write test first, and then write codes to
 
    Such as a method with an annotation name @Before. A fixture is a starting point for all methods in the same class.
 
+#### 7, Reading Note
+
+1. **The meaning of the regular expression used in Listing 3.6.** 
+
+   1. `Pattern.compile`: This is a method used in Java to compile a regular expression into a `Pattern` object. This object can then be used to match patterns in strings.
+
+   2. `"\$\{[^}]*\}"`:
+
+      - `\`: Backslash is an escape character in Java and in regular expressions. It's used to indicate that the following character has a special meaning. So, `\$` matches a literal dollar sign `$`.
+
+      - `\$`: This part of the expression matches a literal dollar sign.
+
+      - `\{`: This matches a literal opening curly brace `{`.
+
+      - ```
+        [^}]*
+        ```
+
+        : This part is a bit more complex:
+
+        - `[^}]`: The `^` inside the square brackets (`[]`) means negation, and `}` is the character being negated. So, `[^}]` matches any character except `}`.
+        - `*`: This quantifier means "zero or more times", so `[^}]*` matches zero or more occurrences of any character except `}`.
+
+      - `\}`: This matches a literal closing curly brace `}`.
+
+   So, altogether, the regular expression `"\$\{[^}]*\}"` matches a pattern that starts with a dollar sign `$`, followed by an opening curly brace `{`, then zero or more characters except `}`, and finally a closing curly brace `}`. This pattern is commonly used to match placeholders in strings, typically found in templating languages or configuration files. For example, `${variable}` is a placeholder that might be replaced with the value of the variable during runtime.
+

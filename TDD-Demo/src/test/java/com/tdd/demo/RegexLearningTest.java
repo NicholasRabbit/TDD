@@ -42,7 +42,7 @@ public class RegexLearningTest {
 
         assertTrue(matcher.find());  //
         assertEquals("Wrong start index of the first match ",4, matcher.start());
-        assertEquals("Wrong end index of the first match ", 10, matcher.end());  //end() returns the offset after the character matched.
+        assertEquals("Wrong end index of the first match ", 10, matcher.end());  //The range of index of the first "needle" is from 0 to 9. The end() returns the offset after the character matched.
 
         assertTrue(matcher.find());
         assertEquals("Wrong start index of the second match ",22, matcher.start());
