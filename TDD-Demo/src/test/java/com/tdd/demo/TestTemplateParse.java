@@ -90,6 +90,10 @@ public class TestTemplateParse {
      *    with our new parse() in EmailTemplateParse.java.
      * */
 
+    /**
+     * 7, We should keep on refactoring since the codes in evaluate are apparently not in a uniform level of abstraction.
+     * */
+
 
 
 

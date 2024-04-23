@@ -52,12 +52,24 @@ public class EmailTemplate {
          * */
         EmailTemplateParse parse = new EmailTemplateParse();
         List<String> segments = parse.parse(templateText);
+        /*StringBuilder result = new StringBuilder();
+        for(String s : segments){
+            append(s, result);
+        }*/
+
+        //return result.toString();
+
+        //TestTemplateParse.java: 7. Keep codes in a uniform level of abstraction.
+        return concatenate(segments);
+
+    }
+
+    private String concatenate(List<String> segments){
         StringBuilder result = new StringBuilder();
         for(String s : segments){
             append(s, result);
         }
         return result.toString();
-
     }
 
     //9.2
@@ -87,15 +99,15 @@ public class EmailTemplate {
 
     private void append(String segment, StringBuilder result){
         if(segment.startsWith("${") && segment.endsWith("}")){
-            String key = segment.substring(2, segment.length() - 1);
-            if(!variables.containsKey(key)){
+            String var = segment.substring(2, segment.length() - 1);
+            if(!variables.containsKey(var)){
                 throw  new MissValueException("No value for " + segment);
             }
 
-            String value = variables.get(key);
-            result.append(value);
+            String value = variables.get(var);
+            result.append(value);   //append variables
         }else {
-            result.append(segment);
+            result.append(segment);  //append plain text
         }
 
     }
