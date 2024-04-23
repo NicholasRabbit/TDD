@@ -25,7 +25,7 @@ public class TestTemplateRefactor {
 
     @Test
     public void multipleVariables () throws Exception {
-        assertTemplateEvaluatesTo("1, 2, 4");
+        assertTemplateEvaluatesTo("1, 2, 3");
     }
 
     @Test

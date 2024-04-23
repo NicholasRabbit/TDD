@@ -95,6 +95,13 @@ public class TestTemplateParse {
      * */
 
 
+    //! Remember to run test and to make sure it is passed after every refactoring.
+
+    /**
+     * 8, The append() is also looks nasty and should be refactored.
+     * */
+
+
 
 
 }

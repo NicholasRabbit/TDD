@@ -72,7 +72,7 @@ public class EmailTemplate {
         return result.toString();
     }
 
-    //9.2
+    //9.2 - TestTemplateRefactor
     private String replaceVariables(String templateText){
         String result = templateText;
         for(Map.Entry<String, String> entry : variables.entrySet()){
@@ -82,13 +82,13 @@ public class EmailTemplate {
         return result;
     }
 
-    //9.1 refactor
+    //9.1 refactor - TestTemplateRefactor
     private void checkForMissingValues(String result){
         /*if(result.matches(".*\\$\\{.+\\}.*")){   //using regular expression to match "xxx${xxx}xxx".
             throw new MissValueException();
         }*/
 
-        //10.2 Detailed and meaningful exception message as expected.
+        //10.2 Detailed and meaningful exception message as expected.  - TestTemplateRefactor
         Pattern pattern = Pattern.compile("\\$\\{.+\\}");
         Matcher matcher = pattern.matcher(result);
         if(matcher.find()){
@@ -98,7 +98,7 @@ public class EmailTemplate {
     }
 
     private void append(String segment, StringBuilder result){
-        if(segment.startsWith("${") && segment.endsWith("}")){
+        /*if(segment.startsWith("${") && segment.endsWith("}")){
             String var = segment.substring(2, segment.length() - 1);
             if(!variables.containsKey(var)){
                 throw  new MissValueException("No value for " + segment);
@@ -108,8 +108,29 @@ public class EmailTemplate {
             result.append(value);   //append variables
         }else {
             result.append(segment);  //append plain text
+        }*/
+
+        //TestTemplateParse.java: 8. Refactoring append().
+        if(isVariable(segment)){
+            evaluateVariables(segment, result);
+        } else {
+            result.append(segment);
         }
 
+    }
+
+    //TestTemplateParse.java: 8. Refactoring append().
+    private boolean isVariable(String segment){
+        return segment.startsWith("${") && segment.endsWith("}");
+    }
+
+    private void evaluateVariables(String segment, StringBuilder result){
+        String var = segment.substring(2, segment.length() - 1);
+        if(!variables.containsKey(var)){
+            throw  new MissValueException("No value for " + segment);
+        }
+        String value = variables.get(var);
+        result.append(value);   //append variables
     }
 
 }
