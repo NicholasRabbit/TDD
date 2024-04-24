@@ -106,7 +106,7 @@ public class TestTemplateParse {
      *
      * 9, When seeing the Strings in append(), I think they should be definitely represented by a first-class java object.
      *    Let's do the next refactoring. We shall not take big steps so the whole tests could be under control.
-     *    First, we introduce a class name Segment and write a new method called parseSegments which is then to replace the method
+     *    First, we introduce a class(interface) named Segment and write a new method called parseSegments which is then to replace the method
      *    name parse in EmailTemplate.
      *    The reason we do that is not to break any tests which are already passed.
      *
@@ -119,6 +119,14 @@ public class TestTemplateParse {
         List<Segment> segments = p.parseSegments("a ${b} c ${d}");
         assertSegments(segments, new PlainText("a "), new Variable("b"), new PlainText(" c "), new Variable("d"));   //remove "${}" on each side of 'b' and 'd'.
     }
+
+    /**
+     * 10. Polymorphism, which is one of four characteristics of Java, is what we should use.
+     *    In order to test  Let's create two test classes which named TestPlainTextSegment and TestVariableSegment respectively
+     *
+     *    See TestPlainTextSegment and TestVariableSegment.
+     *
+     * */
 
 
 

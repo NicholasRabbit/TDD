@@ -1,5 +1,7 @@
 package com.tdd.demo;
 
+import java.util.Map;
+
 public class Variable implements Segment {
 
     private String name;
@@ -12,4 +14,8 @@ public class Variable implements Segment {
         return name.equals(((Variable)other).name);
     }
 
+    @Override
+    public String evaluate(Map<String, String> variables) {
+        return variables.get(name);
+    }
 }

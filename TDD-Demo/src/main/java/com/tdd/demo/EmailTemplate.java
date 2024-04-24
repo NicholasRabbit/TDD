@@ -64,6 +64,21 @@ public class EmailTemplate {
 
     }
 
+    //Comment out the following codes temporarily unless the tests in Test...Segment are passed.
+    /*public String evaluate(){
+        EmailTemplateParse parser = new EmailTemplateParse();
+        List<Segment> segments = parser.parse(templateText);
+        return concatenate(segments);
+    }*/
+
+    /*private String concatenate(List<Segment> segments){
+        StringBuilder result = new StringBuilder();
+        for(Segment segment : segments){
+            segment.appendTo(s, result);
+        }
+        return result.toString();
+    }*/
+
     private String concatenate(List<String> segments){
         StringBuilder result = new StringBuilder();
         for(String s : segments){
@@ -85,7 +100,7 @@ public class EmailTemplate {
     //9.1 refactor - TestTemplateRefactor
     private void checkForMissingValues(String result){
         /*if(result.matches(".*\\$\\{.+\\}.*")){   //using regular expression to match "xxx${xxx}xxx".
-            throw new MissValueException();
+            throw new MissValueException();  //need detailed exception.
         }*/
 
         //10.2 Detailed and meaningful exception message as expected.  - TestTemplateRefactor
@@ -132,5 +147,7 @@ public class EmailTemplate {
         String value = variables.get(var);
         result.append(value);   //append variables
     }
+
+
 
 }
