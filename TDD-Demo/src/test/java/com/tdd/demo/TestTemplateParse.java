@@ -117,7 +117,7 @@ public class TestTemplateParse {
     public void parsingTemplateIntoSegmentObjects(){
         EmailTemplateParse p = new EmailTemplateParse();
         List<Segment> segments = p.parseSegments("a ${b} c ${d}");
-        assertSegments(segments, new PlainText("a "), new Variable("${b}"), new PlainText(" c "), new Variable("${d}"));
+        assertSegments(segments, new PlainText("a "), new Variable("b"), new PlainText(" c "), new Variable("d"));   //remove "${}" on each side of 'b' and 'd'.
     }
 
 
