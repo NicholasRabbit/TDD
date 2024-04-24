@@ -59,4 +59,20 @@ public class EmailTemplateParse {
             segments.add("");
     }
 
+    public List<Segment> parseSegments(String template) {
+        List<String> strings = parse(template);
+        List<Segment> segments = new ArrayList<>();
+        for(String s : strings){
+            boolean isVariable = EmailTemplate.isVariable(s);
+            if(isVariable){
+                segments.add(new Variable(s));
+            }else{
+                segments.add(new PlainText(s));
+            }
+        }
+
+        return segments;
+
+    }
+
 }

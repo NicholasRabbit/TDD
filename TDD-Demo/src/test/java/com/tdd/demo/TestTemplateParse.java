@@ -101,6 +101,23 @@ public class TestTemplateParse {
      * 8, The append() is also looks nasty and should be refactored.
      * */
 
+    /**
+     * 3.3.1 Keeping things compatible.
+     *
+     * 9, When seeing the Strings in append(), I think they should be definitely represented by a first-class java object.
+     *    Let's do the next refactoring. We shall not take big steps so the whole tests could be under control.
+     *    First, we introduce a class name Segment and write a new method called parseSegments which is then to replace the method
+     *    name parse in EmailTemplate.
+     *    The reason we do that is not to break any tests which are already passed.
+     *
+     *    9.1 Write the following test, and then get a red bar.
+     * */
+    @Test
+    public void parsingTemplateIntoSegmentObjects(){
+        EmailTemplateParse p = new EmailTemplateParse();
+        List<Segment> segments = p.parseSegments("a ${b} c ${d}");
+        assertSegments(segments, new PlainText("a "), new Variable("${b}"), new PlainText(" c "), new Variable("${d}"));
+    }
 
 
 

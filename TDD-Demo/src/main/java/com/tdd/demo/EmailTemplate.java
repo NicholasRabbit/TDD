@@ -108,7 +108,7 @@ public class EmailTemplate {
             result.append(value);   //append variables
         }else {
             result.append(segment);  //append plain text
-        }*/
+        }*/   //Before it was refactored.
 
         //TestTemplateParse.java: 8. Refactoring append().
         if(isVariable(segment)){
@@ -120,7 +120,7 @@ public class EmailTemplate {
     }
 
     //TestTemplateParse.java: 8. Refactoring append().
-    private boolean isVariable(String segment){
+    public static boolean isVariable(String segment){
         return segment.startsWith("${") && segment.endsWith("}");
     }
 
