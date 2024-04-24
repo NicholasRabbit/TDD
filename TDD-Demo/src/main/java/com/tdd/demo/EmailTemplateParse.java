@@ -65,7 +65,8 @@ public class EmailTemplateParse {
         for(String s : strings){
             boolean isVariable = EmailTemplate.isVariable(s);
             if(isVariable){
-                segments.add(new Variable(s));
+                String name = s.substring(2, s.length() - 1);
+                segments.add(new Variable(name));
             }else{
                 segments.add(new PlainText(s));
             }

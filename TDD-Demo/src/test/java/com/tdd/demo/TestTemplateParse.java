@@ -111,6 +111,7 @@ public class TestTemplateParse {
      *    The reason we do that is not to break any tests which are already passed.
      *
      *    9.1 Write the following test, and then get a red bar.
+     *    9.2 Write codes in PlainText, Variable, Segments(Interface, Polymorphism) and "parseSegments()" to pass the test.
      * */
     @Test
     public void parsingTemplateIntoSegmentObjects(){
