@@ -128,6 +128,12 @@ public class TestTemplateParse {
      *
      * */
 
+    /**
+     * 11. After what we did in step 10, all the tests passed as expected except for one thing, which is that we forgot to handle the
+     *     exception of missing variables.
+     *     See TestVariableSegment: missingVariableRaiseException().
+     * */
+
 
 
 }

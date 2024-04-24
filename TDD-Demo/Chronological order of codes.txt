@@ -5,3 +5,5 @@ Chronological order of codes.
 3, TestTemplatePerformance
 4, RegexLearningTest
 5, TestTemplateParse
+6, TestPlainTextSegment
+7, TestVariableSegment

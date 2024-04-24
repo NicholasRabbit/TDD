@@ -50,16 +50,22 @@ public class EmailTemplate {
         /*
          * "TestTemplateParse.java" 6. Refactoring.
          * */
-        EmailTemplateParse parse = new EmailTemplateParse();
+       /* EmailTemplateParse parse = new EmailTemplateParse();
         List<String> segments = parse.parse(templateText);
-        /*StringBuilder result = new StringBuilder();
+        *//*StringBuilder result = new StringBuilder();
         for(String s : segments){
             append(s, result);
-        }*/
+        }*//*
 
         //return result.toString();
 
         //TestTemplateParse.java: 7. Keep codes in a uniform level of abstraction.
+        return concatenate(segments);*/
+
+        //========================
+        //Continue refactoring with adopting polymorphism(Segment and its subclasses).
+        EmailTemplateParse parser = new EmailTemplateParse();
+        List<Segment> segments = parser.parseSegments(templateText);
         return concatenate(segments);
 
     }
@@ -71,21 +77,21 @@ public class EmailTemplate {
         return concatenate(segments);
     }*/
 
-    /*private String concatenate(List<Segment> segments){
+    private String concatenate(List<Segment> segments){
         StringBuilder result = new StringBuilder();
         for(Segment segment : segments){
-            segment.appendTo(s, result);
+            result.append(segment.evaluate(variables));   //This is where polymorphism works. Each subclass of Segment will call its "evaluate()".
         }
         return result.toString();
-    }*/
+    }
 
-    private String concatenate(List<String> segments){
+    /*private String concatenate(List<String> segments){
         StringBuilder result = new StringBuilder();
         for(String s : segments){
             append(s, result);
         }
         return result.toString();
-    }
+    }*/
 
     //9.2 - TestTemplateRefactor
     private String replaceVariables(String templateText){
