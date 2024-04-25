@@ -26,13 +26,7 @@ public class TestTemplateParse {
      * */
     @Test
     public void emptyTemplateRenderWithEmptyString(){
-        //EmailTemplateParse parse = new EmailTemplateParse();
-        //List<String> segments = parse.parse("");
-        //3.1, refactoring
         List<String> segments = parse("");
-        //assertEquals("Number of segments", 1, segments.size());
-        //assertEquals("", segments.get(0));
-        //3.2, refactoring
         assertSegments(segments, "");
     }
 
@@ -43,13 +37,7 @@ public class TestTemplateParse {
      * */
     @Test
     public void templateWithOnlyPlainText(){
-        //EmailTemplateParse parse = new EmailTemplateParse();
-        //List<String> segments = parse.parse("plain text only");
-        //3, refactoring
         List<String> segments = parse("plain text only");
-        //assertEquals("Number of segments", 1, segments.size());
-        //assertEquals("plain text only", segments.get(0));
-        //3.2 refactoring
         assertSegments(segments, "plain text only");
     }
 

@@ -7,3 +7,6 @@ Chronological order of codes.
 5, TestTemplateParse
 6, TestPlainTextSegment
 7, TestVariableSegment
+
+There are lot of dead codes to delete and I will do it in a new project name andy-template.
+This original one will be kept in order to review.
