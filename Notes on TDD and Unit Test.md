@@ -59,39 +59,78 @@ In Test driven development, you should write test first, and then write codes to
 
 3. How can we write tests when there is not any code?
    
-4. 
-
+   We create classes which even doesn't exist and then generate them automatically by IDE.
+   
 
 #### 6, Unit Test
+
+##### 6.1 Basic Knowledge
 
 1. What is a fixture in unit test?
 
    Such as a method with an annotation name @Before. A fixture is a starting point for all methods in the same class.
+   
+2. What is test doubles?
+
+   [Test Double](./Materials\Test Double.docx)
+
+   It means that we use some tools to mock the environment  or objects so that we don't rely on web server or database.
 
 #### 7, Reading Note
 
-1. **The meaning of the regular expression used in Listing 3.6.** 
+1. The meaning of the regular expression used in Listing 3.6.
 
-   1. `Pattern.compile`: This is a method used in Java to compile a regular expression into a `Pattern` object. This object can then be used to match patterns in strings.
+   [meaning of reges](./note-images\explanation regex.txt)
 
-   2. `"\$\{[^}]*\}"`:
+2. How to start the first test?   Chapter 4.1
 
-      - `\`: Backslash is an escape character in Java and in regular expressions. It's used to indicate that the following character has a special meaning. So, `\$` matches a literal dollar sign `$`.
+   It is a good idea to start an easy test which you think can be pass quickly. Once you got the first test nailed down, it could be much easier to think about what the next test would be.
 
-      - `\$`: This part of the expression matches a literal dollar sign.
+   2.1 Implementation Strategies
 
-      - `\{`: This matches a literal opening curly brace `{`.
+   ​      There are three ways to make progress. 
 
-      - ```
-        [^}]*
-        ```
+   ​	   1) Faking It
 
-        : This part is a bit more complex:
+   ​	   2) Triangulation. [a map to explain](./note-images/triangulation.png)
 
-        - `[^}]`: The `^` inside the square brackets (`[]`) means negation, and `}` is the character being negated. So, `[^}]` matches any character except `}`.
-        - `*`: This quantifier means "zero or more times", so `[^}]*` matches zero or more occurrences of any character except `}`.
+   ​       3)  Obvious Implementation
 
-      - `\}`: This matches a literal closing curly brace `}`.
+#### 8, Prime Guidelines for Test-driving
 
-   So, altogether, the regular expression `"\$\{[^}]*\}"` matches a pattern that starts with a dollar sign `$`, followed by an opening curly brace `{`, then zero or more characters except `}`, and finally a closing curly brace `}`. This pattern is commonly used to match placeholders in strings, typically found in templating languages or configuration files. For example, `${variable}` is a placeholder that might be replaced with the value of the variable during runtime.
+#####  8.1. Introduction
 
+- Do not skip refactoring.
+- Get to green fast.
+- Slow down after a mistake.
+
+#####  8.2. Explanation
+
+- **Refactoring**
+
+1.  Learn how to use IDE's automated refactoring.
+2. Read "Refactoring..." by Martin Fowler.
+
+- **Get to green fast**
+
+   We don't go for the simplest design immediately. Instead, we should strive to get back to green fast. 
+
+-  **Slow down after a mistake**
+
+   It is common for developers practising TDD to start taking slightly bigger and bigger steps as time goes by. 
+
+#### 9, Fixture and Test  Doubles
+
+Chapter 4.2.1
+
+##### 9.1 Fixture:
+
+1. Fixtures remove duplication
+   Test code would be clean and readable.
+2. Fixtures allow for focused tests
+   We don't have to spend our precious time  wadding through hundreds lines of code so that we can easily find where fail tests happen.
+
+##### 9.2 Test doubles 
+
+Test doubles stand in for dependencies.
+It means that test doubles are used as replacement for the actual dependencies that code relies on during testing.

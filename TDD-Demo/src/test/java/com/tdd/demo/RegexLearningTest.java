@@ -17,7 +17,7 @@ public class RegexLearningTest {
      * Analysis:
      * After searching on Google, I know that how groupCount() works. It uses parentheses (plural) to identify the so called capturing groups.
      * Namely, only occurrences of words in parentheses will be matched.
-     *
+     * It is different for "find()".
      * */
     @Test
     public void testHowGroupCountWorks() throws Exception {

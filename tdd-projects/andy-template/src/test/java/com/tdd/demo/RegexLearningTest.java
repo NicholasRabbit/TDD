@@ -23,7 +23,7 @@ public class RegexLearningTest {
     public void testHowGroupCountWorks() throws Exception {
         //I use the names of variables as the author did because it is nonsense to devise new fancy names.
         String haystack = "The needle shop sells needles";   //The return value is 0.
-        String regex = "(needle)";
+        String regex = "(needle)";   //The "needles" is not matched.
         Matcher matcher = Pattern.compile(regex).matcher(haystack);
         assertEquals(2, matcher.groupCount());
 
@@ -51,6 +51,20 @@ public class RegexLearningTest {
         assertFalse("Should not have any more matches ", matcher.find());
 
     }
+
+    /**
+     * 3, Test matches(). It returns true only if the entire region matches this matcher's pattern. (Quoted from Java Documentation)
+     *    It is different from "find()".
+     * */
+    @Test
+    public void testExactMatches(){
+        assertTrue(Pattern.compile("exact").matcher("exact").matches());
+        assertFalse(Pattern.compile("exact").matcher("exactWhat").matches());
+        assertFalse(Pattern.compile("exact").matcher("abcexact").matches());
+        assertFalse(Pattern.compile("exact").matcher("abcexactxyz").matches());
+    }
+
+
 
 
 }

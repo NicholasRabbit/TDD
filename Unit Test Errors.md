@@ -1,6 +1,6 @@
 #### 1, Run an individual test in Idea.
 
-If all the tests run in a class when you are trying to run a single test method. You should select "Skip Tests".
+If you don't want to all the tests run in a class when you are trying to run a single test of a method. You should select "Skip Tests".
 
 <img src="note-images/1712645962279.png" alt="1712645962279" style="zoom:80%;" />
 
@@ -10,7 +10,7 @@ If all the tests run in a class when you are trying to run a single test method.
 
 #### 2, JUnit is not available 
 
-JUnit is not available in project.
+JUnit is not available in a project run by Idea.
 
 Error: 
 
@@ -22,9 +22,9 @@ Solution:
 
 The reason is as same as it in the 1.  Just deselect "Delegate IDE build..."
 
-#### 3,  Errors when using Idea
+#### 3,  Errors of Unit Test
 
-Error:
+1, An error occurs in a project of Idea. The exception is as follows.
 
 ```txt
 command line is too long  also for junit
