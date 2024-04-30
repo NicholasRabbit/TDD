@@ -1,4 +1,4 @@
-package com.tdd.demo;
+package com.tdd.template;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +63,7 @@ public class TestTemplateRefactor {
         } catch (MissValueException e) {   //8.1
             //10.1
             assertEquals("No value for ${foo}", e.getMessage());  //10.1
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
 

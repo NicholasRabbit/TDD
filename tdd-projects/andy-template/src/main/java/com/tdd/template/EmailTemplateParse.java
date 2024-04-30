@@ -1,4 +1,4 @@
-package com.tdd.demo;
+package com.tdd.template;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,6 @@ public class EmailTemplateParse {
 
 
     public List<String> parse(String template) {
-        //return Collections.singletonList(template);   //A simple implement to pass the test as quickly as possible.
-        //5, Refactoring
         List<String> segments = new ArrayList<>();
         int index = collectSegments(segments, template);
         addTailText(segments, template, index);  //add the plain text if there any of them.
@@ -63,7 +61,7 @@ public class EmailTemplateParse {
         List<String> strings = parse(template);
         List<Segment> segments = new ArrayList<>();
         for(String s : strings){
-            boolean isVariable = EmailTemplate.isVariable(s);
+            boolean isVariable = isVariable(s);
             if(isVariable){
                 String name = s.substring(2, s.length() - 1);
                 segments.add(new Variable(name));
@@ -76,4 +74,7 @@ public class EmailTemplateParse {
 
     }
 
+    public boolean isVariable(String segment){
+        return segment.startsWith("${") && segment.endsWith("}");
+    }
 }

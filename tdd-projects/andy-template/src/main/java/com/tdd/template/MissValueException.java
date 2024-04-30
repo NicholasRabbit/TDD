@@ -1,4 +1,4 @@
-package com.tdd.demo;
+package com.tdd.template;
 
 public class MissValueException extends RuntimeException {
 

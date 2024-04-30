@@ -1,4 +1,4 @@
-package com.tdd.demo;
+package com.tdd.template;
 
 
 import org.junit.Test;

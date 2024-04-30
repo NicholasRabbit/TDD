@@ -1,4 +1,4 @@
-package com.tdd.demo;
+package com.tdd.template;
 
 
 import org.junit.Test;
@@ -25,7 +25,8 @@ public class RegexLearningTest {
         String haystack = "The needle shop sells needles";   //The return value is 0.
         String regex = "(needle)";   //The "needles" is not matched.
         Matcher matcher = Pattern.compile(regex).matcher(haystack);
-        assertEquals(2, matcher.groupCount());
+        //assertEquals(2, matcher.groupCount());
+        assertEquals(1, matcher.groupCount());
 
     }
 

@@ -108,7 +108,7 @@ In Test driven development, you should write test first, and then write codes to
 
 - **Refactoring**
 
-1.  Learn how to use IDE's automated refactoring.
+1.  Learn how to use IDE's automated refactoring.  
 2. Read "Refactoring..." by Martin Fowler.
 
 - **Get to green fast**
