@@ -1,4 +1,9 @@
-<project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.tddinaction</groupId>
 	<artifactId>sourcecode</artifactId>
@@ -273,10 +278,17 @@
 			<artifactId>fitnesse</artifactId>
 			<version>20060719</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>beaninject</groupId>
 			<artifactId>beaninject</artifactId>
 			<version>0.3</version>
+		</dependency>-->
+
+		<!-- https://mvnrepository.com/artifact/com.github.lkoskela/beaninject -->
+		<dependency>
+			<groupId>com.github.lkoskela</groupId>
+			<artifactId>beaninject</artifactId>
+			<version>0.9</version>
 		</dependency>
 	</dependencies>
 
@@ -315,7 +327,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.3</version>
+				<!--<version>2.3</version>-->
 				<configuration>
 					<useSystemClassLoader>true</useSystemClassLoader>
 				</configuration>
@@ -334,5 +346,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

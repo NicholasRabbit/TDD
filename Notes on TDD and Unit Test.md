@@ -132,5 +132,33 @@ Chapter 4.2.1
 
 ##### 9.2 Test doubles 
 
+Chapter 4.3
+
 Test doubles stand in for dependencies.
 It means that test doubles are used as replacement for the actual dependencies that code relies on during testing.
+
+###### **9.2.1 Stubs, fakes, and mocks**
+
+Chapter 4.3.2
+
+
+
+#### 10, State and interaction-based testing
+
+##### 10.1 State-based testing
+
+What is state-based testing?
+
+It focus on the state changes of an object or a system.
+
+##### 10.2 Interaction-based testing
+
+What is interaction-based testing?
+
+Interaction-based tests verify that the object under test interacted with its collaborators as we expected.
+
+**Quote:** To paraphrase J. B. Rainsberger, author of JUnit Recipes (Manning Publications, 2005),
+
+>  “We lean on interaction-based testing to verify how an object
+> talks to its collaborators; and we lean on state-based testing to verify how well the
+> object listens.”  
