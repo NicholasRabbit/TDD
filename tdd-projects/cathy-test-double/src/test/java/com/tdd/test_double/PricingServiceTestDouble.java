@@ -8,6 +8,8 @@ public class PricingServiceTestDouble extends PricingService {
         this.discount = discount;
     }
 
-
+    public float getDiscountPercentage(Customer customer, Product product){
+        return discount;
+    }
 
 }
