@@ -46,12 +46,14 @@ While writing unit test, you can use in-memory database(not Redis). The nice thi
 
 In Test driven development, you should write test first, and then write codes to pass the test. The last and darn important step is refactoring.
 
+**TDD cycle:**  test--code--refactor (or red-green-green)
+
 1. Specification by example
 
    > In other words, instead of the traditional “the system shall calculate tax” pattern familiar in
    > requirements documents, specification by example promotes expressing the requirement through examples such as “for a \$20 subscription with a tax rate of 10%, the system charges a total of ​\$22 from the user’s account.”  
 
-   -- Quoted from "Test-Driven-Tdd-and-Acceptance-TDD-for-Java-Developers" P64. 
+   -- Quoted from "Test-Driven-TDD-and-Acceptance-TDD-for-Java-Developers" P64. 
 
 2. From requirements to tests.
 
@@ -141,7 +143,13 @@ It means that test doubles are used as replacement for the actual dependencies t
 
 Chapter 4.3.2
 
+Table 4.1 Categorization of different types of mock objects
 
+| Type of mock | Description                                                  |
+| ------------ | ------------------------------------------------------------ |
+| Stubs        | Stubs are essentially the simplest possible implementation of a given interface you can think of. For example, stubs’ methods typically return hardcoded, meaningless values. |
+| Fakes        | Fakes are a degree more sophisticated than stubs in that they can be considered an alternative implementation of the interface. In other words, a fake looks like a duck and walks like a duck even though it isn’t a real duck. In contrast, a stub only looks like a duck. |
+| Mocks        | Mocks can be considered even more sophisticated in terms of their implementation, because they incorporate assertions for verifying expected collaboration with other objects during a test. Depending on the implementation of a mock, it can be set up either to return hardcoded values or to provide a fake implementation of the logic. Mocks are typically generated dynamically with frameworks and libraries, such as EasyMock, but they can also be implemented by hand. |
 
 #### 10, State and interaction-based testing
 

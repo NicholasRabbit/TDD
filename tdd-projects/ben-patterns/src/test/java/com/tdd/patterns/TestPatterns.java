@@ -14,7 +14,7 @@ public class TestPatterns {
     /**
      * 4.2.3 State-based testing.
      * What is state-based testing?
-     * See personal notes.
+     * For more elaboration, see personal notes.
      * */
     @Test
     public void listShouldNotBeEmptyAfterAddingSomethingToIt () {
