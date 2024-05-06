@@ -17,6 +17,7 @@
     <properties>
         <junit.version>4.6</junit.version>
         <easymock.version>2.3</easymock.version>
+        <easymockextension.version>2.2</easymockextension.version>
     </properties>
 
 
@@ -33,6 +34,13 @@
                 <groupId>org.easymock</groupId>
                 <artifactId>easymock</artifactId>
                 <version>${easymock.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymockclassextension</artifactId>
+                <version>${easymockextension.version}</version>
                 <scope>import</scope>
             </dependency>
 

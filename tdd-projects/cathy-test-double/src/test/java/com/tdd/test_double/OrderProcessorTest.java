@@ -12,6 +12,7 @@ public class OrderProcessorTest {
      * Typical usage of test double.
      * Fake.
      * The type of mock is fake which is one of test doubles.
+     * Comparing with mock in OrderProcessorTest.
      * */
     @Test
     public void testOrderProcessorWithMockObject(){
@@ -22,6 +23,7 @@ public class OrderProcessorTest {
         Customer customer = new Customer(initialBalance);
         Product product = new Product("TDD in action", listPrice);
         OrderProcessor processor = new OrderProcessor();
+        //A fake implementation of PricingService.
         PricingService service = new PricingServiceTestDouble(discount);
         processor.setPricingService(service);
         processor.process(new Order(customer, product));
