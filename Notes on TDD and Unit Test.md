@@ -1,10 +1,10 @@
-#### 1，写测试的好处
+### 1，写测试的好处
 
 1. 写测试会加快开发；
 2. 写测试会减少bug；
-3. 写测试会提升写程序的幸福感。
+3. 写测试会提升写程序的幸福感。!!
 
-#### 2，The definition of a good test
+### 2，The definition of a good test
 
 参考：
 
@@ -21,9 +21,9 @@ What are the properties of a good test?
 - A good test is atomic.
 - A good test is isolated.
 
-#### 3，如何写好单元测试
+### 3，如何写好单元测试
 
-1，不是为了写测试而写，要清除代码哪些地方需要重点测，才去针对这些地方写，**一般单元测试的覆盖率是40-60%**；
+1，不是为了写测试而写，要清楚代码哪些地方需要重点测，才去针对这些地方写，**一般单元测试的覆盖率是40-60%**；
 
 2，写好的单元测试在不同的环境中都要运行；
 
@@ -33,8 +33,9 @@ What are the properties of a good test?
 - 可以独立运行；
 - 可重复，运行期不做更改，每次在不同环境运行得到的结果必须一致；
 - 自检查，测试应该在没有任何人工交互的情况下自动检测是否通过。
+- Test code should also be refactored if they are lack of readability, maintainability.   [xUnit](http://xunitpatterns.com/)
 
-#### 4, in memory database
+### 4, in memory database
 
 While writing unit test, you can use in-memory database(not Redis). The nice thing about these tools is that they allow you to use regular SQL to query them.
 
@@ -42,7 +43,7 @@ While writing unit test, you can use in-memory database(not Redis). The nice thi
 
 <a href="http://hsqldb.org/">HSQLDB(Java In-memory Database)</a>
 
-#### 5, TDD
+### 5, TDD
 
 In Test driven development, you should write test first, and then write codes to pass the test. The last and darn important step is refactoring.
 
@@ -64,7 +65,7 @@ In Test driven development, you should write test first, and then write codes to
    We create classes which even doesn't exist and then generate them automatically by IDE.
    
 
-#### 6, Unit Test
+### 6, Unit Test
 
 ##### 6.1 Basic Knowledge
 
@@ -78,7 +79,7 @@ In Test driven development, you should write test first, and then write codes to
 
    It means that we use some tools to mock the environment  or objects so that we don't rely on web server or database.
 
-#### 7, Reading Note
+### 7, Reading Note
 
 1. The meaning of the regular expression used in Listing 3.6.
 
@@ -98,7 +99,7 @@ In Test driven development, you should write test first, and then write codes to
 
    ​       3)  Obvious Implementation
 
-#### 8, Prime Guidelines for Test-driving
+### 8, Prime Guidelines for Test-driving
 
 #####  8.1. Introduction
 
@@ -121,7 +122,7 @@ In Test driven development, you should write test first, and then write codes to
 
    It is common for developers practising TDD to start taking slightly bigger and bigger steps as time goes by. 
 
-#### 9, Fixture and Test  Doubles
+### 9, Fixture and Test  Doubles
 
 Chapter 4.2.1
 
@@ -151,7 +152,9 @@ Table 4.1 Categorization of different types of mock objects
 | Fakes        | Fakes are a degree more sophisticated than stubs in that they can be considered an alternative implementation of the interface. In other words, a fake looks like a duck and walks like a duck even though it isn’t a real duck. In contrast, a stub only looks like a duck. |
 | Mocks        | Mocks can be considered even more sophisticated in terms of their implementation, because they incorporate assertions for verifying expected collaboration with other objects during a test. Depending on the implementation of a mock, it can be set up either to return hardcoded values or to provide a fake implementation of the logic. Mocks are typically generated dynamically with frameworks and libraries, such as EasyMock, but they can also be implemented by hand. |
 
-#### 10, State and interaction-based testing
+
+
+### 10, State and interaction-based testing
 
 ##### 10.1 State-based testing
 
@@ -170,3 +173,29 @@ Interaction-based tests verify that the object under test interacted with its co
 >  “We lean on interaction-based testing to verify how an object
 > talks to its collaborators; and we lean on state-based testing to verify how well the
 > object listens.”  
+
+
+
+### 11, Guidelines for testable designs
+
+Chapter 4.4
+
+- Choose composition over inheritance.
+- Avoid static and singleton.    [demo](./note-images/avoid-static.java)
+- Isolate dependencies.
+- Inject dependencies.
+
+Why do we need the above four approaches to guide us?
+
+The reason it that we should write code which is testable. When it is testable we can adopt TDD easily so that our programme will be under the harness of test and will be free of error.
+
+### 12, Unit-testing Patterns
+
+Chapter 4.5
+
+##### 12.1  Assertion Patterns
+
+4.5.1 
+
+Assertions are the essence of unit tests. A unit test without assertions is not worth writing. 
+

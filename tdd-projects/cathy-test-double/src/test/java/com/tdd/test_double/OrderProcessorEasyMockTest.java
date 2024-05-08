@@ -25,7 +25,7 @@ public class OrderProcessorEasyMockTest {
         Customer customer = new Customer(initialBalance);
         Product product = new Product("TDD in action", listPrice);
 
-        // Create a dynamic mock for PricingService.
+        // Create a dynamic mock for PricingService. Recording mode.
         PricingService mock = createMock(PricingService.class);
         expect(mock.getDiscountPercentage(customer, product))
                 .andReturn(discount);

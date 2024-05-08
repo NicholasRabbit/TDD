@@ -17,12 +17,11 @@ public class TestPatterns {
      * For more elaboration, see personal notes.
      * */
     @Test
-    public void listShouldNotBeEmptyAfterAddingSomethingToIt () {
+    public void listShouldNotBeEmptyAfterAddingSomethingToIt() throws Exception {
         List<String> list = new ArrayList<>();
         assertTrue(list.isEmpty());
         list.add("something");
         assertFalse(list.isEmpty());
     }
-
 
 }
