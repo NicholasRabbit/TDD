@@ -209,3 +209,10 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
 4. Custom assertion
 5. Interaction assertion 
 
+##### 12.2 Fixture Patterns
+
+1. Parameterized Creation Method 
+   `TestFixturePatterns`
+2. Object Mother
+3. Automated Teardown
+
