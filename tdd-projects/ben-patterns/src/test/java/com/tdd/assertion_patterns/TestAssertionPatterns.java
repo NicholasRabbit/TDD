@@ -32,7 +32,7 @@ public class TestAssertionPatterns {
     /**
      * 2. Guard assertion.
      * Sometimes, the purpose of adding a Guard assertion is to make sure an assumption about the
-     * fixture's staring state is correct.
+     * fixture's starting state is correct.
      * */
     @Test
     public void listIsNoLongerEmptyAfterAddingAnItemToIt() throws Exception {
@@ -72,6 +72,11 @@ public class TestAssertionPatterns {
     private void assertIsDuringOfficeHoursOnWeekday(Date time) {
         // actual assertion logic omitted for brevity
     }
+
+    /**
+     * 5, Interaction assertion.
+     * See TestExpectedInteractions.
+     * */
 
 
 }

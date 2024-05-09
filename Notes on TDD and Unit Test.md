@@ -195,7 +195,17 @@ Chapter 4.5
 
 ##### 12.1  Assertion Patterns
 
-4.5.1 
+4.5.1   
 
-Assertions are the essence of unit tests. A unit test without assertions is not worth writing. 
+Code : 
+
+`com.tdd.assertion_patterns.TestAssertionPatterns/TestExpectedInteractions`
+
+Assertions are the essence of unit tests. A unit test without assertions is not worth writing. 	
+
+1. Resulting state assertion
+2. Guard assertion
+3. Delta assertion
+4. Custom assertion
+5. Interaction assertion 
 
