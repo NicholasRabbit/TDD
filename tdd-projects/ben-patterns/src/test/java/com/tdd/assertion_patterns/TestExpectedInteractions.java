@@ -44,7 +44,7 @@ public class TestExpectedInteractions {
         paperBoy.addToRoute(esther);
 
         paperBoy.deliver(new DailyPaper());
-        assertTrue(delivered.contains(david));
+        assertTrue(delivered.contains(david));  //Check for expected interactions.
         assertTrue(delivered.contains(esther));
 
     }

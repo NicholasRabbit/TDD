@@ -8,6 +8,7 @@ public class PaperBoy {
 
     }
 
+    //This is the place where an interaction happens.
     public void addToRoute(Customer customer) {
         //There is no implementation in the source code so that I write code myself.
         //And it pass the test!
