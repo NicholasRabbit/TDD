@@ -9,8 +9,8 @@ public class Customer {
     }
 
     public float getBalance() {
-        return 10.0f;  //hard coded
-//        return balance;
+        //return 73.0f;  //hard coded
+        return balance;
     }
 
     public void setBalance(float balance) {

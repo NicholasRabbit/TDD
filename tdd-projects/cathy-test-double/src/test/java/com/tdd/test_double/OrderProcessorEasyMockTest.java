@@ -21,7 +21,7 @@ public class OrderProcessorEasyMockTest {
         float initialBalance = 100.0f;
         float listPrice = 30.0f;
         float discount = 10.0f;
-        float exceptedBalance = initialBalance - initialBalance * (1 - discount / 100);
+        float exceptedBalance = initialBalance - listPrice * (1 - discount / 100);
         Customer customer = new Customer(initialBalance);
         Product product = new Product("TDD in action", listPrice);
 
