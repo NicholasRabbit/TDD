@@ -83,7 +83,7 @@ In Test driven development, you should write test first, and then write codes to
 
 1. The meaning of the regular expression used in Listing 3.6.
 
-   [meaning of reges](./note-images\explanation regex.txt)
+   [meaning of regex](./note-images\explanation regex.txt)
 
 2. How to start the first test?   Chapter 4.1
 
@@ -195,11 +195,7 @@ Chapter 4.5
 
 ##### 12.1  Assertion Patterns
 
-4.5.1   
-
-Code : 
-
-`com.tdd.assertion_patterns.TestAssertionPatterns/TestExpectedInteractions`
+Code : `assertion_patterns.TestAssertionPatterns/TestExpectedInteractions`
 
 Assertions are the essence of unit tests. A unit test without assertions is not worth writing. 	
 
@@ -216,3 +212,30 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
 2. Object Mother
 3. Automated Teardown
 
+##### 12.2 Test Patterns
+
+​    Code: `com.tdd.test_patterns.*`
+
+1. Parameterized Test
+
+   What is parameterized test? What is it used for?
+
+   When we find ourselves writing almost identical tests, where only a few input values are different but the logic essentially the same. In this situation we should adopt parameterized test. 
+
+2. Self-Shunt
+
+   2.1 What is the self-shunt test? 
+
+   The self-shunt is that the test class instance itself act as a test double in its test. 
+   
+   2.2 Where can I use it ? 
+   
+   We had better use it when the logic of code is not complex so that we can implement such a simple test-double near the tests which use it.
+   
+3. Intimate Inner Class
+
+   Why do we use "Intimate Inner Class"? What is "Intimate Inner Class"? 
+
+   There are some occasions where we would like to share some objects between the test class and a test-double. The solution is to use "Intimate Inner Class".
+
+   
