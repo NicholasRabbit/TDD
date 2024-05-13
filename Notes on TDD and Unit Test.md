@@ -253,3 +253,4 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
 6. Test-Specific Subclass
 
    There isn't any code for me to understand this kind of test pattern. With knowing more about TDD in the coming days, I will add details about it.
+

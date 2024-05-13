@@ -3,6 +3,7 @@ package com.tdd.test_patterns;
 public class Customer {
 
     private float balance;
+    private static int number;
 
     public Customer(float initialBalance) {
         this.balance = initialBalance;
