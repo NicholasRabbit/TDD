@@ -212,7 +212,7 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
 2. Object Mother
 3. Automated Teardown
 
-##### 12.2 Test Patterns
+##### 12.3 Test Patterns
 
 ​    Code: `com.tdd.test_patterns.*`
 
@@ -238,4 +238,8 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
 
    There are some occasions where we would like to share some objects between the test class and a test-double. The solution is to use "Intimate Inner Class".
 
-   
+4. Privilege Access
+
+   What is "Privilege Access"?
+
+   When the legacy code is not testable it maybe a reasonable workaround to invade the legacy code's privacy and directly tweak it internals through Reflection API. Tools such as `PrivateAccessor` in JUnit, `Inject` in Laughing Panda are useful for us to approach this problem.
