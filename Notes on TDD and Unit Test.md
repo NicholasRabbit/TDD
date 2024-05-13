@@ -243,3 +243,13 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
    What is "Privilege Access"?
 
    When the legacy code is not testable it maybe a reasonable workaround to invade the legacy code's privacy and directly tweak it internals through Reflection API. Tools such as `PrivateAccessor` in JUnit, `Inject` in Laughing Panda are useful for us to approach this problem.
+   
+5. Extra Constructor
+
+   What is "Extra Constructor"?
+
+   When we test a product code which depends on a dozen of others classes we should adopt this kind of test pattern named "Extra Constructor". This proper solution would isolate these dependencies by using an extra constructor.  See `ExtractConstructorTest`.
+
+6. Test-Specific Subclass
+
+   There isn't any code for me to understand this kind of test pattern. With knowing more about TDD in the coming days, I will add details about it.

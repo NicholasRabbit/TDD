@@ -2,8 +2,6 @@ package com.tdd.test_patterns;
 
 import org.junit.Test;
 
-import java.net.URL;
-
 import static org.junit.Assert.*;
 
 
@@ -19,6 +17,7 @@ public class ExtractConstructorTest {
         URL urlA = new URL("/usr/local/a.txt");
         URL urlB = new URL("/usr/local/b.txt");
         LogFileMerge logFile = new LogFileMerge(urlA, urlB);
-
+        assertTrue( "/usr/local/a.txt".equals(logFile.getLogFileA().getPath()));
+        assertTrue( "/usr/local/b.txt".equals(logFile.getLogFileB().getPath()));
     }
 }

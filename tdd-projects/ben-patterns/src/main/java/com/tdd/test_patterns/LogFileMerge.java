@@ -1,7 +1,5 @@
 package com.tdd.test_patterns;
 
-import java.net.URL;
-
 public class LogFileMerge {
 
     private URL logFileA, logFileB;
@@ -23,15 +21,8 @@ public class LogFileMerge {
         return logFileA;
     }
 
-    public void setLogFileA(URL logFileA) {
-        this.logFileA = logFileA;
-    }
-
     public URL getLogFileB() {
         return logFileB;
     }
 
-    public void setLogFileB(URL logFileB) {
-        this.logFileB = logFileB;
-    }
 }
