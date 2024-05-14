@@ -29,6 +29,7 @@ public class OrderProcessorEasyMockTest {
         PricingService mock = createMock(PricingService.class);
         expect(mock.getDiscountPercentage(customer, product))
                 .andReturn(discount);
+        // replay mode. That activates the recording mode.
         replay(mock);
 
         // act. Pass mock to code which is under test.
@@ -39,7 +40,8 @@ public class OrderProcessorEasyMockTest {
         // assert
         assertEquals(exceptedBalance, customer.getBalance(), 0);
 
-        //Ask mock to verify expectations. (What does this mean? What does the "verify()" do?)
+        // Ask mock to verify expectations. (What does this mean? What does the "verify()" do?)
+        // This is to ensure whether the mock is being used or not.
         verify(mock);
 
     }

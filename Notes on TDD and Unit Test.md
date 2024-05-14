@@ -97,7 +97,9 @@ In Test driven development, you should write test first, and then write codes to
 
    ​	   2) Triangulation. [a map to explain](./note-images/triangulation.png)
 
-   ​       3)  Obvious Implementation
+   ​       3)  Obvious Implementation 
+   
+3. **Note:** The book should not be read only one time and should definitely be read two or three times when you actually adopt TDD in a project.
 
 ### 8, Prime Guidelines for Test-driving
 
@@ -126,12 +128,24 @@ In Test driven development, you should write test first, and then write codes to
 
 Chapter 4.2.1
 
-##### 9.1 Fixture:
+##### 9.1 Fixture Patterns:
+
+Why shall we use fixture patterns?
 
 1. Fixtures remove duplication
    Test code would be clean and readable.
 2. Fixtures allow for focused tests
    We don't have to spend our precious time  wadding through hundreds lines of code so that we can easily find where fail tests happen.
+
+Categories:
+
+1. Parameterized Creation Method;
+
+2. Object Mother; [Definition]("./note-images/Object Mother.html")  (It is a html file and could be opened in its directory.)
+
+3. Automated Teardown.
+
+   ​	
 
 ##### 9.2 Test doubles 
 
