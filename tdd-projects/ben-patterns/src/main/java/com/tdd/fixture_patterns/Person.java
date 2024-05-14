@@ -7,6 +7,8 @@ public class Person {
     private String firstName;
     private String lastName;
     private String ssn;
+    private Person inLoveWith;
+    private Person engagedWith;
 
     public void setId(long id) {
         this.id = id;
@@ -41,11 +43,42 @@ public class Person {
     }
 
 
-    public void proposeTo(Person person) {
-        person.isEngagedWith(this);
+    public void proposeTo(Person beloved) {
+        if (beloved.acceptProposalFrom(this)) {
+            this.engagedWith = beloved;
+            beloved.engagedWith = this;
+        }
+    }
+
+    public void isInLoveWith(Person beloved) {
+        this.inLoveWith = beloved;
+    }
+
+    public boolean acceptProposalFrom(Person person) {
+        return inLoveWith.equals(person);
     }
 
     public boolean isEngagedWith(Person person) {
-        return true;  // hard coded
+        return person.equals(engagedWith);  // hard coded
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null)
+            return false;
+        if (!(obj instanceof Person))
+            return false;
+        Person p = (Person)obj;
+        return  this.firstName.equals(p.firstName) && this.lastName.equals(p.lastName);
+    }
+
+
 }

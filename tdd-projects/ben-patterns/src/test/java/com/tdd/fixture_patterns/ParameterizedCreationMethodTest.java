@@ -8,7 +8,7 @@ import java.util.UUID;
 
 import static org.junit.Assert.*;
 
-public class TestFixturePatterns {
+public class ParameterizedCreationMethodTest {
 
     private Person alice;
     private Person billy;
@@ -16,11 +16,8 @@ public class TestFixturePatterns {
 
     /**
      * 4.5.2 Fixture Patterns
-     * */
-    /**
      * 1, Parameterized Creation Method.
      * */
-
     /*@Before   //The following fixture is cluttered so we should adopt parameterized creation method.
     public void setUp() {
         alice = new Person();
@@ -48,6 +45,7 @@ public class TestFixturePatterns {
         alice = createPerson("Alice", "Walker");  //Parameterized Creation Method.
         billy = createPerson("Billy", "Burke");
         clark = createPerson("Clark", "White");
+        alice.isInLoveWith(billy);
     }
 
     private Person createPerson(String firstName, String lastName) {
@@ -63,7 +61,12 @@ public class TestFixturePatterns {
     public void aliceShouldAcceptWhenProposedToByBilly() throws Exception {
         billy.proposeTo(alice);
         assertTrue(alice.isEngagedWith(billy));
+    }
 
+    @Test
+    public void aliceShouldNotAcceptProposalFromClark() throws Exception {
+        clark.proposeTo(alice);
+        assertFalse(alice.acceptProposalFrom(clark));
     }
 
 }
