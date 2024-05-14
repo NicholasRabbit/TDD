@@ -48,8 +48,8 @@
             <dependency>
                 <groupId>junit-addons</groupId>
                 <artifactId>junit-addons</artifactId>
-                <version>${junit.addon.version}}</version>
-                <scope>test</scope>
+                <version>${junit.addon.version}</version>
+                <scope>import</scope>
             </dependency>
 
         </dependencies>

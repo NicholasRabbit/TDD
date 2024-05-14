@@ -13,14 +13,16 @@ import static org.junit.Assert.*;
 public class PrivilegeAccessTest {
 
     // The following test is failed because I am not familiar with PrivateAccessor.
-    // I will figure it out later.
-    // The reason
+    // I will figure it out later. See the following explanations.
     @Test
     public void testPrivilegeAccess() throws Exception {
 
-        // If the first argument is xx.class, the getField method will get static fields.
-        // The "balance" is not a static field so there is an exception threw out.
-        // NoSuchFieldException: Could get value for static field com.tdd.test_patterns.Customer.balance
+        /*
+        * Analysis:
+        * If the first argument is xx.class, the getField method will get static fields.
+        * The "balance" is not a static field so there is an exception threw out.
+        * NoSuchFieldException: Could get value for static field com.tdd.test_patterns.Customer.balance
+        * */
         //Object balance = PrivateAccessor.getField(Customer.class, "balance");
 
         // "number" is a static field.
