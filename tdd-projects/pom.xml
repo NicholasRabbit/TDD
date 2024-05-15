@@ -12,6 +12,7 @@
         <module>andy-template</module>
         <module>ben-patterns</module>
         <module>cathy-test-double</module>
+        <module>damon-web</module>
     </modules>
 
     <properties>
@@ -19,6 +20,14 @@
         <easymock.version>2.3</easymock.version>
         <easymockextension.version>2.2</easymockextension.version>
         <junit-addon.version>1.4</junit-addon.version>
+        <servlet-version>3.1.0</servlet-version>
+        <spring-mock.version>2.0.8</spring-mock.version>
+
+        <!-- environment setting -->
+        <project.build.souceEncoding>UTF-8</project.build.souceEncoding>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
     </properties>
 
 
@@ -49,6 +58,21 @@
                 <groupId>junit-addons</groupId>
                 <artifactId>junit-addons</artifactId>
                 <version>${junit-addon.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet-version}</version>
+                <scope>import</scope>
+            </dependency>
+            <!--Spring Mock-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-mock</artifactId>
+                <version>${spring-mock.version}</version>
                 <scope>import</scope>
             </dependency>
 

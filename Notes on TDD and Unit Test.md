@@ -271,3 +271,7 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
 
    There isn't any code for me to understand this kind of test pattern. With knowing more about TDD in the coming days, I will add details about it.
 
+### 13, Test-driving Web Components
+
+Faking the request and response.
+
