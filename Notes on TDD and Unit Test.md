@@ -124,37 +124,16 @@ In Test driven development, you should write test first, and then write codes to
 
    It is common for developers practising TDD to start taking slightly bigger and bigger steps as time goes by. 
 
-### 9, Fixture and Test  Doubles
+### 9, Test  Doubles
 
-Chapter 4.2.1
-
-##### 9.1 Fixture Patterns:
-
-Why shall we use fixture patterns?
-
-1. Fixtures remove duplication
-   Test code would be clean and readable.
-2. Fixtures allow for focused tests
-   We don't have to spend our precious time  wadding through hundreds lines of code so that we can easily find where fail tests happen.
-
-Categories:
-
-1. Parameterized Creation Method;
-
-2. Object Mother; [Definition]("./note-images/Object Mother.html")  (It is a html file and could be opened in its directory.)
-
-3. Automated Teardown.
-
-   ​	
-
-##### 9.2 Test doubles 
+##### 9.1 Test doubles 
 
 Chapter 4.3
 
 Test doubles stand in for dependencies.
 It means that test doubles are used as replacement for the actual dependencies that code relies on during testing.
 
-###### **9.2.1 Stubs, fakes, and mocks**
+###### **9.1.1 Stubs, fakes, and mocks**
 
 Chapter 4.3.2
 
@@ -221,22 +200,46 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
 
 ##### 12.2 Fixture Patterns
 
-1. Parameterized Creation Method 
-   `TestFixturePatterns`
-2. Object Mother
-3. Automated Teardown
+1. Chapter 4.2.1
+   
+   **Code:** `fixture_patterns.*`
+   
+   Why shall we use fixture patterns?
+   
+   1. Fixtures remove duplication
+      Test code would be clean and readable.
+   2. Fixtures allow for focused tests
+      We don't have to spend our precious time  wadding through hundreds lines of code so that we can easily find where fail tests happen.
+   
+   **Categories:**
+   
+   1. Parameterized Creation Method; 
+   
+   2. Object Mother; [Definition]("./note-images/Object Mother.html")  (It is a html file and could be opened in its directory.)
+   
+   3. Automated Teardown.
+   
+      **What is "Automated Teardown"?**
+   
+      The Automated Teardown pattern tackle problems such as the uncleaned objects from a database or generated file from a file system. All of these logic to teardown can be encapsulated in a class which is to invoke by  a fixture (such as @After) in tests classes so that we won't forget to clean up anything.
+   
+      **Why should we adopt this kind of fixture pattern?**
+   
+      Because we might easily forget to clean those objects and generated file for tests. 
+   
+      ​	
 
 ##### 12.3 Test Patterns
 
 ​    Code: `com.tdd.test_patterns.*`
 
-1. Parameterized Test
+1. **Parameterized Test**
 
    What is parameterized test? What is it used for?
 
    When we find ourselves writing almost identical tests, where only a few input values are different but the logic essentially the same. In this situation we should adopt parameterized test. 
 
-2. Self-Shunt
+2. **Self-Shunt**
 
    2.1 What is the self-shunt test? 
 
@@ -246,25 +249,25 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
    
    We had better use it when the logic of code is not complex so that we can implement such a simple test-double near the tests which use it.
    
-3. Intimate Inner Class
+3. **Intimate Inner Class**
 
    Why do we use "Intimate Inner Class"? What is "Intimate Inner Class"? 
 
    There are some occasions where we would like to share some objects between the test class and a test-double. The solution is to use "Intimate Inner Class".
 
-4. Privilege Access
+4. **Privilege Access**
 
    What is "Privilege Access"?
 
    When the legacy code is not testable it maybe a reasonable workaround to invade the legacy code's privacy and directly tweak it internals through Reflection API. Tools such as `PrivateAccessor` in JUnit, `Inject` in Laughing Panda are useful for us to approach this problem.
    
-5. Extra Constructor
+5. **Extra Constructor**
 
    What is "Extra Constructor"?
 
    When we test a product code which depends on a dozen of others classes we should adopt this kind of test pattern named "Extra Constructor". This proper solution would isolate these dependencies by using an extra constructor.  See `ExtractConstructorTest`.
 
-6. Test-Specific Subclass
+6. **Test-Specific Subclass**
 
    There isn't any code for me to understand this kind of test pattern. With knowing more about TDD in the coming days, I will add details about it.
 
