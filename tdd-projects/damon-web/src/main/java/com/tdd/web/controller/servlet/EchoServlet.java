@@ -1,4 +1,4 @@
-package com.tdd.web;
+package com.tdd.web.controller.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

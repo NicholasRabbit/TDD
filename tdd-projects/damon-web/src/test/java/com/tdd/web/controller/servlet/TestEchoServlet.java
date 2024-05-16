@@ -1,5 +1,6 @@
-package com.tdd.web;
+package com.tdd.web.controller.servlet;
 
+import com.tdd.web.controller.servlet.EchoServlet;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
