@@ -20,6 +20,10 @@ public class TestEchoServlet {
      * The reason, which I guess, is the version of servlet-api(3.1.0) is different from
      * the one which is 2.4 in "spring-mock" dependency.
      * I didn't guess correctly. The reason is still not found right now.
+     * !!! How stupid I was. The exception stated clearly that there is no "CollectionFactory" which is
+     * a class of Spring Core.
+     *
+     * A possible approach is that we might rewrite the MockHttpServletRequest.
      * */
     @Test
     public void testEchoingParametersWithMultiplyValues() throws Exception {

@@ -35,3 +35,30 @@ Solution:
 In "Shorten command line" select JAR manifest.
 
 <img src="note-images/1712796693495.png" alt="1712796693495" style="zoom: 80%;" />
+
+#### 4, NoClassDefFoundError
+
+`NoClassDefFoundError: org/springframework/core/CollectionFactory`
+
+ * The following test throws "NoClassDefFoundError: org/springframework/core/CollectionFactory".
+
+ * The reason, which I guess, is the version of servlet-api(3.1.0) is different from
+
+   the one which is 2.4 in "spring-mock" dependency.
+
+* **Reason:**
+
+ * !!! How stupid I was. The exception stated clearly that there is no "CollectionFactory" which is 
+
+   a class of Spring Core. Just import the dependency!!
+
+```xml
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <!--Write a proper version correspond to spring-mock-->
+                <version>${spring-core.version}</version>  
+                <scope>compile</scope>
+             </dependency>
+```
+

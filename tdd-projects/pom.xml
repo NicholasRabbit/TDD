@@ -21,7 +21,8 @@
         <easymockextension.version>2.2</easymockextension.version>
         <junit-addon.version>1.4</junit-addon.version>
         <servlet-version>3.1.0</servlet-version>
-        <spring-mock.version>2.0.8</spring-mock.version>
+        <spring-mock.version>2.0.6</spring-mock.version>
+        <spring-core.version>3.0.7.RELEASE</spring-core.version>
 
         <!-- environment setting -->
         <project.build.souceEncoding>UTF-8</project.build.souceEncoding>
@@ -73,6 +74,14 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-mock</artifactId>
                 <version>${spring-mock.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <!--Spring Core-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-core.version}</version>
                 <scope>import</scope>
             </dependency>
 
