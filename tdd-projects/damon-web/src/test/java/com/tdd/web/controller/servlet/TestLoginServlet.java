@@ -59,6 +59,10 @@ public class TestLoginServlet {
      * Rewrite the second test above.
      * The test is passed with flying colours, but the first test failed because we didn't override the
      * getAuthenticationService in it.
+     *
+     * Well, some fixture patterns appeared in my mind so it is the right time for me to remove the duplicated code in our
+     * code and pass the first test at the same time. I will do it in TestLoginServletRefactor
+     *
      * */
     @Test
     public void rewriteTestOfValidLogin() throws Exception {

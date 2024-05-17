@@ -215,7 +215,7 @@ Assertions are the essence of unit tests. A unit test without assertions is not 
    
    1. Parameterized Creation Method; 
    
-   2. Object Mother; [Definition]("./note-images/Object Mother.html")  (It is a html file and could be opened in its directory.)
+   2. Object Mother; [Definition]("./note-images/Object Mother.html")  (It is a html file and can be opened directly in its directory.)
    
    3. Automated Teardown.
    
