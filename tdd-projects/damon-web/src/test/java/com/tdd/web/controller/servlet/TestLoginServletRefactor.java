@@ -19,6 +19,8 @@ public class TestLoginServletRefactor {
 
     private static final String CORRECT_PASSWORD = "correctpassword";
     private static final String VALID_USERNAME = "validuser";
+    private static final String USERNAME = "j_username";
+    private static final String PASSWORD = "j_password";
 
     private LoginServlet servlet;
     private FakeAuthenticationService authenticator;
@@ -50,8 +52,8 @@ public class TestLoginServletRefactor {
     public void wrongPasswordShouldRedirectToErrorPage() throws Exception {
         // Create fake a request object and a fake response object.
         request = new MockHttpServletRequest("GET", "/login");
-        request.addParameter("j_username", VALID_USERNAME);
-        request.addParameter("j_password", "wrongpassword");
+        request.addParameter(USERNAME, VALID_USERNAME);
+        request.addParameter(PASSWORD, "wrongpassword");
         response = new MockHttpServletResponse();
         servlet.service(request, response);
         assertEquals("/invalidLogin", response.getRedirectedUrl());
@@ -64,8 +66,8 @@ public class TestLoginServletRefactor {
     @Test
     public void validLoginForwardsToFrontPageAndStoresUsername() throws Exception {
         request = new MockHttpServletRequest("GET", "/login");
-        request.addParameter("j_username", VALID_USERNAME);
-        request.addParameter("j_password", CORRECT_PASSWORD);
+        request.addParameter(USERNAME, VALID_USERNAME);
+        request.addParameter(PASSWORD, CORRECT_PASSWORD);
         response = new MockHttpServletResponse();
         servlet.service(request, response);
 
