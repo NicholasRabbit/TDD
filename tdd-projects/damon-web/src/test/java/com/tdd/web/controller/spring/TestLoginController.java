@@ -12,13 +12,13 @@ import static org.junit.Assert.*;
 
 /**
  * Test Spring MVC
+ *
+ * I will refactor it in TestLoginControllerRefactor
  * */
 public class TestLoginController {
 
     private static final String VALID_USERNAME = "validuser";
     private static final String CORRECT_PASSWORD = "correctpassword";
-    private static final String USERNAME = "j_username";
-    private static final String PASSWORD = "j_password";
 
     /**
      * 1, Test invalid user or wrong password.
@@ -66,7 +66,7 @@ public class TestLoginController {
         c.setAuthenticator(mock);
         ModelAndView v =  c.handleRequest(request, response);
 
-        // User should be redirected to "wrongpassword" page.
+        // A valid user should be redirected to "frontpage" page.
         assertEquals("frontpage", v.getViewName());
 
     }
