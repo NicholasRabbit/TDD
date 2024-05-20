@@ -4,7 +4,7 @@
     <title>My Homepage</title>
 </head>
 <body>
-    Hello world!
-    Shut your mouth!
+    Hello world!  <br>
+    <a href="/web/echo">/echo</a>
 </body>
 </html>
