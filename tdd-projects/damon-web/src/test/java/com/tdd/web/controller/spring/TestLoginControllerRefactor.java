@@ -23,8 +23,7 @@ public class TestLoginControllerRefactor {
     private AuthenticationService authenticator;
     private MockHttpServletRequest request;
     private MockHttpServletResponse response;
-    private LoginController c;
-    private ModelAndView v;
+    private LoginController controller;
 
     @Before
     public void setUp() throws Exception {
@@ -32,17 +31,15 @@ public class TestLoginControllerRefactor {
         response = new MockHttpServletResponse();
         authenticator = new FakeAuthenticationService();
         authenticator.addUser(VALID_USERNAME, CORRECT_PASSWORD);  // Simulation of saving usernames and passwords in database.
-        c = new LoginController();
-        c.setAuthenticator(authenticator);
-        // Invoke Controller's handleRequest method.
-        v =  c.handleRequest(request, response);
-
+        controller = new LoginController();
+        controller.setAuthenticator(authenticator);
     }
 
     @Test
     public void wrongPasswordShouldRedirectToErrorPage() throws Exception {
         request.setParameter(USERNAME, "nosuchusername");
         request.setParameter(PASSWORD, "nosuchpassword");
+        ModelAndView v = controller.handleRequest(request, response);
         // User should be redirected to "wrongpassword" page.
         assertEquals("wrongpassword", v.getViewName());
 
@@ -51,9 +48,9 @@ public class TestLoginControllerRefactor {
     @Test
     public void validLoginForwardsToFrontPage() throws Exception {
         request.setMethod("GET");
-        request.setParameter("j_username", VALID_USERNAME);
-        request.setParameter("j_password", CORRECT_PASSWORD);
-        v =  c.handleRequest(request, response);
+        request.setParameter(USERNAME, VALID_USERNAME);
+        request.setParameter(PASSWORD, CORRECT_PASSWORD);
+        ModelAndView v = controller.handleRequest(request, response);
         assertEquals("frontpage", v.getViewName());
 
     }

@@ -23,6 +23,7 @@ public class TestLoginController {
     /**
      * 1, Test invalid user or wrong password.
      * Pass the test with hard code.
+     * Postscript: this test is failed after refactoring the LoginController and I keep id for the sake of comparison.
      */
     @Test
     public void wrongPasswordShouldRedirectToErrorPage() throws Exception {
