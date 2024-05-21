@@ -1,6 +1,5 @@
 package com.tdd.web.controller.spring;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.tdd.web.service.AuthenticationService;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
@@ -24,8 +23,6 @@ public class LoginController implements Controller {
         if (authenticator.isValidLogin(username, password)) {
             return new ModelAndView("frontpage");
         }
-
-
         return new ModelAndView("wrongpassword");
     }
 }

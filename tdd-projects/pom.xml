@@ -13,6 +13,7 @@
         <module>ben-patterns</module>
         <module>cathy-test-double</module>
         <module>damon-web</module>
+        <module>elena-database</module>
     </modules>
 
     <properties>
