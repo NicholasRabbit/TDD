@@ -26,6 +26,7 @@
         <spring-core.version>3.0.7.RELEASE</spring-core.version>
         <spring-web.version>3.0.7.RELEASE</spring-web.version>
         <spring-webmvc.version>3.0.7.RELEASE</spring-webmvc.version>
+        <mysql.driver>8.0.20</mysql.driver>
 
         <!-- environment setting -->
         <project.build.souceEncoding>UTF-8</project.build.souceEncoding>
@@ -100,6 +101,15 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
                 <version>${spring-webmvc.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <!--MySQL Driver-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.driver}</version>
+                <scope>import</scope>
             </dependency>
 
         </dependencies>

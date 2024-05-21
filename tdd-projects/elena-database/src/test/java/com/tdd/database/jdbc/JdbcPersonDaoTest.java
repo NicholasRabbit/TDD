@@ -2,19 +2,20 @@ package com.tdd.database.jdbc;
 
 
 import com.mockobjects.sql.MockMultiRowResultSet;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import com.tdd.database.dao.JdbcPersonDao;
 import com.tdd.database.entity.Person;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import javax.sql.DataSource;
-
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.easymock.classextension.EasyMock.*;
+import static org.junit.Assert.assertEquals;
 
 
 /**
@@ -54,6 +55,7 @@ public class JdbcPersonDaoTest {
 
         // The test for DAO really begins.
         JdbcPersonDao dao = new JdbcPersonDao();
+        // Here is the fake "dataSource" mocked by EasyMock, so the real dao does't need to connect to database.
         dao.setDataSource(dataSource);
         List<Person> people =  dao.findByLastName("Smith");
         assertEquals(smiths, people);
@@ -77,5 +79,31 @@ public class JdbcPersonDaoTest {
             array[i] = new Object[]{person.getFirstName(), person.getLastName()};
         }
         return array;
+    }
+
+    /**
+     * Just for comparison, in this test a real datasource is used to connect the real database.
+     * */
+    @Test
+    public void testFindByNameWithRealDataSource() throws Exception {
+        String url = "jdbc:mysql://localhost:3306/tdd?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull" +
+                "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false" +
+                "&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true&allowPublicKeyRetrieval=true";
+        String user = "root";
+        String password = "root";
+        MysqlDataSource dataSource = new MysqlDataSource();
+        dataSource.setURL(url);
+        dataSource.setUser(user);
+        dataSource.setPassword(password);
+        dataSource.setPortNumber(3306);
+        dataSource.setServerName("localhost");
+        JdbcPersonDao dao = new JdbcPersonDao();
+        dao.setDataSource(dataSource);
+        List<Person> people = dao.findByLastName("Smith");
+
+        List<Person> smiths = createPeopleWithLastName("Smith");
+
+        assertEquals(smiths, people);
+
     }
 }
