@@ -283,3 +283,4 @@ Chapter 5.1 and 5.2
 
 Faking the request and response.
 
+**Caution:** Only the dependencies and return value of these dependencies are mocked but the controller itself is real. 

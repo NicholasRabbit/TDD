@@ -33,7 +33,7 @@ public class TestLoginController {
         request.setParameter("j_password", "nosuchpassword");
         MockHttpServletResponse response = new MockHttpServletResponse();
 
-        // Invoke Controller's handleRequest method.
+        // Invoke Controller's handleRequest method. Caution: The LoginController is a real object not a mock one.
         Controller c = new LoginController();
         ModelAndView v =  c.handleRequest(request, response);
 

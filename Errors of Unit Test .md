@@ -62,3 +62,11 @@ In "Shorten command line" select JAR manifest.
              </dependency>
 ```
 
+#### 5, incompatible version of Kotlin
+
+Error: `module was compiled with an incompatible version of kotlin `
+
+[A solution](https://stackoverflow.com/questions/71076748/errorkotlin-module-was-compiled-with-an-incompatible-version-of-kotlin-in-a-pr/71093698#71093698):
+
+Try going to *Build* menu and choose *Rebuild project*. 
+

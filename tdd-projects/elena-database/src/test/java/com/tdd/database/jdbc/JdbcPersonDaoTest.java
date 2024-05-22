@@ -62,7 +62,7 @@ public class JdbcPersonDaoTest {
 
         // The test for DAO really begins.
         JdbcPersonDao dao = new JdbcPersonDao();
-        // Here is the fake "dataSource" mocked by EasyMock, so the real dao does't need to connect to database.
+        // Here is the fake "dataSource" mocked by EasyMock, so the real dao doesn't need to connect to database.
         dao.setDataSource(dataSource);
         List<Person> people =  dao.findByLastName("Smith");
         assertEquals(smiths, people);

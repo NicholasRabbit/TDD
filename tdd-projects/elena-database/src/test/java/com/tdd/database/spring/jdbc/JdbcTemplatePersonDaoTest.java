@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import static org.easymock.classextension.EasyMock.*;
 
 /**
- * Alleviating pain wit Spring's JdbcTemplate
+ * Alleviating pain with Spring's JdbcTemplate
  * 2, JdbcTemplate
  * */
 public class JdbcTemplatePersonDaoTest {
