@@ -24,6 +24,13 @@ import static org.junit.Assert.assertEquals;
  * */
 public class JdbcPersonDaoTest {
 
+    /**
+     * What does this test do?
+     * We abandoned the access to a database and faked or mocked some data for "findByLastName". If an error occurred
+     * in the process of querying the database, it would not be detected.
+     * The purpose of this test is just to test "findByLastName" independently without an interruption from the outside.
+     * That is the meaning of the unit test, which is absolutely independent.
+     * */
     @Test
     public void testFindByLastName() throws Exception {
         // Create all of the mock objects of JDBC.
@@ -99,9 +106,10 @@ public class JdbcPersonDaoTest {
         dataSource.setServerName("localhost");
         JdbcPersonDao dao = new JdbcPersonDao();
         dao.setDataSource(dataSource);
-        List<Person> people = dao.findByLastName("Smith");
-
+        // What we expected
         List<Person> smiths = createPeopleWithLastName("Smith");
+        // What we get from the database.
+        List<Person> people = dao.findByLastName("Smith");
 
         assertEquals(smiths, people);
 

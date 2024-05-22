@@ -1,10 +1,16 @@
-### 1，写测试的好处
+### 1，The benefits of writing unit tests.
 
 1. 写测试会加快开发；
 2. 写测试会减少bug；
 3. 写测试会提升写程序的幸福感。!!
 
-### 2，The definition of a good test
+### 2，The definition of the unit test
+
+**What is a unit test?**
+
+For example, a unit test for a method in Java project serves for only one goal which is whether the method itself could run as we expected when we are providing some mock or fake data.
+
+**What is a good unit test?**
 
 参考：
 
@@ -21,7 +27,7 @@ What are the properties of a good test?
 - A good test is atomic.
 - A good test is isolated.
 
-### 3，如何写好单元测试
+### 3，How to write a good unit test.
 
 1，不是为了写测试而写，要清楚代码哪些地方需要重点测，才去针对这些地方写，**一般单元测试的覆盖率是40-60%**；
 
