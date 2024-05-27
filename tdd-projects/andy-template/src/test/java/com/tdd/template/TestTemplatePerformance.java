@@ -34,7 +34,8 @@ public class TestTemplatePerformance {
 
 
     /**
-     * 1, Verify a template of 100 words and 20 variables with values of approximately 15 characters each is evaluated in 200 milliseconds or less.
+     * 1, Verify a template of 100 words and 20 variables with values of approximately 15 characters each
+     * is evaluated in 200 milliseconds or less.
      *
      * Apparently, the test is easily passed.
      * */
@@ -44,9 +45,42 @@ public class TestTemplatePerformance {
         long time = System.currentTimeMillis();
         template.evaluate();
         time = System.currentTimeMillis() - time;
-        assertTrue("Rendering the template took " + time + " milliseconds while the target was " + expected + " milliseconds", time <= expected);
+        assertTrue("Rendering the template took " + time + " milliseconds while the target was "
+                + expected + " milliseconds", time <= expected);
 
+    }
 
+    /**
+     * Test the performance of rendering ten thousand words.
+     * */
+    @Test
+    public void testRenderingThousandWords() throws Exception {
+        buildTemplateThousand();
+        populateTemplateThousand();
+        long expected = 10L;
+        long time = System.currentTimeMillis();
+        template.evaluate();
+        time = System.currentTimeMillis() - time;
+        assertTrue("Rendering 1000 words in the template took " + time + " milliseconds while the target was "
+                + expected + " milliseconds", time <= expected);
+
+    }
+
+    private void buildTemplateThousand(){
+        StringBuffer text = new StringBuffer(50000);
+        for(int i = 0, var = 1; i < 50000; i++, var++){
+            text.append(" template ");
+            if(i % 50000 / 10000 == 0){
+                text.append("${var").append(var).append("}");
+            }
+        }
+        template =  new EmailTemplate(text.toString());
+    }
+
+    private void populateTemplateThousand(){
+        for(int var = 1; var < 50000; var++){
+            template.set("var" + var, "value of var" + var);
+        }
     }
 
 
