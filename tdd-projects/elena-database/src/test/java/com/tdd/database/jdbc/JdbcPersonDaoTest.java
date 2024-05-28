@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.easymock.classextension.EasyMock.*;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 
 /**

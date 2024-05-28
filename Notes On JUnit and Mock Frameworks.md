@@ -17,3 +17,12 @@ The four steps mentioned above relate to methods in [*org.easymock.EasyMock*](ht
 
 [easymock introduction](https://www.baeldung.com/easymock)
 
+### 3, *createMock*(..)
+
+Don't forget to receive the return value of  `createMock(...)`
+
+```java
+// createMock(SessionFactory.class);  // Wrong!!
+factory = createMock(SessionFactory.class);
+```
+
