@@ -4,6 +4,8 @@
 2. 写测试会减少bug；
 3. 写测试会提升写程序的幸福感。!!
 
+
+
 ### 2，The definition of the unit test
 
 **What is a unit test?**
@@ -26,6 +28,10 @@ What are the properties of a good test?
 
 - A good test is atomic.
 - A good test is isolated.
+
+#### 2.1. How to ensure a query for the database is correct ?
+
+- We would rely on integration tests to verify that the sql is correct. Because we can't do that with TDD or unit tests. (P219 of the book named "TDD")
 
 ### 3，How to write a good unit test.
 

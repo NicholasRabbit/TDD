@@ -1,6 +1,7 @@
 package com.tdd.database.hibernate;
 
 import com.tdd.database.entity.Person;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.classic.Session;
 import org.hibernate.SessionFactory;
@@ -32,6 +33,9 @@ public class HibernatePersonDaoTest {
         query = createMock(Query.class);
     }
 
+    /**
+     * 1, Test dao layer with Hibernate.
+     * */
     @Test
     public void testFindByLastName() throws Exception {
         String hql = "from Person p where p.last_name = :lastName";
@@ -52,6 +56,8 @@ public class HibernatePersonDaoTest {
         dao.setSessionFactory(factory);
         assertEquals(theSmiths, dao.findByLastName(lastName));
 
+        verify(factory, session, query);
+
     }
 
 
@@ -62,6 +68,41 @@ public class HibernatePersonDaoTest {
         expected.add(new Person("Clark", lastName));
         return expected;
     }
+
+
+    /**
+     * 2, Testing for exceptions which we expected.
+     * I write a duplicated method of findByLastName and name it findByLastNameWithException for the sake of comparison.
+     * If the return list is empty, an HibernateException should be thrown.
+     * */
+    @Test
+    public void testFindByLastNameReturnsEmptyListUponException() throws Exception {
+        String hql = "from Person p where p.last_name = :lastName";
+        String lastName = "Smith";
+        HibernateException hibernateError = new HibernateException("");
+
+        expect(factory.getCurrentSession()).andReturn(session);
+        expect(session.createQuery(hql)).andReturn(query);
+        expect(query.setParameter("last_name", lastName)).andReturn(query);
+        // Make list() throw an exception.
+        expect(query.list()).andThrow(hibernateError);
+        replay(factory, session, query);
+
+        HibernatePersonDao dao = new HibernatePersonDao();
+        dao.setSessionFactory(factory);
+
+        try {
+            dao.findByLastNameWithException(lastName);
+            fail("should have thrown an exception");
+        } catch (RuntimeException expected) {
+            assertSame(hibernateError, expected.getCause());
+        }
+
+        verify(factory, session, query);
+
+
+    }
+
 
 
 
