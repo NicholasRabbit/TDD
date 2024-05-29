@@ -290,3 +290,13 @@ Chapter 5.1 and 5.2
 Faking the request and response.
 
 **Caution:** Only the dependencies and return value of these dependencies are mocked but the controller itself is real. 
+
+### 14, Test-driving Data Access
+
+Chapter 6.1
+
+How to test database?
+
+1, We are not able to hit the real database when we test persitent layer, so the effective way to test queries of the database is to use a database which is quite close to the one we use in production. In other words, we write integration tests to run against an in-memory database. sulize
+
+> HSQLDB is an excellent in-memory database which is used to simulated MySQL.

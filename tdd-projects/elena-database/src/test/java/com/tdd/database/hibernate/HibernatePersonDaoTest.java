@@ -34,7 +34,8 @@ public class HibernatePersonDaoTest {
     }
 
     /**
-     * 1, Test dao layer with Hibernate.
+     * 1, Test dao layer with Hibernate. The test doesn't have an access to any database and it at most dig into the
+     * persistent layer, namely the DAOs.
      * */
     @Test
     public void testFindByLastName() throws Exception {
