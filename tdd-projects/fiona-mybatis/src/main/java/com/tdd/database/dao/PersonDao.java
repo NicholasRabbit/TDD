@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface PersonDao {
 
+    public abstract int save(Person person);
+
     public abstract List<Person> findByLastName(String lastName);
 
 }

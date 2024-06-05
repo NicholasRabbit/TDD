@@ -8,4 +8,8 @@
         SELECT * FROM people
     </select>
 
+    <insert id="save" parameterType="com.tdd.database.entity.Person">
+        INSERT INTO people (id, first_name, last_name) VALUES (#{id}, #{firstName}, #{lastName})
+    </insert>
+
 </mapper>

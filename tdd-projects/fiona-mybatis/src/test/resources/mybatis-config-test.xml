@@ -18,7 +18,7 @@
 	 </environments>
 	
 	 <mappers>
-	 	<mapper resource="PersonDao.xml"/>
+	 	<mapper resource="mappers/PersonDao.xml"/>
 	 </mappers>
 	 						      
 </configuration>
