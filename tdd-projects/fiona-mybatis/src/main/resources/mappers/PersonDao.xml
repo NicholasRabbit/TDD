@@ -5,7 +5,7 @@
 <mapper namespace="com.tdd.database.dao.PersonDao">
 
     <select id="findByLastName" resultType="com.tdd.database.entity.Person">
-        SELECT * FROM people
+        SELECT * FROM people WHERE last_name = '${_parameter}'
     </select>
 
     <insert id="save" parameterType="com.tdd.database.entity.Person">

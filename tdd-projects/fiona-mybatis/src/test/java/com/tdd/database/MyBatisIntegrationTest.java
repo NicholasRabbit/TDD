@@ -6,30 +6,39 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class MyBatisIntegrationTest {
+
+
+    private InputStream in;
+    private SqlSessionFactory factory;
+    private SqlSession session;
+    private PersonDao dao;
+
+    @Before
+    public void setUp() throws Exception {
+        in = Resources.getResourceAsStream("mybatis-config-test.xml");
+        factory = new SqlSessionFactoryBuilder().build(in);
+        session = factory.openSession();
+        dao = session.getMapper(PersonDao.class);
+    }
 
     /**
      * Connect to the real database successfully.
      * */
     @Test
     public void integrationTestWithMyBatis() throws Exception {
-
-        InputStream in = Resources.getResourceAsStream("mybatis-config-test.xml");
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
-        SqlSession session = factory.openSession();
-
-        PersonDao dao = session.getMapper(PersonDao.class);
-        dao.findByLastName("Smith");
-
+        List<Person> smiths = dao.findByLastName("Smith");
         session.commit();
-
+        assertTrue(smiths.size() > 0);
     }
 
     /**
@@ -37,11 +46,11 @@ public class MyBatisIntegrationTest {
      * */
     @Test
     public void persistedObjectsExistInDatabase() throws Exception {
-        InputStream in = Resources.getResourceAsStream("mybatis-config-test.xml");
-        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
-        SqlSession session = factory.openSession();
+        in = Resources.getResourceAsStream("mybatis-config-test.xml");
+        factory = new SqlSessionFactoryBuilder().build(in);
+        session = factory.openSession();
+        dao = session.getMapper(PersonDao.class);
 
-        PersonDao dao = session.getMapper(PersonDao.class);
         Person person = new Person("Lily", "Bennett");
         int result = dao.save(person);
 
@@ -50,4 +59,10 @@ public class MyBatisIntegrationTest {
         assertEquals(1, result);
 
     }
+
+    @After
+    public void tearDown() throws Exception {
+        session.close();
+    }
+
 }
