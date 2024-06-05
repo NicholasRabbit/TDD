@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tdd.database.dao.PersonDao">
+
+    <select id="findByLastName" resultType="com.tdd.database.entity.Person">
+        SELECT * FROM people
+    </select>
+
+</mapper>

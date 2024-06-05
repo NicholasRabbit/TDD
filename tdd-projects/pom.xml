@@ -14,6 +14,7 @@
         <module>cathy-test-double</module>
         <module>damon-web</module>
         <module>elena-database</module>
+        <module>fiona-mybatis</module>
     </modules>
 
     <properties>
@@ -27,8 +28,9 @@
         <spring-web.version>3.0.7.RELEASE</spring-web.version>
         <spring-webmvc.version>3.0.7.RELEASE</spring-webmvc.version>
         <spring-jdbc.version>3.0.7.RELEASE</spring-jdbc.version>
-        <mysql.driver>8.0.20</mysql.driver>
-
+        <mysql.driver>8.0.33</mysql.driver>
+        <mybatis.version>3.5.10</mybatis.version>
+        <log4j.version>1.2.17</log4j.version>
 
         <!-- environment setting -->
         <project.build.souceEncoding>UTF-8</project.build.souceEncoding>
@@ -116,9 +118,24 @@
 
             <!--MySQL Driver-->
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
                 <version>${mysql.driver}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- MyBatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <!-- log4j -->
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>${log4j.version}</version>
                 <scope>import</scope>
             </dependency>
 

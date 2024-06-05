@@ -6,7 +6,8 @@
 <hibernate-configuration>
 
     <session-factory>
-<!--		<mapping resource="com/tdd/database/entity/Person.hbm.xml"/>-->
+		<mapping resource="com/tdd/database/entity/Person.hbm.xml"/>
+<!--        <property name="hibernate.current_session_context_class">thread</property>-->
     </session-factory>
 
 </hibernate-configuration>

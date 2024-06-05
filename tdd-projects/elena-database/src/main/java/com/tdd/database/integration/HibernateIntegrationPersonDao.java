@@ -13,10 +13,6 @@ public class HibernateIntegrationPersonDao {
         this.factory = factory;
     }
 
-    public SessionFactory getSessionFactory() {
-        return factory;
-    }
-
     public void save(Person person) {
         Session session = factory.getCurrentSession();
         Transaction transaction = session.beginTransaction();

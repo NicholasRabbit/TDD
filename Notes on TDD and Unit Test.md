@@ -47,6 +47,8 @@ What are the properties of a good test?
 - 自检查，测试应该在没有任何人工交互的情况下自动检测是否通过。
 - Test code should also be refactored if they are lack of readability, maintainability.   [xUnit](http://xunitpatterns.com/)
 
+3,  对业务理解深度，逐个分解需求，才能写出好的单元测试。
+
 ### 4, in memory database
 
 While writing unit test, you can use in-memory database(not Redis). The nice thing about these tools is that they allow you to use regular SQL to query them.
