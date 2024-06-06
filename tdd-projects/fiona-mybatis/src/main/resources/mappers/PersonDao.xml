@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.tdd.database.dao.PersonDao">
 
     <select id="findByLastName" resultType="com.tdd.database.entity.Person">
@@ -11,5 +12,19 @@
     <insert id="save" parameterType="com.tdd.database.entity.Person">
         INSERT INTO people (id, first_name, last_name) VALUES (#{id}, #{firstName}, #{lastName})
     </insert>
+
+    <update id="createTable" parameterType="java.lang.String">
+        CREATE TABLE ${_parameter} (
+          id INTEGER NOT NULL,
+          first_name VARCHAR(100) NOT NULL,
+          last_name VARCHAR(100) NOT NULL,
+          PRIMARY KEY (id)
+        );
+    </update>
+
+
+    <select id="findById" resultType="com.tdd.database.entity.Person">
+        SELECT * FROM people WHERE id = ${_parameter}
+    </select>
 
 </mapper>

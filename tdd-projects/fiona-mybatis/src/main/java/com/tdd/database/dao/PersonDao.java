@@ -10,4 +10,8 @@ public interface PersonDao {
 
     public abstract List<Person> findByLastName(String lastName);
 
+    public abstract int createTable(String tableName);
+
+    public abstract Person findById(long id);
+
 }

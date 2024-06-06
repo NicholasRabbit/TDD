@@ -11,11 +11,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
-import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-public class MyBatisIntegrationTest {
+/**
+ * To test in-memory database with MyBatis.
+ *
+ * 1, HSQLDB is available without installation and just configuring its driver in configuration file of MyBatis.
+ * 2, However, all the database should be built from scratch. Fortunately, we can make it in the fixture of the test.
+ * */
+public class HsqldbMyBatisTest {
 
 
     private InputStream in;
@@ -25,39 +31,36 @@ public class MyBatisIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
-        in = Resources.getResourceAsStream("mybatis-config-test.xml");
+        in = Resources.getResourceAsStream("mybatis-config-hsqldb.xml");
         factory = new SqlSessionFactoryBuilder().build(in);
         session = factory.openSession();
         dao = session.getMapper(PersonDao.class);
+
+        // Create table in a in-memory database.
+        dao.createTable("people");
     }
 
     /**
-     * 1, Test the real database.
-     * Connected to the real database successfully.
+     * 2, Test in-memory database-HSQLDB.
      * */
     @Test
-    public void integrationTestWithMyBatis() throws Exception {
-        List<Person> smiths = dao.findByLastName("Bennett");
-        session.commit();
-        assertTrue(smiths.size() > 0);
-    }
-
-    /**
-     * To test if it succeed to persist an object to the real MySQL database.
-     * */
-    @Test
-    public void persistedObjectsExistInDatabase() throws Exception {
-        Person person = new Person("Lily", "Bennett");
-        int result = dao.save(person);
+    public void integrationTestWithHsqldb() throws Exception {
+        Person expected= new Person("Adam", "Clay");
+        expected.setId(99);
+        int result = dao.save(expected);
         session.commit();
         assertEquals(1, result);
+
+        Person clay = dao.findById(99);
+        assertTrue(expected.equals(clay));
+
     }
-
-
 
     @After
     public void tearDown() throws Exception {
         session.close();
     }
+
+
 
 }
