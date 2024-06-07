@@ -16,12 +16,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
- * To test in-memory database with MyBatis.
+ * Integration test with in-memory database and MyBatis.
  *
  * 1, HSQLDB is available without installation and just configuring its driver in configuration file of MyBatis.
  * 2, However, all the database should be built from scratch. Fortunately, we can make it in the fixture of the test.
  * */
-public class HsqldbMyBatisTest {
+public class MyBatisIntegrationHsqldbTest {
 
 
     private InputStream in;
@@ -48,7 +48,7 @@ public class HsqldbMyBatisTest {
         Person expected= new Person("Adam", "Clay");
         expected.setId(99);
         int result = dao.save(expected);
-        session.commit();
+        //session.commit();
         assertEquals(1, result);
 
         Person clay = dao.findById(99);
@@ -58,6 +58,7 @@ public class HsqldbMyBatisTest {
 
     @After
     public void tearDown() throws Exception {
+        session.rollback();
         session.close();
     }
 
