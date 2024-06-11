@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
  * Integration test with in-memory database and MyBatis.
  *
  * 1, HSQLDB is available without installation and just configuring its driver in configuration file of MyBatis.
- * 2, However, all the database should be built from scratch. Fortunately, we can make it in the fixture of the test.
+ * 2, However, all the database should be built from scratch. Fortunately, we can initialise a database in the
+ *    fixture of the test.
  * */
 public class MyBatisIntegrationHsqldbTest {
 

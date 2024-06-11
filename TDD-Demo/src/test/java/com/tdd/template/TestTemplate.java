@@ -14,9 +14,9 @@ public class TestTemplate {
     /**
      * The first test.
      * 1, Write test first and then write the codes of EmailTemplate.
-     * 2, To make the test pass as quickly as possible by writing hard codes in EmailTemplate.java.
-     * 3, Write the second test and try different input and then we can see that the second test failed as we expected. Of course.
-     *    This technique is aptly named triangulation.
+     * 2, To make the test pass as quickly as possible by writing hard code in EmailTemplate.java.
+     * 3, Write the second test and try different input and then we can see that the second test failed as we expected,
+     *    of course. This technique is aptly named triangulation.
      * 4, Keep on triangulating. To pass the second test with minimal effort we should use a variable to replace "Reader".
      * 5, Write the third test to use "Hi" instead of "Hello". Presumably, the test will fail.
      *    Add more faking details to pass the test.

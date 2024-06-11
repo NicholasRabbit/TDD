@@ -4,7 +4,11 @@
 2. 写测试会减少bug；
 3. 写测试会提升写程序的幸福感。!!
 
+What is the difficult part of learning TDD?
 
+It is to understand the requirements and convert it into modules.
+
+> TDD 的学习难点首先在于理解需求，理解需求，并将需求分解为功能点。
 
 ### 2，The definition of the unit test
 
@@ -61,7 +65,11 @@ While writing unit test, you can use in-memory database(not Redis). The nice thi
 
 In Test driven development, you should write test first, and then write codes to pass the test. The last and darn important step is refactoring.
 
-**TDD cycle:**  test--code--refactor (or red-green-green)
+##### 5.1 TDD Cycle:  
+
+test--code--refactor (or red-green-green)
+
+##### 5.2 From requirements to tests
 
 1. Specification by example
 
@@ -70,14 +78,15 @@ In Test driven development, you should write test first, and then write codes to
 
    -- Quoted from "Test-Driven-TDD-and-Acceptance-TDD-for-Java-Developers" P64. 
 
-2. From requirements to tests.
+2. Decomposing requirements.
 
-   What makes TDD different from what we used to do is that we decompose requirements into tests, not production codes. Namely we write tests first.  (  2.1.1 Decomposing requirements  ).
+   When getting a requirement, which is too complex to write a single test for it, we decompose requirements into tests, not production codes. Namely we write tests first.  (  2.1.1 Decomposing requirements ).
+
+   The reason of adopting TDD is to tell our customers that we completely understand the requirements by showing them these trivial tests for every functions.
 
 3. How can we write tests when there is not any code?
    
    We create classes which even doesn't exist and then generate them automatically by IDE.
-   
 
 ### 6, Unit Test
 

@@ -37,8 +37,8 @@ public class TestTemplateParse {
     }
 
     /**
-     * 2, Second, we test only a plain text.
-     * We move at a trivial or minor step so that there won't be any big and complicated problems, and we locate
+     * 2, Second, we only test a plain text.
+     * We move at a trivial or minor step so that there won't be any big and complicated problems, so we can locate
      * the error as soon as it emerged.
      * */
     @Test
