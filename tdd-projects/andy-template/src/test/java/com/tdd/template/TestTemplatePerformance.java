@@ -54,7 +54,7 @@ public class TestTemplatePerformance {
      * Test the performance of rendering ten thousand words.
      * */
     @Test
-    public void testRenderingThousandWords() throws Exception {
+    public void testRenderingTenThousandWords() throws Exception {
         buildTemplateThousand();
         populateTemplateThousand();
         long expected = 10L;
@@ -82,10 +82,6 @@ public class TestTemplatePerformance {
             template.set("var" + var, "value of var" + var);
         }
     }
-
-
-
-
 
 
 }

@@ -6,7 +6,12 @@ import org.mockito.Mockito;
 
 public class NumberServiceTest {
 
-
+    /**
+     * 注意：
+     * mock一个实体类时需要模拟getter的返回值，当调用这个getter的时候才会获得这个模拟的值，实际实体类中对应的属性值还是null.
+     * 例： when(compInfo.getSortOrder()).thenReturn(1);
+     * debug查看时，sortOrder的属性值还是null，但是如果调用getSortOrder()就会获取模拟的值。
+     * */
 
     @Test
     public void testAdd(){
