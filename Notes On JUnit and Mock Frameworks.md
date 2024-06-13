@@ -26,3 +26,13 @@ Don't forget to receive the return value of  `createMock(...)`
 factory = createMock(SessionFactory.class);
 ```
 
+### 4, mock entity
+
+You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging.
+
+```java
+		when(compInfo.getSortOrder()).thenReturn(1);
+		when(compInfo.getId()).thenReturn(1693803568366178306L);
+		when(compInfo.getSuperiorFlag()).thenReturn("0");
+```
+
