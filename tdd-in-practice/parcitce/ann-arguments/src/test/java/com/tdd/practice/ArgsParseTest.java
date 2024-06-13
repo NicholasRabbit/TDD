@@ -67,11 +67,44 @@ public class ArgsParseTest {
         assertFalse(booleanOption.logging());
     }
 
-
     // The boolean record.
     static record BooleanOption (@Option("l") boolean logging) {
 
     }
+
+    /**
+     * 2, Integer: -p 8080
+     * Note: We must make sure that the previous tests are still passed when we are refactoring.
+     * */
+    @Test
+    public void shouldParseIntIfPortPresents() throws Exception {
+        IntegerOption integerOption = Args.parse(IntegerOption.class, "-p", "8080");
+
+        assertEquals(8080, integerOption.port());
+
+    }
+
+    // The integer record.
+    static record IntegerOption (@Option("p") int port) {
+
+    }
+
+    /**
+     * TODO: -d /usr/logs
+     * 3, String: -d /usr/logs
+     * */
+    @Test
+    public void shouldSetDir() throws Exception {
+        StringOption stringOption = Args.parse(StringOption.class, "-d", "/usr/logs");
+        assertEquals("/usr/logs", stringOption.dir());
+    }
+
+    // The String record.
+    static record StringOption (@Option("d") String dir) {
+
+    }
+
+
 
 
 
