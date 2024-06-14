@@ -20,7 +20,10 @@ public class ArgsParseTest {
      * It is necessarily needed to write only a single test for the requirement.
      * We only take small steps to approach our final goal.
      *
-     * 4.
+     * 4. After the three small steps, we can now write code to pass this complex test.
+     *
+     * Although there are a lot of bugs in the code, at least we pass all the tests. What are we going to do next?
+     * To write more tests and to write more code to pass the tests.
      * */
     @Test
     //@Disabled   // Disabled the complex test for a while.
@@ -96,7 +99,6 @@ public class ArgsParseTest {
     }
 
     /**
-     * TODO: -d /usr/logs
      * 3, String: -d /usr/logs
      * */
     @Test
