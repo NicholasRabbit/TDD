@@ -12,18 +12,21 @@ public class ArgsParseTest {
     * A test of parsing arguments of command line.
     * For example: -l true/false -p 8080 -d /usr/logs
     * Explanation:
-    * -l : logging, the default value of it is "false";
+    * -l : logging, if "-l" is presented, the value is true, and if "-l" is omitted the value is "false"
     * -p : port
     * -d : directory
     * */
     /**
      * It is necessarily needed to write only a single test for the requirement.
      * We only take small steps to approach our final goal.
+     *
+     * 4.
      * */
     @Test
-    @Disabled   // Disabled the complex test for a while.
+    //@Disabled   // Disabled the complex test for a while.
     public void testMultipleParing() throws Exception {
-        Options options = Args.parse(Options.class, "-l", "-p", "8080", "-d", "/usr/logs");
+        //Options options = Args.parseMultiple(Options.class, "-l", "-p", "8080", "-d", "/usr/logs");
+        Options options = Args.parseRefactoring(Options.class, "-l", "-p", "8080", "-d", "/usr/logs");
         options.logging();
         options.port();
 
@@ -49,7 +52,8 @@ public class ArgsParseTest {
      * */
     @Test
     public void shouldSetTrueIfFlagPresents() throws Exception {
-        BooleanOption booleanOption = Args.parse(BooleanOption.class, "-l");
+//        BooleanOption booleanOption = Args.parse(BooleanOption.class, "-l");
+        BooleanOption booleanOption = Args.parseRefactoring(BooleanOption.class, "-l");
         assertTrue(booleanOption.logging());
     }
 
@@ -63,7 +67,8 @@ public class ArgsParseTest {
      * */
     @Test
     public void shouldSetFalseIfFlagNotPresents() throws Exception {
-        BooleanOption booleanOption = Args.parse(BooleanOption.class);
+        //BooleanOption booleanOption = Args.parse(BooleanOption.class);
+        BooleanOption booleanOption = Args.parseRefactoring(BooleanOption.class);
         assertFalse(booleanOption.logging());
     }
 
@@ -78,7 +83,8 @@ public class ArgsParseTest {
      * */
     @Test
     public void shouldParseIntIfPortPresents() throws Exception {
-        IntegerOption integerOption = Args.parse(IntegerOption.class, "-p", "8080");
+        //IntegerOption integerOption = Args.parse(IntegerOption.class, "-p", "8080");
+        IntegerOption integerOption = Args.parseRefactoring(IntegerOption.class, "-p", "8080");
 
         assertEquals(8080, integerOption.port());
 
@@ -95,7 +101,8 @@ public class ArgsParseTest {
      * */
     @Test
     public void shouldSetDir() throws Exception {
-        StringOption stringOption = Args.parse(StringOption.class, "-d", "/usr/logs");
+        //StringOption stringOption = Args.parse(StringOption.class, "-d", "/usr/logs");
+        StringOption stringOption = Args.parseRefactoring(StringOption.class, "-d", "/usr/logs");
         assertEquals("/usr/logs", stringOption.dir());
     }
 

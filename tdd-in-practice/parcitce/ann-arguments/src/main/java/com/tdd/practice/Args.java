@@ -2,6 +2,7 @@ package com.tdd.practice;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,10 +36,77 @@ public class Args {
         // 2.3 String
         if (parameter.getType() == String.class) {
             int index = arguments.indexOf("-" + option.value());
-            value = String.valueOf(arguments.get(index + 1));  // to get the second parameter-"8080".
+            value = String.valueOf(arguments.get(index + 1));
         }
 
         return (T) constructor.newInstance(value);
 
     }
+
+    // (I). refactored the parse(...) by write a mew method-parseMultiple in order to compare with "parse(...)"
+    // This method can only be called by testMultipleParing(...)!!
+    public static <T> T parseMultiple(Class<T> optionsClass, String... args) throws Exception {
+
+        List<String> arguments = Arrays.asList(args);
+
+        // I, Get all the constructors.
+        Constructor<?>[] constructors = optionsClass.getDeclaredConstructors();
+        Constructor<?> constructor = constructors[0];
+        // parameters : [l, p, d]
+        Parameter[] parameters = constructor.getParameters();
+
+        List<Object> list = new ArrayList<>();
+        for (Parameter p : parameters) {
+            Option option = p.getAnnotation(Option.class);
+            Object value = null;
+            if (p.getType() == boolean.class) {
+                list.add(arguments.contains("-" + option.value()));
+            }
+            if (p.getType() == int.class) {
+                int index = arguments.indexOf("-" + option.value());
+                list.add(Integer.valueOf(arguments.get(index + 1)));
+            }
+            if (p.getType() == String.class) {
+                int index = arguments.indexOf("-" + option.value());
+                list.add(String.valueOf(arguments.get(index + 1)));
+            }
+
+        }
+
+        return (T) constructor.newInstance(list.get(0), list.get(1), list.get(2));
+
+    }
+
+
+    /*
+    * (II). Refactoring the parse(...) as the instructor did so that it can be called by testMultipleParing()
+    *       and others test methods.
+    * */
+    public static <T> T parseRefactoring(Class<T> optionsClass, String... args) throws Exception {
+        List<String> arguments = Arrays.asList(args);
+        Constructor<?> constructor = optionsClass.getDeclaredConstructors()[0];
+        // the return value of ".map" is a collection of the return value "parseOption(...)".
+        Object[] values = Arrays.stream(constructor.getParameters()).map(it -> parseOption(arguments, it)).toArray();
+        return (T) constructor.newInstance(values);
+
+    }
+
+    private static Object parseOption(List<String> arguments, Parameter parameter) {
+        Option option = parameter.getAnnotation(Option.class);
+        Object value = null;
+        if (parameter.getType() == boolean.class) {
+            value = arguments.contains("-" + option.value());
+        }
+        if (parameter.getType() == int.class) {
+            int index = arguments.indexOf("-" + option.value());
+            value = Integer.valueOf(arguments.get(index + 1));  // to get the second parameter-"8080".
+        }
+        if (parameter.getType() == String.class) {
+            int index = arguments.indexOf("-" + option.value());
+            value = String.valueOf(arguments.get(index + 1));
+        }
+        return value;
+    }
+
+
 }
