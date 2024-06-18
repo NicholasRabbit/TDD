@@ -14,4 +14,6 @@ public interface PersonDao {
 
     public abstract Person findById(long id);
 
+    public abstract List<Person> findAll();
+
 }

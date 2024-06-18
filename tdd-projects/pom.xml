@@ -32,6 +32,7 @@
         <mybatis.version>3.5.10</mybatis.version>
         <log4j.version>1.2.17</log4j.version>
         <hsqldb.version>2.3.2</hsqldb.version>
+        <dbunit.version>2.1</dbunit.version>
 
         <!-- environment setting -->
         <project.build.souceEncoding>UTF-8</project.build.souceEncoding>
@@ -145,6 +146,15 @@
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>${hsqldb.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- DbUnit -->
+            <dependency>
+                <groupId>dbunit</groupId>
+                <artifactId>dbunit</artifactId>
+                <version>${dbunit.version}</version>
+                <scope>import</scope>
             </dependency>
 
 

@@ -37,7 +37,7 @@ public class MyBatisIntegrationHsqldbTest {
         session = factory.openSession();
         dao = session.getMapper(PersonDao.class);
 
-        // Create table in a in-memory database.
+        // Create table in an in-memory database.
         dao.createTable("people");
     }
 

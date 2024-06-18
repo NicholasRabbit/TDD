@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <employees employee_uid="1" start_date="2005-01-01"
+               ssn="000-29-2030"
+               first_name="Al" last_name="Freeman" />
+    <employees employee_uid='2' start_date="2005-04-04"
+               ssn="000-90-0000"
+               first_name="Bill" last_name="Brewster" />
+    <employees employee_uid='3' start_date="2006-06-03"
+               ssn="000-67-0000"
+               first_name="Juan" last_name="Alvarez" />
+    <salaries employee_uid="1" salary="45000" />
+    <salaries employee_uid="2" salary="50000" />
+    <salaries employee_uid="3" salary="47000" />
+</dataset>

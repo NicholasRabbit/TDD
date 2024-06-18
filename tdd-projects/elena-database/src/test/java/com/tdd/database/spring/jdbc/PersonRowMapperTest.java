@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 /**
  * Alleviating pain with Spring's Jdbc template.
  *
- * 1, Let' test a RowMapper first.
+ * 1, Let's test a RowMapper first.
  * */
 public class PersonRowMapperTest {
 

@@ -33,7 +33,7 @@ public class JdbcPersonDaoTest {
      * */
     @Test
     public void testFindByLastName() throws Exception {
-        // Create all of the mock objects of JDBC.
+        // Create all the mock objects of JDBC.
         DataSource dataSource = createMock(DataSource.class);
         Connection connection = createMock(Connection.class);
         expect(dataSource.getConnection()).andReturn(connection);
@@ -43,7 +43,7 @@ public class JdbcPersonDaoTest {
 
         stmt.setString(1, "Smith");
 
-        // Create a mock of ResultSet and fake the query result.
+        // Create a mock object of ResultSet and fake the query result.
         MockMultiRowResultSet resultSet = new MockMultiRowResultSet();
         String[] columns = {"first_name", "last_name"};
         // Initiate columns.

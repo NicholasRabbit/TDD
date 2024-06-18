@@ -47,7 +47,7 @@ public class MyBatisIntegrationTest {
     }
 
     /**
-     * To test if it succeed to persist an object to the real MySQL database.
+     * To test if it persists an object to the real MySQL database.
      * */
     @Test
     public void persistedObjectsExistInDatabase() throws Exception {
@@ -59,7 +59,7 @@ public class MyBatisIntegrationTest {
         * The real reason we don't call "commit()" is that we should keep the database as it was so that
         * the others tests won't be disturbed or affected.
         * A simple example is that we save "new Person("Lily", ...)" in this test, but we still save the
-        * same person in another test, if we didn't rollback in this test, another test might be failed
+        * same person in another test, if we didn't roll back in this test, another test might be failed
         * because the state of database has been changed.
         * */
         //session.commit();

@@ -79,7 +79,7 @@ public class Args {
 
 
     /*
-    * (II). Refactoring the parse(...) as the instructor did so that it can be called by testMultipleParing()
+    * (II). Refactoring the parse(...) as the instructor(of the TDD course) did so that it can be called by testMultipleParing()
     *       and others test methods.
     * */
     public static <T> T parseRefactoring(Class<T> optionsClass, String... args) throws Exception {

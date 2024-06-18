@@ -306,7 +306,7 @@ Faking the request and response.
 
 Chapter 6.1
 
-14.1 How to test database?
+**14.1)  How to test database?**
 
 1, We are not able to hit the real database when we test persitent layer, so the effective way to test queries of the database is to use a database which is quite close to the one we use in production. In other words, we write integration tests to run against an in-memory database. 
 
@@ -322,13 +322,17 @@ There is not any database in the HSQLDB when we start our first test, so it is n
 
 **Caution:**   See 6.4.4   Staying clean with transactional fixtures  (TDD)
 
-**The database should be in its original state before every test and should be as it was after every test.**   Why?
+**14.2)  The database should be in its original state before every test and should be as it was after every test.   Why?**
 
 There is no need to commit because we still can get the 'person' by call "findByLastName(..)"
 The real reason we don't call "commit()" is that we should keep the database as it was so that the others tests won't be disturbed or affected. A simple example is that we save "new Person("Lily", ...)" in this test, but we still save the same person in another test, if we didn't rollback in this test, another test might be failed because the state of database has been changed.
 
+**14.3) Populating Data for Integration Tests.**
 
+Chapter 6.5 
 
+A) Why should we populate data for integration tests?
 
+Because we don't faking data like what we do in unit tests, we need some data from a real database or a test database instead. Although running SQL scripts is a feasible solution,  they are not user-friendly and not portable. Fortunately, there are couple of tools which help us. [DbUnit](https://www.dbunit.org/) is one of them.
 
  
