@@ -3,6 +3,8 @@ package com.tdd.practice;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ArgsParseTest {
@@ -47,7 +49,7 @@ public class ArgsParseTest {
     }
 
     /**
-     * Decomposing requirements into trivial tasks which are easy to test.
+     * Decomposing requirements into trivial tasks which are presumably easy to test.
      * 1. Boolean: -l true/false(default value)
      * 1.1 What we are going to do is to test whether the "parse(...)" will return "true" when there is
      * an argument named "-l", otherwise it returns "false".
@@ -79,6 +81,20 @@ public class ArgsParseTest {
     static record BooleanOption (@Option("l") boolean logging) {
 
     }
+
+    @Test
+    public void shouldThrowTooManyArgumentsException() throws Exception{
+        BooleanOption booleanOption;
+        try {
+            booleanOption = Args.parseRefactoring(BooleanOption.class, "-l", "abc");
+            fail("Should throw an exception: Too many arguments.");
+        } catch (TooManyArgumentsException e) {
+            assertEquals("Too many arguments.", e.getMessage());
+        }
+
+    }
+
+  
 
     /**
      * 2, Integer: -p 8080

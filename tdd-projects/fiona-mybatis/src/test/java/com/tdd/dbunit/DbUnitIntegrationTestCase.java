@@ -33,12 +33,6 @@ public abstract class DbUnitIntegrationTestCase extends DatabaseTestCase {
         return connection;
     }
 
-
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-    }
-
     @Override
     protected IDatabaseConnection getConnection() throws Exception {
         return new DatabaseConnection(getJdbcConnection());

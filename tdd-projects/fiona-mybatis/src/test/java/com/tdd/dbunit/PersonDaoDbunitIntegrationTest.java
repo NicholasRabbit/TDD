@@ -28,6 +28,10 @@ public class PersonDaoDbunitIntegrationTest extends DbUnitIntegrationTestCase{
 
     }
 
+    /**
+     * The test is not passed because of "org.dbunit.dataset.DataSetException: java.net.MalformedURLException"
+     * I will find a solution later.
+     * */
     @Test
     public void testFindAll() throws Exception {
         JdbcTemplateDao dao = new JdbcTemplateDao();

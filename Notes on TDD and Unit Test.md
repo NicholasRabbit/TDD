@@ -10,7 +10,7 @@ It is to understand the requirements and convert it into modules.
 
 > TDD 的学习难点首先在于理解需求，理解需求，并将需求分解为功能点。
 
-### 2，The definition of the unit test
+### 2，The definition of the unit test.
 
 **What is a unit test?**
 
@@ -63,7 +63,21 @@ While writing unit test, you can use in-memory database(not Redis). The nice thi
 
 ### 5, TDD
 
+##### What is TDD? !!!!
+
+Acutally, in TDD unit test should be named "Unit Level Functional Test", it is not necessary to use unit test in every test.  Contrary to popular belief,  the so called "unit test" is not frequently used in TDD; furthermore, Kent Beck  said that he had never used "unit test" in TDD. After reading the following artices, I realised that I had also misunderstood it.  Instead, it is necessary to write tests with different levels of granularity in TDD.
+
+Related articles: [Unit Test by Martin Fowler](https://martinfowler.com/bliki/UnitTest.html),  [TDD in Practice](https://time.geekbang.org/column/article/496699)
+
+
+
+**Tips**
+
 In Test driven development, you should write test first, and then write codes to pass the test. The last and darn important step is refactoring.
+
+**What is the most diffult thing on learning TDD?**
+
+It is to understand the requirements which is the most difficult when you learn it.
 
 ##### 5.1 TDD Cycle:  
 
@@ -174,9 +188,17 @@ Table 4.1 Categorization of different types of mock objects
 
 ##### 10.1 State-based testing
 
-What is state-based testing?
+1) What is state-based testing?
 
-It focus on the state changes of an object or a system.
+It focus on the state changes of an object or a system. 
+
+2) How to do the state-based testing when there is substatntial amount of data in the database?
+
+The approach is incrementally state-basted testing which is we insertone row to the database and then to verify that if there is only one row insert into it.
+
+Before insert: 100 rows
+
+Afater insert: 101 row.
 
 ##### 10.2 Interaction-based testing
 
@@ -336,3 +358,4 @@ A) Why should we populate data for integration tests?
 Because we don't faking data like what we do in unit tests, we need some data from a real database or a test database instead. Although running SQL scripts is a feasible solution,  they are not user-friendly and not portable. Fortunately, there are couple of tools which help us. [DbUnit](https://www.dbunit.org/) is one of them.
 
  
+

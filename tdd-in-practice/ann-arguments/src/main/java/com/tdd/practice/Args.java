@@ -58,7 +58,6 @@ public class Args {
         List<Object> list = new ArrayList<>();
         for (Parameter p : parameters) {
             Option option = p.getAnnotation(Option.class);
-            Object value = null;
             if (p.getType() == boolean.class) {
                 list.add(arguments.contains("-" + option.value()));
             }
@@ -96,6 +95,12 @@ public class Args {
         Object value = null;
         if (parameter.getType() == boolean.class) {
             value = arguments.contains("-" + option.value());
+            int index = arguments.indexOf("-" + option.value());
+            if (arguments.get(index + 1) != null
+                    && !arguments.get(index + 1).contains("-")) {
+                throw new TooManyArgumentsException("Too many arguments.");
+            }
+
         }
         if (parameter.getType() == int.class) {
             int index = arguments.indexOf("-" + option.value());
