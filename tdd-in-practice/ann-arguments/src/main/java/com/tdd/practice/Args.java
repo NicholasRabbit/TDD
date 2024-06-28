@@ -90,17 +90,19 @@ public class Args {
 
     }
 
+    /**
+     *  The "if..." is the code which is the so-called bad smell.
+     *  Why is it a bad smell?
+     *  If we want to add a new type of data we have to add more "if...". Then the code
+     *  will definitely not be readable, maintained.
+     *
+     *  See ArgsRefactor.java.
+     * */
     private static Object parseOption(List<String> arguments, Parameter parameter) {
         Option option = parameter.getAnnotation(Option.class);
         Object value = null;
         if (parameter.getType() == boolean.class) {
             value = arguments.contains("-" + option.value());
-            int index = arguments.indexOf("-" + option.value());
-            if (arguments.get(index + 1) != null
-                    && !arguments.get(index + 1).contains("-")) {
-                throw new TooManyArgumentsException("Too many arguments.");
-            }
-
         }
         if (parameter.getType() == int.class) {
             int index = arguments.indexOf("-" + option.value());

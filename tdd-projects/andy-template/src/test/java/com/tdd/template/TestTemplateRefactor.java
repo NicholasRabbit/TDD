@@ -47,11 +47,11 @@ public class TestTemplateRefactor {
      * the readability is terrible. The consistency of the abstraction level of the code is essential for a good programme.
      *
      * 10, A detailed exception.
-     *    Now our code is clean, readable and maintainable, but that is not good enough. We haven't offer any detailed information of the exception yet.
+     *    Now our code is clean, readable and maintainable, but that is not good enough. We haven't offered any detailed information of the exception yet.
      *    I have seen many exceptions without any information during my not so long career as a programmer. Just as Lessa Koskela said that a confusing
      *    exception like "NullPointer:null" always comes out sometimes.
      *    We won't stop refactoring until we have a meaningful exception message.
-     *    10.1 First, we write what message we expect and it should contain the name of the variable.
+     *    10.1 First, we write what message we expect that it should contain the name of the variable.
      *         Inevitably, the test failed.
      *    10.2 Write codes to pass the test.
      * */
