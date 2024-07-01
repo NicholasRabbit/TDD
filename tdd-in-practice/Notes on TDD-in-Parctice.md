@@ -1,6 +1,10 @@
 ### 1, General Note
 
-All the tests in TDD follow a typical four phase sequence: **setup, exercise, verify, teardown**.
+1.1 All the tests in TDD follow a typical four phase sequence: **setup, exercise, verify, teardown**.
+
+1.2 How can I adopt TDD if the frame has been already designed? 
+
+​	  You can use test doubles instead of the function which have already existed and adopt TDD for new   requirement.
 
 ### 2,  Behaviour and state verification
 

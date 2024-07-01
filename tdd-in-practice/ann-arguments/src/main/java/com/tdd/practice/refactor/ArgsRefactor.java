@@ -1,21 +1,22 @@
 package com.tdd.practice.refactor;
 
 import com.tdd.practice.Option;
+import com.tdd.practice.refactor.parser.BooleanParser;
+import com.tdd.practice.refactor.parser.IntegerOptionParser;
+import com.tdd.practice.refactor.parser.OptionParser;
+import com.tdd.practice.refactor.parser.StringOptionParser;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class ArgsRefactor {
 
     /**
      * The tutorial video of refactoring Args is saved in my cloud disk and is named "TDD in Practice".
      * */
-    /*
-    * (II). Refactoring the parse(...) as the instructor(of the TDD course) did so that it can be called by testMultipleParing()
-    *       and others test methods.
-    * */
     public static <T> T parseRefactoring(Class<T> optionsClass, String... args) throws Exception {
         List<String> arguments = Arrays.asList(args);
         Constructor<?> constructor = optionsClass.getDeclaredConstructors()[0];
@@ -28,65 +29,33 @@ public class ArgsRefactor {
     /**
      * How to refactor the code which is the bad smell?
      * 1, Extract method for the statement in "if...".
-     * 2,
+     * 2, It is proper to use a design patter named abstract factory. The reason is that classes of "if(...)" condition
+     *    are embedded in Java. But we can use "Map.of(...)" instead.
      *
      * */
     private static Object parseOption(List<String> arguments, Parameter parameter) {
-        Option option = parameter.getAnnotation(Option.class);
-        Object value = null;
-        OptionParser parser = null;
-        if (parameter.getType() == boolean.class) {
+        /*OptionParser parser = null;
+        if (type == boolean.class) {
             parser = new BooleanParser();
-            value = parser.parse(arguments, option);
         }
-        if (parameter.getType() == int.class) {
+        if (type == int.class) {
             parser = new IntegerOptionParser();
-            value = parser.parse(arguments, option);
         }
-        if (parameter.getType() == String.class) {
+        if (type == String.class) {
             parser = new StringOptionParser();
-            value = parser.parse(arguments, option);
         }
+        return parser.parse(arguments, option);*/
 
-        return value;
-
-    }
-
-
-    interface OptionParser {
-        Object parse(List<String> arguments, Option option);
-    }
-
-    static class BooleanParser implements OptionParser {
-
-        @Override
-        public Object parse(List<String> arguments, Option option) {
-            return arguments.contains("-" + option.value());
-        }
+        return PARSERS.get(parameter.getType())
+                .parse(arguments, parameter.getAnnotation(Option.class));
 
     }
 
-    static class IntegerOptionParser implements OptionParser {
-
-        @Override
-        public Object parse(List<String> arguments, Option option) {
-            int index = arguments.indexOf("-" + option.value());
-            return Integer.valueOf(arguments.get(index + 1));
-        }
-
-    }
-
-    static class StringOptionParser implements OptionParser {
-
-        @Override
-        public Object parse(List<String> arguments, Option option) {
-            int index = arguments.indexOf("-" + option.value());
-            return String.valueOf(arguments.get(index + 1));
-        }
-
-    }
-
-
+    // Map.of(...)
+    private static Map<Class<?>, OptionParser> PARSERS = Map.of(
+            boolean.class, new BooleanParser(),
+            int.class, new IntegerOptionParser(),
+            String.class, new StringOptionParser());
 
 
 }

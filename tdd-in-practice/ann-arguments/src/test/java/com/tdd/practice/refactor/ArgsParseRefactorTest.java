@@ -1,7 +1,10 @@
 package com.tdd.practice.refactor;
 
-import com.tdd.practice.Option;
 import com.tdd.practice.TooManyArgumentsException;
+import com.tdd.practice.refactor.option.BooleanOption;
+import com.tdd.practice.refactor.option.IntegerOption;
+import com.tdd.practice.refactor.option.Options;
+import com.tdd.practice.refactor.option.StringOption;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -20,15 +23,12 @@ public class ArgsParseRefactorTest {
     * */
     @Test
     public void testMultipleParing() throws Exception {
+
         Options options = ArgsRefactor.parseRefactoring(Options.class, "-l", "-p", "8080", "-d", "/usr/logs");
 
         assertTrue(options.logging());
         assertEquals(8080, options.port());
         assertEquals("/usr/logs", options.dir());
-
-    }
-
-    static record Options (@Option("l") boolean logging, @Option("p") int port, @Option("d") String dir) {
 
     }
 
@@ -42,11 +42,6 @@ public class ArgsParseRefactorTest {
     public void shouldSetFalseIfFlagNotPresents() throws Exception {
         BooleanOption booleanOption = ArgsRefactor.parseRefactoring(BooleanOption.class);
         assertFalse(booleanOption.logging());
-    }
-
-    // The boolean record.
-    static record BooleanOption (@Option("l") boolean logging) {
-
     }
 
     @Disabled
@@ -71,13 +66,7 @@ public class ArgsParseRefactorTest {
     @Test
     public void shouldParseIntIfPortPresents() throws Exception {
         IntegerOption integerOption = ArgsRefactor.parseRefactoring(IntegerOption.class, "-p", "8080");
-
         assertEquals(8080, integerOption.port());
-
-    }
-
-    static record IntegerOption (@Option("p") int port) {
-
     }
 
     /**
@@ -88,14 +77,6 @@ public class ArgsParseRefactorTest {
         StringOption stringOption = ArgsRefactor.parseRefactoring(StringOption.class, "-d", "/usr/logs");
         assertEquals("/usr/logs", stringOption.dir());
     }
-
-    // The String record.
-    static record StringOption (@Option("d") String dir) {
-
-    }
-
-
-
 
 
 }
