@@ -9,7 +9,9 @@ import java.util.List;
 
 public class ArgsRefactor {
 
-
+    /**
+     * The tutorial video of refactoring Args is saved in my cloud disk and is named "TDD in Practice".
+     * */
     /*
     * (II). Refactoring the parse(...) as the instructor(of the TDD course) did so that it can be called by testMultipleParing()
     *       and others test methods.
@@ -34,16 +36,20 @@ public class ArgsRefactor {
         Object value = null;
         OptionParser parser = null;
         if (parameter.getType() == boolean.class) {
+            parser = new BooleanParser();
             value = parser.parse(arguments, option);
         }
         if (parameter.getType() == int.class) {
+            parser = new IntegerOptionParser();
             value = parser.parse(arguments, option);
         }
         if (parameter.getType() == String.class) {
+            parser = new StringOptionParser();
             value = parser.parse(arguments, option);
         }
 
         return value;
+
     }
 
 
@@ -57,6 +63,7 @@ public class ArgsRefactor {
         public Object parse(List<String> arguments, Option option) {
             return arguments.contains("-" + option.value());
         }
+
     }
 
     static class IntegerOptionParser implements OptionParser {
@@ -66,6 +73,7 @@ public class ArgsRefactor {
             int index = arguments.indexOf("-" + option.value());
             return Integer.valueOf(arguments.get(index + 1));
         }
+
     }
 
     static class StringOptionParser implements OptionParser {
@@ -75,6 +83,7 @@ public class ArgsRefactor {
             int index = arguments.indexOf("-" + option.value());
             return String.valueOf(arguments.get(index + 1));
         }
+
     }
 
 
