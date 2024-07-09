@@ -1,6 +1,6 @@
 package com.tdd.practice.refactor;
 
-import com.tdd.practice.TooManyArgumentsException;
+import com.tdd.practice.exception.TooManyArgumentsException;
 import com.tdd.practice.refactor.option.BooleanOption;
 import com.tdd.practice.refactor.option.IntegerOption;
 import com.tdd.practice.refactor.option.Options;

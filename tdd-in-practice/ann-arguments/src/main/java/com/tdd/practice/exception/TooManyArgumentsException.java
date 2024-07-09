@@ -1,4 +1,4 @@
-package com.tdd.practice;
+package com.tdd.practice.exception;
 
 public class TooManyArgumentsException extends RuntimeException{
 

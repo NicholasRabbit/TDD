@@ -1,6 +1,6 @@
 package com.tdd.practice.refactor;
 
-import com.tdd.practice.Option;
+import com.tdd.practice.annotation.Option;
 import com.tdd.practice.refactor.parser.BooleanParser;
 import com.tdd.practice.refactor.parser.IntegerOptionParser;
 import com.tdd.practice.refactor.parser.OptionParser;
