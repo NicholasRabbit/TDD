@@ -1,10 +1,9 @@
 package com.tdd.practice.refactor;
 
 import com.tdd.practice.annotation.Option;
-import com.tdd.practice.refactor.parser.BooleanParser;
-import com.tdd.practice.refactor.parser.IntegerOptionParser;
-import com.tdd.practice.refactor.parser.OptionParser;
-import com.tdd.practice.refactor.parser.StringOptionParser;
+import com.tdd.practice.refactor.parser_refactored.BooleanParserRefactored;
+import com.tdd.practice.refactor.parser_refactored.SingleValueOptionParser;
+import com.tdd.practice.refactor.parser_refactored.OptionParserRefactored;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
@@ -31,7 +30,10 @@ public class ArgsRefactor {
      * 1, Extract method for the statement in "if...".
      * 2, It is proper to use a design patter named abstract factory. The reason is that classes of "if(...)" condition
      *    are embedded in Java. But we can use "Map.of(...)" instead.
-     *
+     * 3, After eliminating the ugly "if" statement, we find that duplicated code in IntegerOptionParser and
+     *    StringOptionParser. Then we should do the refactor brutally.
+     *    In order to compare with the bad smell, I refactor in new class. See "parser_refactored" and the course video
+     *    in "TDD in Practice" saved in my cloud disk.
      * */
     private static Object parseOption(List<String> arguments, Parameter parameter) {
         /*OptionParser parser = null;
@@ -52,10 +54,14 @@ public class ArgsRefactor {
     }
 
     // Map.of(...)
-    private static Map<Class<?>, OptionParser> PARSERS = Map.of(
+    /*private static Map<Class<?>, OptionParser> PARSERS = Map.of(
             boolean.class, new BooleanParser(),
             int.class, new IntegerOptionParser(),
-            String.class, new StringOptionParser());
+            String.class, new StringOptionParser());*/
 
+    private static Map<Class<?>, OptionParserRefactored> PARSERS = Map.of(
+            boolean.class, new BooleanParserRefactored(),
+            int.class, new SingleValueOptionParser<>(Integer::parseInt),
+            String.class, new SingleValueOptionParser<>(String::valueOf));
 
 }
