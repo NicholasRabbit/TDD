@@ -65,7 +65,7 @@ public class ArgsParseTest {
     /**
      * 1.2 Because we write hard code in production to pass the first test, that is not the implementation we want.
      * The next step is to write another test to drive us to write more code to implement the task. That's why the
-     * approach called Test-Driven Development.
+     * approach is called Test-Driven Development.
      * This technique is aptly named triangulation.
      *
      * 1.3 The following test will be inevitably failed because the hard code. Then we refactor the code.

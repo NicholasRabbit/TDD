@@ -5,11 +5,11 @@ import com.tdd.practice.annotation.Option;
 import java.util.List;
 import java.util.function.Function;
 
-public class SingleValueOptionParser<R> implements OptionParserRefactored{
+public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
 
-    private Function<String, R> valueParser;
+    private Function<String, T> valueParser;
 
-    public SingleValueOptionParser(Function<String, R> valueParser) {
+    public SingleValueOptionParser(Function<String, T> valueParser) {
         this.valueParser = valueParser;
     }
 

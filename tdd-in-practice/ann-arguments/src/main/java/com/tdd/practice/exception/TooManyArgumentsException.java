@@ -2,10 +2,15 @@ package com.tdd.practice.exception;
 
 public class TooManyArgumentsException extends RuntimeException{
 
-    public TooManyArgumentsException() {
+    private final String option;
+
+    public TooManyArgumentsException(String option) {
+        super(option);
+        this.option = option;
     }
 
-    public TooManyArgumentsException(String message) {
-        super(message);
+    public String getOption() {
+        return option;
     }
+
 }

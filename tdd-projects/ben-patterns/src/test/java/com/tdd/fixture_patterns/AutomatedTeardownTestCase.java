@@ -38,7 +38,7 @@ public class AutomatedTeardownTestCase<T> {
 
     // This is the "Automated Teardown";
     // All the subclass of tests will inherit this method and execute it automatically
-    // so that we teardown something we don't need automatically.
+    // so that we tear down something we don't need automatically.
     @After
     public void tearDown() throws Exception {
         verifyAll();

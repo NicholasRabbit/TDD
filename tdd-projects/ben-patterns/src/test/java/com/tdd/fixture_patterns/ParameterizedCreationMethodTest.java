@@ -18,7 +18,7 @@ public class ParameterizedCreationMethodTest {
      * 4.5.2 Fixture Patterns
      * 1, Parameterized Creation Method.
      * */
-    /*@Before   //The following fixture is cluttered so we should adopt parameterized creation method.
+    /*@Before   //The following fixture is cluttered so that we should adopt parameterized creation method.
     public void setUp() {
         alice = new Person();
         alice.setId(1L);
