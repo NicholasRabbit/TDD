@@ -48,10 +48,25 @@ public class SingleValueOptionParserTest {
         assertEquals(0, port);
     }
 
+    /**
+     * 1, TODO -d ""
+     * default value
+     * 2, TODO -d /usr/log /usr/log-info
+     * too many arguments exception
+     * */
     @Test
     public void shouldSetEmptyIfNoArgumentPresentForDirectory() throws Exception {
         String dir = new SingleValueOptionParser<String>(String::valueOf, "").parse(asList(), option("d"));
         assertEquals("", dir);
+    }
+
+    @Test
+    public void shouldThrowTooManyArgumentsExceptionIfManyDirectoriesPresent() throws Exception {
+        TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
+                () -> {
+                    new SingleValueOptionParser<Integer>(Integer::parseInt, 0).parse(asList("-d", "/local/log", "/local/log-info"), option("d"));
+                });
+        assertEquals("d", e.getOption());
     }
 
 
