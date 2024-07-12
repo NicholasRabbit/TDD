@@ -1,17 +1,16 @@
 package com.tdd.practice.refactor;
 
 import com.tdd.practice.annotation.Option;
+import com.tdd.practice.exception.IllegalOptionException;
 import com.tdd.practice.refactor.parser_refactored.BooleanParserRefactored;
 import com.tdd.practice.refactor.parser_refactored.SingleValueOptionParser;
 import com.tdd.practice.refactor.parser_refactored.OptionParserRefactored;
 
-import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 public class ArgsRefactor {
 
@@ -49,6 +48,9 @@ public class ArgsRefactor {
             parser = new StringOptionParser();
         }
         return parser.parse(arguments, option);*/
+
+        if (!parameter.isAnnotationPresent(Option.class))
+            throw new IllegalOptionException(parameter.getName());
 
         return PARSERS.get(parameter.getType())
                 .parse(arguments, parameter.getAnnotation(Option.class));

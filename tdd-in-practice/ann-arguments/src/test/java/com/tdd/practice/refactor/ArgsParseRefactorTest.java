@@ -1,11 +1,12 @@
 package com.tdd.practice.refactor;
 
+import com.tdd.practice.annotation.Option;
+import com.tdd.practice.exception.IllegalOptionException;
 import com.tdd.practice.exception.TooManyArgumentsException;
 import com.tdd.practice.refactor.option.BooleanOption;
 import com.tdd.practice.refactor.option.IntegerOption;
 import com.tdd.practice.refactor.option.Options;
 import com.tdd.practice.refactor.option.StringOption;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -75,6 +76,20 @@ public class ArgsParseRefactorTest {
     public void shouldSetDir() throws Exception {
         StringOption stringOption = ArgsRefactor.parseRefactoring(StringOption.class, "-d", "/usr/logs");
         assertEquals("/usr/logs", stringOption.dir());
+    }
+
+
+    @Test
+    public void shouldThrowIllegalAnnotationExceptionExceptionIfAnnotationNotPresents() throws Exception {
+        IllegalOptionException e = assertThrows(IllegalOptionException.class,
+                () -> ArgsRefactor.parseRefactoring(OptionsWithoutIntegerAnnotation.class,
+                        "-l", "-p", "8080", "-d", "/usr/logs")
+        );
+        assertEquals("port", e.getParameter());
+    }
+
+    static record OptionsWithoutIntegerAnnotation(@Option("l") boolean log, int port, @Option("d")String directory) {
+
     }
 
 
