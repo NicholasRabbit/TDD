@@ -19,7 +19,7 @@ public class ArgsRefactor {
      * */
     public static <T> T parseRefactoring(Class<T> optionsClass, String... args) throws Exception {
         List<String> arguments = Arrays.asList(args);
-        Constructor<?> constructor = optionsClass.getDeclaredConstructors()[0];
+        Constructor<?> constructor = optionsClass.getDeclaredConstructors()[0];  // Obtain the constructor of Option
         // the return value of ".map" is a collection of the return value "parseOption(...)".
         Object[] values = Arrays.stream(constructor.getParameters()).map(it -> parseOption(arguments, it)).toArray();
         return (T) constructor.newInstance(values);
