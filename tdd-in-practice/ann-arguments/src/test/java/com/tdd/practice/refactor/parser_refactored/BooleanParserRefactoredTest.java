@@ -11,6 +11,10 @@ import java.lang.annotation.Annotation;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * We should write more granular tests so that bugs can be located easily.
+ * BooleanParserRefactorTest, which is only test BooleanParser, is a more specific test than ArgsParseRefactorTest.
+ * */
 class BooleanParserRefactoredTest {
 
     @Test
@@ -42,10 +46,10 @@ class BooleanParserRefactoredTest {
      * The following test is as same as "shouldSetFalseIfFlagNotPresents" in "ArgsParseRefactorTest", thus
      * it should be deleted.
      * */
-    /*@Test
+    @Test
     public void shouldSetFalseIfNoArgumentPresents() throws Exception {
         assertFalse(new BooleanParserRefactored().parse(asList(), option("l")));
-    }*/
+    }
 
     static Option option (String value) {
         return new Option() {

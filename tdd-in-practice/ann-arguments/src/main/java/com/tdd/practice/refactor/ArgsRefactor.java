@@ -5,11 +5,13 @@ import com.tdd.practice.refactor.parser_refactored.BooleanParserRefactored;
 import com.tdd.practice.refactor.parser_refactored.SingleValueOptionParser;
 import com.tdd.practice.refactor.parser_refactored.OptionParserRefactored;
 
+import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 public class ArgsRefactor {
 
@@ -61,7 +63,7 @@ public class ArgsRefactor {
 
     private static Map<Class<?>, OptionParserRefactored> PARSERS = Map.of(
             boolean.class, new BooleanParserRefactored(),
-            int.class, new SingleValueOptionParser<>(Integer::parseInt),
-            String.class, new SingleValueOptionParser<>(String::valueOf));
+            int.class, new SingleValueOptionParser<>(Integer::parseInt, 0),
+            String.class, new SingleValueOptionParser<>( String::valueOf,  0));
 
 }

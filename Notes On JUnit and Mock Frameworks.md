@@ -36,3 +36,43 @@ You can only get the mock value when **the getter is called**. These mock values
 		when(compInfo.getSuperiorFlag()).thenReturn("0");
 ```
 
+### 5, assertThrows(...)
+
+Mockito:` assertThrows(...)` is as same as `fail(...)`;  See `BooleanParserRefactoredTest`
+
+```java
+@Test    
+public void shouldThrowTooManyArgumentsException() throws Exception{
+        TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
+                () -> {
+                    new BooleanParserRefactored().parse(asList("-l", "abc"), option("l"));
+                });
+        assertEquals("l", e.getOption());
+    }
+```
+
+### 6, @ParameterizedTest
+
+This annotation is used in tests where only a few inputs are different but the logic is essentially same. In those situations, we might want to consider turning our test class into a Parameterized test.
+
+See: `SingleValueOptionParserTest` of TDD in Practice
+
+​        4.5.3 Test Patterns of the book name "TDD"
+
+```java
+    @ParameterizedTest
+    @ValueSource(strings = {"-p", "-p -x"})
+    public void shouldThrowInsufficientArgumentsException(String params) {
+        InsufficientArgumentsException e = assertThrows(InsufficientArgumentsException.class,
+                () -> {
+                    new SingleValueOptionParser<>(Integer::parseInt).parse(asList(params.split(" ")), option("p"));
+                });
+        assertEquals("p", e.getOption());
+    }
+
+```
+
+
+
+
+

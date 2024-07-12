@@ -36,6 +36,7 @@ What are the properties of a good test?
 #### 2.1. How to ensure a query for the database is correct ?
 
 - We would rely on integration tests to verify that the sql is correct. Because we can't do that with TDD or unit tests. (P219 of the book named "TDD")
+- We write in
 
 ### 3，How to write a good unit test.
 
@@ -330,19 +331,21 @@ Chapter 6.1
 
 **14.1)  How to test database?**
 
-1, We are not able to hit the real database when we test persitent layer, so the effective way to test queries of the database is to use a database which is quite close to the one we use in production. In other words, we write integration tests to run against an in-memory database. 
+(1) We are not able to hit the real database when we test persitent layer, so the effective way to test queries of the database is to use a database which is quite close to the one we use in production. In other words, we write integration tests to run against an in-memory database. 
 
 > HSQLDB is an excellent in-memory database which is used to simulated MySQL.
 
-14.2 The database schema of in-memory database should be versioned with the rest of the system.
+(2) The database schema of in-memory database should be versioned with the rest of the system.
 
 Chapter  6.4.2  Creating the database schema  
 
 There is not any database in the HSQLDB when we start our first test, so it is necessary to create schemas as same as we use in the production environment with MySQL.
 
-14.3  Don't call "commit()" in test methods.
+(3) Don't call "commit()" in test methods.
 
 **Caution:**   See 6.4.4   Staying clean with transactional fixtures  (TDD)
+
+(4)  While XuHao-the instructor of "TDD in Parctice" sugguested that it is better to hit the real database beacuse we can retrieve real feedback and it is worth spending more time. 
 
 **14.2)  The database should be in its original state before every test and should be as it was after every test.   Why?**
 

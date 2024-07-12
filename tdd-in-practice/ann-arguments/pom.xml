@@ -27,6 +27,14 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- junit params -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>

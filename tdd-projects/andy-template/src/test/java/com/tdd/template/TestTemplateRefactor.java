@@ -48,7 +48,7 @@ public class TestTemplateRefactor {
      *
      * 10, A detailed exception.
      *    Now our code is clean, readable and maintainable, but that is not good enough. We haven't offered any detailed information of the exception yet.
-     *    I have seen many exceptions without any information during my not so long career as a programmer. Just as Lessa Koskela said that a confusing
+     *    I have seen many exceptions without any information during my not so long career as a programmer. Just as Lessa Koskela said a confusing
      *    exception like "NullPointer:null" always comes out sometimes.
      *    We won't stop refactoring until we have a meaningful exception message.
      *    10.1 First, we write what message we expect that it should contain the name of the variable.

@@ -44,15 +44,14 @@ public class ArgsParseRefactorTest {
         assertFalse(booleanOption.logging());
     }
 
-    @Disabled
+    // Test excepted exception by calling "fail(...)" which works as same as "assertThrows(...)".
     @Test
     public void shouldThrowTooManyArgumentsException() throws Exception{
-        BooleanOption booleanOption;
         try {
-            booleanOption = ArgsRefactor.parseRefactoring(BooleanOption.class, "-l", "abc");
+            ArgsRefactor.parseRefactoring(BooleanOption.class, "-l", "abc");
             fail("Should throw an exception: Too many arguments.");
         } catch (TooManyArgumentsException e) {
-            assertEquals("Too many arguments.", e.getMessage());
+            assertEquals("l", e.getMessage());
         }
 
     }
