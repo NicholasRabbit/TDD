@@ -95,7 +95,7 @@ test--code--refactor (or red-green-green)
 
 2. Decomposing requirements.
 
-   When getting a requirement, which is too complex to write a single test for it, we decompose requirements into tests, not production codes. Namely we write tests first.  (  2.1.1 Decomposing requirements ).
+   When getting a requirement, which is too complex to write a single test for it, we should decompose requirements into tests, not production codes. Namely we write tests first.  (  2.1.1 Decomposing requirements ).
 
    The reason of adopting TDD is to tell our customers that we completely understand the requirements by showing them these trivial tests for every functions.
 

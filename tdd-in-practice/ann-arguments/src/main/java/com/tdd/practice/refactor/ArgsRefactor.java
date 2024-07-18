@@ -66,6 +66,6 @@ public class ArgsRefactor {
     private static Map<Class<?>, OptionParserRefactored> PARSERS = Map.of(
             boolean.class, new BooleanParserRefactored(),
             int.class, new SingleValueOptionParser<>(Integer::parseInt, 0),
-            String.class, new SingleValueOptionParser<>( String::valueOf,  0));
+            String.class, new SingleValueOptionParser<>( String::valueOf,  ""));
 
 }

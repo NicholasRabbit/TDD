@@ -8,6 +8,8 @@ The class and its test class must have the same package name  or errors will be 
 
 ### 3, Using Unit Test with MyBatis and MyBatis Plus
 
+**Note:** the transaction is started by default at every test so that there is no data populated into the database.
+
 #### 3.1, MyBatis Plus
 
 (1) Import the dependency of MyBatis Plus Test.
@@ -55,9 +57,12 @@ mybatis-plus:
   configuration:
     jdbc-type-for-null: 'null'
     call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 开启sql日志打印
 ```
 
-`application-test.yml` : I don't use `Druid DataSource` right now until I know how to use it in unit test.
+`application-test.yml` :
+
+**Note:** **I don't use** `Druid DataSource` right now until I know how to use it in unit test.
 
 ```yaml
 # 数据源
@@ -115,4 +120,44 @@ public class MapperApplication {
 #### 3.2 My Batis
 
 [Unit Test with MyBatis](https://mybatis.org/spring-boot-starter/mybatis-spring-boot-test-autoconfigure/)
+
+#### 3.3 Errors
+
+1, Error: `java.lang.IllegalStateException: Failed to load ApplicationContext`
+
+```yaml
+spring:
+  application:
+    name: online-course  # Don't use '@projectId@'
+```
+
+### 4, MockMvc
+
+[Demos of Using MockMvc](https://github.com/spring-projects/spring-framework/tree/main/spring-test/src/test/java/org/springframework/test/web/servlet/samples)
+
+### 5, @Sql
+
+`@Sql` is an annotation used in integration to initialise a database.  It can be annotated to a test class or a test method. 
+
+What should be noticed is it also start transaction and it roll backs after test.
+
+The SQL scripts are located in `test/resource/..`  See "Other Demos".
+
+```java
+@MybatisPlusTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)    
+@Sql(scripts = "/regulation_release.sql")
+public class RegulationReleaseMapperTest {}
+```
+
+```java
+	@Test
+	@Sql(scripts = "/regulation_release.sql")
+	public void testSQLAnnotation() throws Exception {
+		List<RegulationRelease> list = regulationReleaseMapper.selectList(null);
+		assertEquals(1, list.size());
+	}
+```
+
+[@Sql](https://docs.spring.io/spring-framework/reference/testing/annotations/integration-spring/annotation-sql.html)
 

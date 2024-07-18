@@ -26,7 +26,8 @@ public class SingleValueOptionParserTest {
     public void shouldThrowTooManyArgumentsException() {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    new SingleValueOptionParser<Integer>(Integer::parseInt, 0).parse(asList("-p", "8080", "8081"), option("p"));
+                    new SingleValueOptionParser<Integer>(Integer::parseInt, 0)
+                            .parse(asList("-p", "8080", "8081"), option("p"));
                 });
         assertEquals("p", e.getOption());
     }
@@ -36,7 +37,8 @@ public class SingleValueOptionParserTest {
     public void shouldThrowInsufficientArgumentsException(String params) {
         InsufficientArgumentsException e = assertThrows(InsufficientArgumentsException.class,
                 () -> {
-                    new SingleValueOptionParser<Integer>(Integer::parseInt, 0).parse(asList(params.split(" ")), option("p"));
+                    new SingleValueOptionParser<Integer>(Integer::parseInt, 0)
+                            .parse(asList(params.split(" ")), option("p"));
                 });
         assertEquals("p", e.getOption());
     }
@@ -44,7 +46,8 @@ public class SingleValueOptionParserTest {
 
     @Test
     public void shouldSetZeroIfNoArgumentPresentForPort() throws Exception {
-        Integer port = new SingleValueOptionParser<Integer>(Integer::parseInt, 0).parse(asList(), option("p"));
+        Integer port = new SingleValueOptionParser<Integer>(Integer::parseInt, 0)
+                .parse(asList(), option("p"));
         assertEquals(0, port);
     }
 
@@ -56,7 +59,8 @@ public class SingleValueOptionParserTest {
      * */
     @Test
     public void shouldSetEmptyIfNoArgumentPresentForDirectory() throws Exception {
-        String dir = new SingleValueOptionParser<String>(String::valueOf, "").parse(asList(), option("d"));
+        String dir = new SingleValueOptionParser<String>(String::valueOf, "")
+                .parse(asList(), option("d"));
         assertEquals("", dir);
     }
 
@@ -64,7 +68,8 @@ public class SingleValueOptionParserTest {
     public void shouldThrowTooManyArgumentsExceptionIfManyDirectoriesPresent() throws Exception {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    new SingleValueOptionParser<Integer>(Integer::parseInt, 0).parse(asList("-d", "/local/log", "/local/log-info"), option("d"));
+                    new SingleValueOptionParser<>(String::valueOf, "")
+                            .parse(asList("-d", "/local/log", "/local/log-info"), option("d"));
                 });
         assertEquals("d", e.getOption());
     }
@@ -74,7 +79,7 @@ public class SingleValueOptionParserTest {
         return new Option() {
             @Override
             public Class<? extends Annotation> annotationType() {
-                return null;
+                return Option.class;
             }
             @Override
             public String value() {
