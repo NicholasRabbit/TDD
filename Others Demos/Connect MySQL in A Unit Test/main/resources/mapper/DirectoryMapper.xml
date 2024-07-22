@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.by4cloud.platformx.onlineCourse.mapper.DirectoryMapper">
+
+  <resultMap id="directoryMap" type="com.by4cloud.platformx.onlineCourse.entity.Directory">
+        <id property="id" column="id"/>
+        <result property="directoryName" column="directory_name"/>
+        <result property="regulation" column="regulation"/>
+        <result property="regulationId" column="regulation_id"/>
+        <result property="seq" column="seq"/>
+        <result property="superiorDirectory" column="superior_directory"/>
+        <result property="type" column="type"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+  </resultMap>
+</mapper>
