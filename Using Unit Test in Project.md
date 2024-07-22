@@ -135,13 +135,17 @@ spring:
 
 [Demos of Using MockMvc](https://github.com/spring-projects/spring-framework/tree/main/spring-test/src/test/java/org/springframework/test/web/servlet/samples)
 
-### 5, @Sql
+### 5, Spring Testing Annotations
+
+#### (1) @Sql
 
 `@Sql` is an annotation used in integration to initialise a database.  It can be annotated to a test class or a test method. 
 
-What should be noticed is it also start transaction and it roll backs after test.
+(1) What should be noticed is it also start transaction and it roll backs after test.
 
-The SQL scripts are located in `test/resource/..`  See "Other Demos".
+(2) SQL scripts are located in `test/resource/*.sql` . For more elaboration, see "Other Demos".
+
+(3) The SQL scripts are executed before test by default, even before `@BeforeEach`.  So any code in the set up method `@BeforeEach`  is executed after the SQL scripts. 
 
 ```java
 @MybatisPlusTest
@@ -160,4 +164,23 @@ public class RegulationReleaseMapperTest {}
 ```
 
 [@Sql](https://docs.spring.io/spring-framework/reference/testing/annotations/integration-spring/annotation-sql.html)
+
+#### (2) @Commit
+
+[@Commit](https://docs.spring.io/spring-framework/reference/testing/annotations/integration-spring/annotation-commit.html)
+
+You can use `@Commit`if you want to commit transaction after a test method.
+
+```java
+	@Test
+	@Commit
+	public void shouldSave100Rows() throws Exception {
+		List<RegulationRelease> beforeAddList = regulationReleaseMapper.selectList(null);
+		int expected = 100;
+		populateTestData();  // add 100 rows
+		int actual = regulationReleaseMapper.selectList(null).size() - beforeAddList.size();
+		assertEquals(expected, actual);
+	}
+
+```
 

@@ -12,13 +12,18 @@ import java.lang.annotation.Annotation;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Writing a test to test SingleValueOptionParser directly instead of "ArgsRefactor.java",
+ * thus we get a smaller granularity of testing. So the parse(...) in SingeOptionParser is
+ * called directly.
+ * */
 public class SingleValueOptionParserTest {
 
     /**
      * 1, TODO -p 8080 8081
      * should throw a detailed exception if too many arguments present
      * 2, TODO -p / -p -d
-     * should throw an insufficient exception if no arguments after "-p"
+     * should throw an insufficient exception if no value after "-p"
      * 3, TODO -p 0
      * the default value is zero if no argument presents.
      * */

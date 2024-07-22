@@ -6,6 +6,7 @@ import com.by4cloud.platformx.common.core.util.R;
 import com.by4cloud.platformx.common.security.service.PlatformxUser;
 import com.by4cloud.platformx.onlineCourse.entity.RegulationRelease;
 import com.by4cloud.platformx.onlineCourse.service.RegulationReleaseService;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -50,7 +51,7 @@ public class RegulationReleaseControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(json)
 				.characterEncoding("utf-8");
-		MvcResult result= mvc.perform(post)
+		MvcResult result= mvc.perform(post)   // SecurityUtil.getUser() is null.
 				.andExpect(status().isOk())
 				.andReturn();
 		MockHttpServletResponse response = result.getResponse();
@@ -90,7 +91,56 @@ public class RegulationReleaseControllerTest {
 	 * */
 	@Test
 	public void shouldNotBeModifiedIfStatusIsYes() throws Exception{
+		// 模拟入参对象
+		RegulationRelease inputEntity = getInputEntity();
+		// 模拟返回值
+		RegulationRelease mock = getMockResult(1);
+		when(regulationReleaseService.getById(inputEntity.getId())).thenReturn(mock);
+		when(regulationReleaseService.updateById(inputEntity)).thenReturn(true);
 
+		RegulationReleaseController controller = new RegulationReleaseController(regulationReleaseService);
+		R actual = controller.updateById(inputEntity);
+
+		assertEquals(1, actual.getCode());
+		assertEquals("数据已通过审核后不可修改!", actual.getMsg());
+
+	}
+
+
+	/**
+	 * 2.1 制度发布后未审核时可以修改
+	 * */
+	@Test
+	public void shouldBeUpdatedIfStatusIsNo() throws Exception {
+		// 模拟入参对象
+		RegulationRelease inputEntity = getInputEntity();
+		// 模拟返回值
+		RegulationRelease mock = getMockResult(0);
+		when(regulationReleaseService.getById(inputEntity.getId())).thenReturn(mock);
+		when(regulationReleaseService.updateById(inputEntity)).thenReturn(true);
+
+		RegulationReleaseController controller = new RegulationReleaseController(regulationReleaseService);
+		R actual = controller.updateById(inputEntity);
+
+		assertEquals(0, actual.getCode());
+		assertEquals(true, actual.getData());
+
+	}
+
+
+	private RegulationRelease getMockResult(int t) {
+		RegulationRelease mock = mock(RegulationRelease.class);
+		when(mock.getId()).thenReturn(1001L);
+		when(mock.getStatus()).thenReturn(t);
+		return mock;
+	}
+
+	private RegulationRelease getInputEntity() {
+		RegulationRelease inputEntity = mock(RegulationRelease.class);
+		when(inputEntity.getId()).thenReturn(1001L);
+		when(inputEntity.getTitle()).thenReturn("修改标题");
+		when(inputEntity.getContent()).thenReturn("修改内容");
+		return inputEntity;
 	}
 
 	@AfterEach

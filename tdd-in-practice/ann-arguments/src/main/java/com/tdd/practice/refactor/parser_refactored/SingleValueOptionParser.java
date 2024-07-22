@@ -25,7 +25,10 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
     @Override
     public T parse(List<String> arguments, Option option) {
         int index = arguments.indexOf("-" + option.value());
-
+        /*
+        * The following code is bad smell. Namely, we can know what the code used for at the first sight.
+        * Thus, it is necessary to refactor it.
+        * */
         if (index == -1)
             return defaultValue;
 
