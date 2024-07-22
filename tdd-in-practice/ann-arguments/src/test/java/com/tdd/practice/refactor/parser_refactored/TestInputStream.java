@@ -4,10 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.OptionalInt;
+import java.util.*;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,14 +19,14 @@ public class TestInputStream {
      * 1, -p 8080
      * */
     @Test
-    public void shouldBeFalseIfFollowedByValue() throws Exception {
+    public void shouldBeTrueIfFollowedByValue() throws Exception {
         List<String> arguments = Arrays.asList("-p", "8080");
         int index = arguments.indexOf("-p");
         // Set an int array which ranges from 'index + 1' to the end.
         OptionalInt first = IntStream.range(index + 1, arguments.size())
                 .findFirst();
         boolean actual = first.isPresent();
-        assertFalse(actual, "should no argument starts with '-'");
+        assertTrue(actual, "should be true if values follow");
     }
 
     /**
@@ -90,5 +87,45 @@ public class TestInputStream {
         assertTrue(subList.size() < 1, "Values' size should be 0.");   // Namely, values' size is 0.
 
     }
+
+
+    /**
+     * 3, -p 8080
+     *    -p 8080 8081
+     *
+     * 3.1 -p 8080
+     * */
+    @Test
+    public void valuesSizeShouldBeOne() throws Exception {
+        List<String> arguments = Arrays.asList("-p", "8080");
+        int index = arguments.indexOf("-p");
+        int endIndex = IntStream.range(index + 1, arguments.size())
+                .filter(it -> arguments.get(it).startsWith("-"))
+                .findFirst()
+                .orElse(arguments.size());
+        List<String> values = arguments.subList(index + 1, endIndex);
+
+        assertEquals(1, values.size());
+
+    }
+
+    /**
+     * 3.2 -p 8080 8081
+     * too many arguments
+     * */
+    @Test
+    public void shouldGetTwoValues() throws Exception {
+        List<String> arguments = Arrays.asList("-p", "8080", "8081");
+        int index = arguments.indexOf("-p");
+        int endIndex = IntStream.range(index + 1, arguments.size())
+                .filter(it -> arguments.get(it).startsWith("-"))
+                .findFirst()
+                .orElse(arguments.size());
+        List<String> values = arguments.subList(index + 1, endIndex);
+
+        assertEquals(2, values.size());
+
+    }
+
 
 }
