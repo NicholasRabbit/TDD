@@ -72,6 +72,34 @@ See: `SingleValueOptionParserTest` of TDD in Practice
 
 ```
 
+### 7, given(...)
+
+`given(...)` is as same as `when(...)` in Mockito. The `given(...)` is commonly used in BDD(Behaviour-Driven Development) while the later is mostly used in traditional unit test.
+
+```java
+	@Test
+	public void testGiven() throws Exception {
+		RegulationRelease mockEntity = new RegulationRelease();
+		mockEntity.setId(100L);
+		mockEntity.setTitle("测试安全章程");
+
+		RegulationRelease mockEntity2 = new RegulationRelease();
+		mockEntity.setId(200L);
+		mockEntity.setTitle("测试生产章程");
+
+		given(mapper.selectById(100L)).willReturn(mockEntity);
+		RegulationRelease actual = regulationReleaseService.getById(100L);
+		assertEquals(mockEntity.getId(), actual.getId());
+
+		given(mapper.selectById(200L)).willReturn(mockEntity2);
+		RegulationRelease actual2 = regulationReleaseService.getById(200L);
+		assertEquals(mockEntity2.getId(), actual2.getId());
+
+	}
+```
+
+
+
 
 
 
