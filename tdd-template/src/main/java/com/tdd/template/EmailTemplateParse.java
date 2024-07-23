@@ -16,7 +16,7 @@ public class EmailTemplateParse {
         //5, Refactoring
         List<String> segments = new ArrayList<>();
         int index = collectSegments(segments, template);
-        addTailText(segments, template, index);  //add the plain text if there any of them.
+        addTailText(segments, template, index);  //add the plain text if there is any of them.
         addEmptyStringIfTemplateWasEmpty(segments);
         return segments;
     }
