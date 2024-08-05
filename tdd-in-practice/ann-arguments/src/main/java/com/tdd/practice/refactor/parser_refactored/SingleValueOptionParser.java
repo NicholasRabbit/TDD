@@ -50,6 +50,10 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
         return parseValue(value);
     }
 
+    /*
+    * To get the values of an option.
+    * For "-p 8080 8081 -d /usr/local", we can get "8080 8081" from it, for example.
+    * */
     private List<String> getValues(List<String> arguments, int index) {
         int endIndex = IntStream.range(index + 1, arguments.size())
                 .filter(it -> arguments.get(it).startsWith("-"))
@@ -60,7 +64,8 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
     }
 
     protected T parseValue(String value) {
-        //return Integer.parseInt(value);   // The key refactor: using Function instead of a specific method.
+        //return Integer.parseInt(value);
+        // The key refactor: using Function instead of a specific method above.
         return valueParser.apply(value);
     }
 
