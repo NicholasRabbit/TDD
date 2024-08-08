@@ -10,10 +10,10 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * To write a test to learn about how to use InputStream which is introduced by the instructor in the course.
+ * To write a test to learn about how to use IntStream which is introduced by the instructor in the course.
  * Presumably, it is necessary to know about it before further learning, or I will be confused.
  * */
-public class TestInputStream {
+public class TestIntStream {
 
     /**
      * 1, -p 8080

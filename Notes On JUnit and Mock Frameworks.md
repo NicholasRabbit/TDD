@@ -74,5 +74,17 @@ See: `SingleValueOptionParserTest` of TDD in Practice
 
 
 
+### 7, How to use MockMvc?
 
+[MockMvc](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework.html) is a Spring Test framework which provides support for testing Spring MVC applications.
 
+A instruction of using MockMvc.
+
+1, Import necessary static class.
+
+- `MockMvcBuilders.*`
+- `MockMvcRequestBuilders.*`
+- `MockMvcResultMatchers.*`
+- `MockMvcResultHandlers.*`
+
+2, to be continue

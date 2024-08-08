@@ -28,3 +28,9 @@ Note: Mock is not always behaviour validation.   [TDD in Practice](https://time.
 
 But behaviour is useful when validating whether a method of sending SMS is called since it is impossible to verify the state-if the user receive the message or not. 
 
+
+
+### 3, Write a Restful Framework with TDD
+
+Note: The requirement is to write a framework such as "Spring MVC" not to  write a common web application based on a framework. 
+

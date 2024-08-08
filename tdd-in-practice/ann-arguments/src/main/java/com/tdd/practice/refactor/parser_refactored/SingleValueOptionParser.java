@@ -34,7 +34,7 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
             return defaultValue;
 
         /*
-        * To get the values of an arguments with the help of "IntStream".
+        * To get the values of an argument with the help of "IntStream".
         * */
         List<String> values = getValues(arguments, index);
 
