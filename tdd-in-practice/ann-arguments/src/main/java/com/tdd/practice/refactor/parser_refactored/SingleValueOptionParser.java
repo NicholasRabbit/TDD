@@ -28,7 +28,7 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
         int index = arguments.indexOf("-" + option.value());
         /*
         * The following code is bad smell. Namely, we can know what the code used for at the first sight.
-        * Thus, it is necessary to refactor it.
+        * Thus, it is necessary to refactor it. I do the refactor in a new project(ben-arguments-refactored).
         * */
         if (index == -1)
             return defaultValue;

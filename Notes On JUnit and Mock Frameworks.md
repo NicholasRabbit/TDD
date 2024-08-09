@@ -28,13 +28,24 @@ factory = createMock(SessionFactory.class);
 
 ### 4, mock entity
 
-You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging.
+1. You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging.
 
 ```java
 		when(compInfo.getSortOrder()).thenReturn(1);
 		when(compInfo.getId()).thenReturn(1693803568366178306L);
 		when(compInfo.getSuperiorFlag()).thenReturn("0");
 ```
+
+2. When you mock a Page in a controller layer, not only should you mock the method in a service but also mock the `getter` of the Page instance. If you don't do so, the page is null thus a `NullPointerException` is presumably thrown. 
+
+   ```java
+   // mock the getter of a page instance
+   when(mockPage.getRecords()).thenReturn(resourceList);
+   // then mock the result of the method in the service
+   when(teachingResourceService.findResourceByTeacherId(page, ownerId)).thenReturn(mockPage);
+   ```
+
+   
 
 ### 5, assertThrows(...)
 
