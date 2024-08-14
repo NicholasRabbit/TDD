@@ -1,9 +1,9 @@
-package com.tdd.practice.refactor.parser_refactored;
+package com.tdd.practice.refactor.parser_refactored_2;
 
 import com.tdd.practice.annotation.Option;
 
 import java.util.List;
 
 public interface OptionParserRefactored<T> {
-    Object parse(List<String> arguments, Option option);
+    T parse(List<String> arguments, Option option);
 }

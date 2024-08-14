@@ -5,5 +5,5 @@ import com.tdd.practice.annotation.Option;
 import java.util.List;
 
 public interface OptionParserRefactored<T> {
-    Object parse(List<String> arguments, Option option);
+    T parse(List<String> arguments, Option option);
 }

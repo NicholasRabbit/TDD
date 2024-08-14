@@ -1,4 +1,4 @@
-package com.tdd.practice.refactor.parser_refactored;
+package com.tdd.practice.refactor.parser_refactored_2;
 
 import com.tdd.practice.annotation.Option;
 import com.tdd.practice.exception.TooManyArgumentsException;
@@ -19,7 +19,7 @@ class BooleanParserRefactoredTest {
     public void shouldThrowTooManyArgumentsException() throws Exception{
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    new BooleanParserRefactored().parse(asList("-l", "abc"), option("l"));
+                    SingleValueOptionParser.bool().parse(asList("-l", "abc"), option("l"));
                 });
         assertEquals("l", e.getOption());
     }
@@ -33,7 +33,7 @@ class BooleanParserRefactoredTest {
     public void shouldThrowTooManyArgumentsExceptionIfMoreThanOnePresent() throws Exception {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    new BooleanParserRefactored().parse(asList("-l", "abc", "xyz"), option("l"));
+                    SingleValueOptionParser.bool().parse(asList("-l", "abc", "xyz"), option("l"));
                 });
         assertEquals("l", e.getOption());
 
@@ -46,7 +46,7 @@ class BooleanParserRefactoredTest {
      * */
     @Test
     public void shouldSetFalseIfNoArgumentPresents() throws Exception {
-        assertFalse(new BooleanParserRefactored().parse(asList(), option("l")));
+        assertFalse((Boolean) SingleValueOptionParser.bool().parse(asList(), option("l")));
     }
 
     static Option option (String value) {

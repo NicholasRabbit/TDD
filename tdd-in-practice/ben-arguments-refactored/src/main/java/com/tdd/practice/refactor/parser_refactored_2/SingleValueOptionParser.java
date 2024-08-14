@@ -1,4 +1,4 @@
-package com.tdd.practice.refactor.parser_refactored;
+package com.tdd.practice.refactor.parser_refactored_2;
 
 import com.tdd.practice.annotation.Option;
 import com.tdd.practice.exception.IllegalValueException;
@@ -16,14 +16,26 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
     private Function<String, T> valueParser;
     private T defaultValue;
 
-    public SingleValueOptionParser(Function<String, T> valueParser, T defaultValue) {
+    private SingleValueOptionParser(Function<String, T> valueParser, T defaultValue) {
         this.valueParser = valueParser;
         this.defaultValue = defaultValue;
     }
 
+    public static OptionParserRefactored<Boolean> bool() {
+        // To represent an anonymous class with using Lambda function.
+        return (arguments, option) -> values(arguments, option, 0)
+                .map(it -> true).orElse(false);
+    }
+
+    public static <T> OptionParserRefactored<T> unary(Function<String, T> valueParser, T defaultValue) {
+        return (arguments, option) -> values(arguments, option, 1)
+                .map(it -> parseValue(option, it.get(0), valueParser)).orElse(defaultValue);
+    }
+
     @Override
     public T parse(List<String> arguments, Option option) {
-        return  values(arguments, option, 1).map(it -> parseValue(option, it.get(0))).orElse(defaultValue);
+        return values(arguments, option, 1)
+                .map(it -> parseValue(option, it.get(0), valueParser)).orElse(defaultValue);
     }
 
     static Optional<List<String>> values(List<String> arguments, Option option, int expectedSize) {
@@ -51,7 +63,7 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
                 .orElse(arguments.size()));
     }
 
-    protected T parseValue(Option option, String value) {
+    protected static <T> T parseValue(Option option, String value, Function<String, T> valueParser) {
         try {
             return valueParser.apply(value);
         } catch (IllegalValueException e) {

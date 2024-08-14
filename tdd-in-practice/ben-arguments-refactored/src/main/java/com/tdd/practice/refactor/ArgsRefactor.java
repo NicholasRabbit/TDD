@@ -2,15 +2,17 @@ package com.tdd.practice.refactor;
 
 import com.tdd.practice.annotation.Option;
 import com.tdd.practice.exception.IllegalOptionException;
-import com.tdd.practice.refactor.parser_refactored.BooleanParserRefactored;
-import com.tdd.practice.refactor.parser_refactored.OptionParserRefactored;
-import com.tdd.practice.refactor.parser_refactored.SingleValueOptionParser;
+import com.tdd.practice.refactor.parser_refactored_2.OptionParserRefactored;
+import com.tdd.practice.refactor.parser_refactored_2.SingleValueOptionParser;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+import static com.tdd.practice.refactor.parser_refactored_2.SingleValueOptionParser.bool;
+import static com.tdd.practice.refactor.parser_refactored_2.SingleValueOptionParser.unary;
 
 public class ArgsRefactor {
 
@@ -33,8 +35,8 @@ public class ArgsRefactor {
     }
 
     private static Map<Class<?>, OptionParserRefactored> PARSERS = Map.of(
-            boolean.class, new BooleanParserRefactored(),
-            int.class, new SingleValueOptionParser<>(Integer::parseInt, 0),
-            String.class, new SingleValueOptionParser<>( String::valueOf,  ""));
+            boolean.class, bool(),
+            int.class, unary(Integer::parseInt, 0),
+            String.class, unary( String::valueOf,  ""));
 
 }
