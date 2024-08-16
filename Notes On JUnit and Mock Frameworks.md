@@ -28,13 +28,24 @@ factory = createMock(SessionFactory.class);
 
 ### 4, mock entity
 
-You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging.
+1. You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging.
 
 ```java
 		when(compInfo.getSortOrder()).thenReturn(1);
 		when(compInfo.getId()).thenReturn(1693803568366178306L);
 		when(compInfo.getSuperiorFlag()).thenReturn("0");
 ```
+
+2. When you mock a Page in a controller layer, not only should you mock the method in a service but also mock the `getter` of the Page instance. If you don't do so, the page is null thus a `NullPointerException` is presumably thrown. 
+
+   ```java
+   // mock the getter of a page instance
+   when(mockPage.getRecords()).thenReturn(resourceList);
+   // then mock the result of the method in the service
+   when(teachingResourceService.findResourceByTeacherId(page, ownerId)).thenReturn(mockPage);
+   ```
+
+   
 
 ### 5, assertThrows(...)
 
@@ -102,5 +113,27 @@ See: `SingleValueOptionParserTest` of TDD in Practice
 
 
 
+### 7, How to use MockMvc?
 
+[MockMvc](https://docs.spring.io/spring-framework/reference/testing/spring-mvc-test-framework.html) is a Spring Test framework which provides support for testing Spring MVC applications.
 
+A instruction of using MockMvc.
+
+1, Import necessary static class.
+
+- `MockMvcBuilders.*`
+- `MockMvcRequestBuilders.*`
+- `MockMvcResultMatchers.*`
+- `MockMvcResultHandlers.*`
+
+2, to be continue
+
+### 8, eq()
+
+```java
+import static org.mockito.ArgumentMatchers.eq;
+
+when(teachingResourceService.findResourceByTeacherId(eq(page),                                                       eq(ownerId))).thenReturn(mockPage);
+```
+
+"eq(...)" is used for flexible verification or stubbing.  See the document in `ArgumentMatchers`	

@@ -6,6 +6,7 @@ import com.tdd.practice.exception.TooManyArgumentsException;
 
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 
 public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
 
@@ -25,17 +26,23 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
     @Override
     public T parse(List<String> arguments, Option option) {
         int index = arguments.indexOf("-" + option.value());
-
+        /*
+        * The following code is bad smell. Namely, we can know what the code used for at the first sight.
+        * Thus, it is necessary to refactor it. I do the refactor in a new project(ben-arguments-refactored).
+        * */
         if (index == -1)
             return defaultValue;
 
-        if (index + 1 == arguments.size()
-                || arguments.get(index + 1).startsWith("-")) {
+        /*
+        * To get the values of an argument with the help of "IntStream".
+        * */
+        List<String> values = getValues(arguments, index);
+
+        if (values.size() < 1) {
             throw new InsufficientArgumentsException(option.value());
         }
 
-        if (index + 2 < arguments.size()
-                && !arguments.get(index + 2).startsWith("-")) {
+        if (values.size() > 1) {
             throw new TooManyArgumentsException(option.value());
         }
 
@@ -43,8 +50,22 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
         return parseValue(value);
     }
 
+    /*
+    * To get the values of an option.
+    * For "-p 8080 8081 -d /usr/local", we can get "8080 8081" from it, for example.
+    * */
+    private List<String> getValues(List<String> arguments, int index) {
+        int endIndex = IntStream.range(index + 1, arguments.size())
+                .filter(it -> arguments.get(it).startsWith("-"))
+                .findFirst()
+                .orElse(arguments.size());
+        List<String> values = arguments.subList(index + 1, endIndex);
+        return values;
+    }
+
     protected T parseValue(String value) {
-        //return Integer.parseInt(value);   // The key refactor: using Function instead of a specific method.
+        //return Integer.parseInt(value);
+        // The key refactor: using Function instead of a specific method above.
         return valueParser.apply(value);
     }
 

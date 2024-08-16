@@ -1,48 +1,9 @@
-/*
- Navicat Premium Data Transfer
-
- Source Server         : 192.168.0.159-博英本地
- Source Server Type    : MySQL
- Source Server Version : 80020
- Source Host           : 192.168.0.159:3306
- Source Schema         : online_course
-
- Target Server Type    : MySQL
- Target Server Version : 80020
- File Encoding         : 65001
-
- Date: 18/07/2024 10:04:15
-*/
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
 -- ----------------------------
--- Table structure for regulaiton_release
+-- Records of regulation_release
 -- ----------------------------
-DROP TABLE IF EXISTS `regulaiton_release`;
-CREATE TABLE `regulaiton_release`  (
-  `id` bigint(0) NOT NULL,
-  `create_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '申请人',
-  `create_time` datetime(6) NULL DEFAULT NULL COMMENT '提交时间',
-  `del_flag` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0',
-  `update_by` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '修改人',
-  `update_time` datetime(6) NULL DEFAULT NULL COMMENT '修改时间',
-  `category` tinyint(1) NULL DEFAULT 0 COMMENT '分类',
-  `compId` bigint(0) NULL DEFAULT NULL COMMENT '部门id',
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '制度内容',
-  `key_word` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关键字',
-  `review_by` bigint(0) NULL DEFAULT NULL COMMENT '审核人id',
-  `review_date` datetime(0) NULL DEFAULT NULL COMMENT '审核时间',
-  `status` tinyint(1) NULL DEFAULT 0 COMMENT '制度审核状态：0，待审核；1，审核通过；2.审核未通过',
-  `title` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '制度标题',
-  `comp_id` bigint(0) NULL DEFAULT NULL COMMENT '部门id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '制度表' ROW_FORMAT = Dynamic;
+INSERT INTO `regulation_release` VALUES (1813769868920733694, 'admin', '2024-07-18 10:56:49.624000', '0', NULL, NULL, 0, 4, '全员安全生产责任制度是指企业对企业中各级领导、各个部门、各类人员所规定的在他们各自职责范围内对安全生产应负责任的制度。其内容应充分体现责、权、利相统一的原则。建立以安全生产责任制为中心的各项安全管理制度，是保障安全生产的重要手段。安全生产责任制应根据“管生产必须管安全”“安全生产人人有责”的原则，明确各级领导、各职能部门和各类人员在施工生产活动中应负的安全责任。', NULL, 1813126388959633410, '2024-07-18 10:28:00', 0, '全员安全生产责任制度');
+INSERT INTO `regulation_release` VALUES (1813770093634764805, 'admin', '2024-07-18 10:57:43.210000', '0', NULL, NULL, 0, 4, '安全生产教育培训制度是指对从业人员进行安全坐产的教育和安全生产技能的培训，并 将这种教育和培训制度化、规范化，以提高全体人员的安全意识和安全生产的管理水平，减少、防止生产安全事故发生所采取的各种措施。安全教育主要包括安全生产思想教育、安全知识教育、安全技能教育、安全法制教育四个 方面，其中对新职工的三级安全教育(公司、工地、班组),是安全生产基本教育制度。培训制度主要包括对施工单位的管理人员和作业人员定期培训，特别是在采用新技术、新工艺、新设 备、新材料时，对作业人员的培训。', NULL, 1813126388959633410, '2024-07-18 10:57:00', 0, '安全生产教育培训制度');
+INSERT INTO `regulation_release` VALUES (1813783401157242881, NULL, NULL, '0', NULL, NULL, 0, 100, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `regulation_release` VALUES (1813816798055411719, NULL, NULL, '0', NULL, NULL, 0, 100, NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `regulation_release` VALUES (1813816841743273980, NULL, NULL, '0', NULL, NULL, 0, 100, NULL, NULL, NULL, NULL, 0, NULL);
 
--- ----------------------------
--- Records of regulaiton_release
--- ----------------------------
-INSERT INTO `regulaiton_release` VALUES (1001, NULL, NULL, '0', NULL, NULL, 0, NULL, '测试内容', NULL, NULL, NULL, 0, '测试标题', NULL);
-
-SET FOREIGN_KEY_CHECKS = 1;

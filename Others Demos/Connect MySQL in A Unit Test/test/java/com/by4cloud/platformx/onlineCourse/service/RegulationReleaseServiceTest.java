@@ -1,35 +1,43 @@
 package com.by4cloud.platformx.onlineCourse.service;
 
-import com.baomidou.mybatisplus.test.autoconfigure.MybatisPlusTest;
-import com.by4cloud.platformx.onlineCourse.entity.RegulationFile;
+import com.by4cloud.platformx.onlineCourse.mapper.RegulationReleaseMapper;
+import com.by4cloud.platformx.onlineCourse.service.impl.RegulationReleaseServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.picocontainer.annotations.Inject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-
-@MybatisPlusTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)    // 连接配置文件中指定的数据库。
 public class RegulationReleaseServiceTest {
 
-	@Autowired
-	private RegulationFileService regulationFileService;
+	@Mock
+	private RegulationReleaseMapper mapper;
+
+	private RegulationReleaseService regulationReleaseService;
 
 	@BeforeEach
 	public void setUp() {
-
+		MockitoAnnotations.initMocks(this);
+		// 使用真实的service子类对象，但是依赖的Mapper为模拟的
+		regulationReleaseService = new RegulationReleaseServiceImpl(mapper);
 	}
 
 	@Test
-	public void testIfServiceAvailable() throws Exception {
-		List<RegulationFile> list = regulationFileService.list();
-		assertEquals(1, list.size());
-	}
+	public void shouldUpdateStatus() throws Exception {
 
+		// 模拟Mapper层的调用行为
+		when(mapper.updateStatus(100L, 1)).thenReturn(true);
+
+		boolean actual = regulationReleaseService.updateStatus(100L, 1);
+		assertTrue(actual);
+
+		boolean fail = regulationReleaseService.updateStatus(122L, 1);
+		assertFalse(fail);
+
+	}
 
 }

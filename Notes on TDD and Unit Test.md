@@ -10,6 +10,8 @@ It is to understand the requirements and convert it into modules.
 
 > TDD 的学习难点首先在于理解需求，理解需求，并将需求分解为功能点。
 
+
+
 ### 2，The definition of the unit test.
 
 **What is a unit test?**
@@ -35,8 +37,8 @@ What are the properties of a good test?
 
 #### 2.1. How to ensure a query for the database is correct ?
 
-- We would rely on integration tests to verify that the sql is correct. Because we can't do that with TDD or unit tests. (P219 of the book named "TDD")
-- We write in
+- We would rely on integration tests to verify that the sql is correct. Because we can't do that with unit tests. (P219 of the book named "TDD")
+- In TDD, we test the real database. 
 
 ### 3，How to write a good unit test.
 

@@ -28,7 +28,7 @@ public class ExampleOfAutomatedTearDownTest extends AutomatedTeardownTestCase {
         Prompt prompt = irc.join("alex", alex);
         prompt.say(msg);
 
-        // The (@After)tearDown method in this class' superclass will execute automatically.
+        // The (@After)tearDown method will be executed automatically in the super class of this class.
 
     }
 }

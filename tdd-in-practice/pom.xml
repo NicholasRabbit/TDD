@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ann-arguments</module>
+        <module>ben-arguments-refactored</module>
     </modules>
 
     <properties>

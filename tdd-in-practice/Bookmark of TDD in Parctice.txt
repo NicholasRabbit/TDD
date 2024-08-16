@@ -1,0 +1,4 @@
+Bookmarks and notes.
+
+The first chapter has not been finished yet. 
+Because I don't really understand "Optional" in Java and I will learn it later.
