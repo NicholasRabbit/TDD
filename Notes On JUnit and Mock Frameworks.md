@@ -99,3 +99,13 @@ A instruction of using MockMvc.
 - `MockMvcResultHandlers.*`
 
 2, to be continue
+
+### 8, eq()
+
+```java
+import static org.mockito.ArgumentMatchers.eq;
+
+when(teachingResourceService.findResourceByTeacherId(eq(page),                                                       eq(ownerId))).thenReturn(mockPage);
+```
+
+"eq(...)" is used for flexible verification or stubbing.  See the document in `ArgumentMatchers`	
