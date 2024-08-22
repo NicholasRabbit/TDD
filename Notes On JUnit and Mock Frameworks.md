@@ -28,7 +28,9 @@ factory = createMock(SessionFactory.class);
 
 ### 4, mock entity
 
-1. You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging.
+1. You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging. If you didn't mock, all the values of fields would be default. Hence the default value of primitive data type is 0. 
+
+   **Caution:**  Don't use `assertNotNull` for primitive data type and its package class such as Integer, Long and so on, because 0 is not null and is the default value of a mock Long, Integer and so forth(Why? It should be null for these package class.).
 
 ```java
 		when(compInfo.getSortOrder()).thenReturn(1);
