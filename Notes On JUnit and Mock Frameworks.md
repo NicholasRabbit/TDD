@@ -139,3 +139,14 @@ when(teachingResourceService.findResourceByTeacherId(eq(page),                  
 ```
 
 "eq(...)" is used for flexible verification or stubbing.  See the document in `ArgumentMatchers`	
+
+### 9, @Nest
+
+This annotation is used when you want to integrate test classes which has the same purpose to a enclosing class.
+
+From the official document.
+
+> @Nested is used to signal that the annotated class is a nested, non-static test class (i.e., an inner class) that can share setup and state with an instance of its enclosing class. The enclosing class may be a top-level test class or another @Nested test class, and nesting can be arbitrarily deep.
+> @Nested test classes may be ordered via @TestClassOrder or a global ClassOrderer.
+> Test Instance Lifecycle.
+
