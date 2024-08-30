@@ -19,7 +19,7 @@ class BooleanParserRefactoredTest {
     public void shouldThrowTooManyArgumentsException() throws Exception{
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    SingleValueOptionParser.bool().parse(asList("-l", "abc"), option("l"));
+                    OptionParsers.bool().parse(asList("-l", "abc"), option("l"));
                 });
         assertEquals("l", e.getOption());
     }
@@ -33,7 +33,7 @@ class BooleanParserRefactoredTest {
     public void shouldThrowTooManyArgumentsExceptionIfMoreThanOnePresent() throws Exception {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    SingleValueOptionParser.bool().parse(asList("-l", "abc", "xyz"), option("l"));
+                    OptionParsers.bool().parse(asList("-l", "abc", "xyz"), option("l"));
                 });
         assertEquals("l", e.getOption());
 
@@ -46,7 +46,7 @@ class BooleanParserRefactoredTest {
      * */
     @Test
     public void shouldSetFalseIfNoArgumentPresents() throws Exception {
-        assertFalse((Boolean) SingleValueOptionParser.bool().parse(asList(), option("l")));
+        assertFalse((Boolean) OptionParsers.bool().parse(asList(), option("l")));
     }
 
     static Option option (String value) {

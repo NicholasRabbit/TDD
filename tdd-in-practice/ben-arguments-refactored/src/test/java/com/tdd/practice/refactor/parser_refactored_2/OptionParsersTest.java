@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * thus we get a smaller granularity of testing. So the parse(...) in SingeOptionParser is
  * called directly.
  * */
-public class SingleValueOptionParserTest {
+public class OptionParsersTest {
 
     /**
      * 1, TODO -p 8080 8081
@@ -32,7 +32,7 @@ public class SingleValueOptionParserTest {
     public void shouldThrowTooManyArgumentsException() {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    SingleValueOptionParser.unary(Integer::parseInt, 0)
+                    OptionParsers.unary(Integer::parseInt, 0)
                             .parse(asList("-p", "8080", "8081"), option("p"));
                 });
         assertEquals("p", e.getOption());
@@ -43,7 +43,7 @@ public class SingleValueOptionParserTest {
     public void shouldThrowInsufficientArgumentsException(String params) {
         InsufficientArgumentsException e = assertThrows(InsufficientArgumentsException.class,
                 () -> {
-                    SingleValueOptionParser.unary(Integer::parseInt, 0)
+                    OptionParsers.unary(Integer::parseInt, 0)
                             .parse(asList(params.split(" ")), option("p"));
                 });
         assertEquals("p", e.getOption());
@@ -52,7 +52,7 @@ public class SingleValueOptionParserTest {
 
     @Test
     public void shouldSetZeroIfNoArgumentPresentForPort() throws Exception {
-        Integer port = SingleValueOptionParser.unary(Integer::parseInt, 0)
+        Integer port = OptionParsers.unary(Integer::parseInt, 0)
                 .parse(asList(), option("p"));
         assertEquals(0, port);
     }
@@ -65,7 +65,7 @@ public class SingleValueOptionParserTest {
      * */
     @Test
     public void shouldSetEmptyIfNoArgumentPresentForDirectory() throws Exception {
-        String dir = SingleValueOptionParser.unary(String::valueOf, "")
+        String dir = OptionParsers.unary(String::valueOf, "")
                 .parse(asList(), option("d"));
         assertEquals("", dir);
     }
@@ -74,7 +74,7 @@ public class SingleValueOptionParserTest {
     public void shouldThrowTooManyArgumentsExceptionIfManyDirectoriesPresent() throws Exception {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    SingleValueOptionParser.unary(String::valueOf, "")
+                    OptionParsers.unary(String::valueOf, "")
                             .parse(asList("-d", "/local/log", "/local/log-info"), option("d"));
                 });
         assertEquals("d", e.getOption());
