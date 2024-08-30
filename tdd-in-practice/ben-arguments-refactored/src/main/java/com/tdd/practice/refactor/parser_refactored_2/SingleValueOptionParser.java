@@ -38,7 +38,7 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
                 .map(it -> parseValue(option, it.get(0), valueParser)).orElse(defaultValue);
     }
 
-    static Optional<List<String>> values(List<String> arguments, Option option, int expectedSize) {
+    private static Optional<List<String>> values(List<String> arguments, Option option, int expectedSize) {
         int index = arguments.indexOf("-" + option.value());
         Optional<List<String>> argumentsList;
         if (index == -1) {
@@ -56,7 +56,7 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
         return argumentsList;
     }
 
-    static List<String> getValues(List<String> arguments, int index) {
+   private static List<String> getValues(List<String> arguments, int index) {
         return arguments.subList(index + 1, IntStream.range(index + 1, arguments.size())
                 .filter(it -> arguments.get(it).startsWith("-"))
                 .findFirst()

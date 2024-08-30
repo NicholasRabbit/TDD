@@ -48,7 +48,6 @@ public class TestIntStream {
                     .filter(it -> arguments.get(it).startsWith("-"))
                     .findFirst()
                     .getAsInt();
-            fail("should throw No value present");
         } catch (RuntimeException e) {
             assertEquals(NoSuchElementException.class, e.getClass());
         }

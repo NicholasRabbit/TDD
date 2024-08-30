@@ -21,11 +21,11 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class SingleValueOptionParserTest {
 
     /**
-     * 1, TODO -p 8080 8081
+     * 1, -p 8080 8081
      * should throw a detailed exception if too many arguments present
-     * 2, TODO -p / -p -d
+     * 2, -p / -p -d
      * should throw an insufficient exception if no value after "-p"
-     * 3, TODO -p 0
+     * 3, -p 0
      * the default value is zero if no argument presents.
      * */
     @Test

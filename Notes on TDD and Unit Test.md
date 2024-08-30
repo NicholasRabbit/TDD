@@ -1,16 +1,23 @@
-### 1，The benefits of writing unit tests.
+### 1，TDD and Unit Test
 
-1. 写测试会加快开发；
-2. 写测试会减少bug；
-3. 写测试会提升写程序的幸福感。!!
+1) Why do we need to write test?
 
-What is the difficult part of learning TDD?
+> 1. Writing test help you deliver application fast.
+> 2. Testing help you eliminate most bugs.
+> 3. A programmer will feel happy when writing test!!
 
-It is to understand the requirements and convert it into modules.
+2) What is the difficult part of learning TDD?
 
 > TDD 的学习难点首先在于理解需求，理解需求，并将需求分解为功能点。
+>
+> It is to understand the requirements and convert it into modules.
+>
 
+3) Are all the functions suitable for TDD?
 
+> No, of course not.  Kent talked about a recent hackathon at Facebook, about half  of which he could use TDD and half wasn't suitable.  In the TDDable code he found he was in an enjoyable flow, but found the other part more tricky.  And he also said he rarely used mocks in TDD. 
+
+[Is TDD dead?](https://martinfowler.com/articles/is-tdd-dead/)
 
 ### 2，The definition of the unit test.
 

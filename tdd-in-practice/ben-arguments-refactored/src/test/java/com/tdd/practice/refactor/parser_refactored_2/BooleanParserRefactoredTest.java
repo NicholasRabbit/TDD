@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.annotation.Annotation;
 
+import static com.tdd.practice.refactor.parser_refactored_2.SingleValueOptionParser.bool;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,7 +20,7 @@ class BooleanParserRefactoredTest {
     public void shouldThrowTooManyArgumentsException() throws Exception{
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    SingleValueOptionParser.bool().parse(asList("-l", "abc"), option("l"));
+                    bool().parse(asList("-l", "abc"), option("l"));
                 });
         assertEquals("l", e.getOption());
     }
@@ -33,7 +34,7 @@ class BooleanParserRefactoredTest {
     public void shouldThrowTooManyArgumentsExceptionIfMoreThanOnePresent() throws Exception {
         TooManyArgumentsException e = assertThrows(TooManyArgumentsException.class,
                 () -> {
-                    SingleValueOptionParser.bool().parse(asList("-l", "abc", "xyz"), option("l"));
+                    bool().parse(asList("-l", "abc", "xyz"), option("l"));
                 });
         assertEquals("l", e.getOption());
 
@@ -46,7 +47,7 @@ class BooleanParserRefactoredTest {
      * */
     @Test
     public void shouldSetFalseIfNoArgumentPresents() throws Exception {
-        assertFalse((Boolean) SingleValueOptionParser.bool().parse(asList(), option("l")));
+        assertFalse((Boolean) bool().parse(asList(), option("l")));
     }
 
     static Option option (String value) {
