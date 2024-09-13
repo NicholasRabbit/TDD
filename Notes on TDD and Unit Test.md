@@ -10,7 +10,31 @@ It is to understand the requirements and convert it into modules.
 
 > TDD 的学习难点首先在于理解需求，理解需求，并将需求分解为功能点。
 
+#### 1.1 Is TDD dead?
 
+[Is TDD Dead?](https://martinfowler.com/articles/is-tdd-dead/) 
+
+DHH is confused when he is using unit test and TDD, he said can't write test code against database or file systems. 
+
+Even Kent Beck who is the inverntor of TDD adopts TDD in 50% of his project.
+
+#### 1.2 How to start TDD? 
+
+[From no tests to TDD](https://www.justinweiss.com/articles/how-do-you-take-an-app-from-test-less-to-tdd//)
+
+The following content is quoted from the website above.
+
+**Test the code you already have and start from testing edge case**
+
+You have a bunch of code with no tests. But that doesn’t mean you can’t write your tests *now*, against the existing code. So start testing the code you already have,  to make sure your code works the way you expect it to work.
+
+It’s not TDD. **But testing existing code will help you *learn* TDD**:
+
+- **You practice thinking about edge cases and error conditions.**
+
+  To write tests without spending years testing every single  possible input, you have to think about where the code is most likely to break. If the method you’re testing takes a string, what happens if you pass it a symbol? What happens if you pass it `nil`? And if  you’re testing a function that divides numbers, you’d better test it  with 0. But you probably don’t need to test it with 1 *and* 2.
+
+  After you write enough tests, you’ll start to predict where your  methods are most likely to break. And once you start TDDing, you can use this skill to write robust tests that force your code to better handle  your edge cases.
 
 ### 2，The definition of the unit test.
 

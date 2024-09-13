@@ -13,11 +13,6 @@ import java.lang.annotation.Annotation;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Writing a test to test SingleValueOptionParser directly instead of "ArgsRefactor.java",
- * thus we get a smaller granularity of testing. So the parse(...) in SingeOptionParser is
- * called directly.
- * */
 public class OptionParsersTest {
 
     @Nested
@@ -149,4 +144,36 @@ public class OptionParsersTest {
         }
 
     }
+
+
+    /**
+     * happy path:
+     * -g this is a list  -> {this, is, a, list}
+     * sad path:
+     *
+     * */
+    @Nested
+    class ListOptionTest {
+
+        @Test
+        public void shouldParseList() throws Exception {
+            /*OptionParserRefactored<String> parser = OptionParsers.list(String::valueOf);
+            parser.parse(asList("this", "is", "a", "list"), option("g"))*/
+        }
+
+        static Option option(String value) {
+            return new Option() {
+                @Override
+                public Class<? extends Annotation> annotationType() {
+                    return null;
+                }
+                @Override
+                public String value() {
+                    return value;
+                }
+            };
+        }
+    }
+
+
 }
