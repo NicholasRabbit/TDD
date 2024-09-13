@@ -148,5 +148,59 @@ From the official document.
 
 > @Nested is used to signal that the annotated class is a nested, non-static test class (i.e., an inner class) that can share setup and state with an instance of its enclosing class. The enclosing class may be a top-level test class or another @Nested test class, and nesting can be arbitrarily deep.
 > @Nested test classes may be ordered via @TestClassOrder or a global ClassOrderer.
-> Test Instance Lifecycle.
+> 
+Test Instance Lifecycle.
+### 10, MockMvc
+
+[Demos of Using MockMvc](https://github.com/spring-projects/spring-framework/tree/main/spring-test/src/test/java/org/springframework/test/web/servlet/samples)
+
+### 11, Spring Testing Annotations
+
+#### (1) @Sql
+
+`@Sql` is an annotation used in integration to initialise a database.  It can be annotated to a test class or a test method. 
+
+(1) What should be noticed is it also start transaction and it roll backs after test.
+
+(2) SQL scripts are located in `test/resource/*.sql` . For more elaboration, see "Other Demos".
+
+(3) The SQL scripts are executed before test by default, even before `@BeforeEach`.  So any code in the set up method `@BeforeEach`  is executed after the SQL scripts. 
+
+```java
+@MybatisPlusTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)    
+@Sql(scripts = "/regulation_release.sql")
+public class RegulationReleaseMapperTest {}
+```
+
+```java
+	@Test
+	@Sql(scripts = "/regulation_release.sql")
+	public void testSQLAnnotation() throws Exception {
+		List<RegulationRelease> list = regulationReleaseMapper.selectList(null);
+		assertEquals(1, list.size());
+	}
+```
+
+[@Sql](https://docs.spring.io/spring-framework/reference/testing/annotations/integration-spring/annotation-sql.html)
+
+#### (2) @Commit
+
+[@Commit](https://docs.spring.io/spring-framework/reference/testing/annotations/integration-spring/annotation-commit.html)
+
+You can use `@Commit`if you want to commit transaction after a test method.
+
+```java
+	@Test
+	@Commit
+	public void shouldSave100Rows() throws Exception {
+		List<RegulationRelease> beforeAddList = regulationReleaseMapper.selectList(null);
+		int expected = 100;
+		populateTestData();  // add 100 rows
+		int actual = regulationReleaseMapper.selectList(null).size() - beforeAddList.size();
+		assertEquals(expected, actual);
+	}
+
+```
+
 

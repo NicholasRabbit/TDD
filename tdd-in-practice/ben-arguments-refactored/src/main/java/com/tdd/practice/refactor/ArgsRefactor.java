@@ -10,7 +10,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+<<<<<<< HEAD
 import static com.tdd.practice.refactor.parser_refactored_2.SingleValueOptionParser.*;
+=======
+import static com.tdd.practice.refactor.parser_refactored_2.OptionParsers.bool;
+import static com.tdd.practice.refactor.parser_refactored_2.OptionParsers.unary;
+>>>>>>> tdd-in-practice
 
 public class ArgsRefactor {
 

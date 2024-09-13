@@ -10,16 +10,7 @@ import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
-
-    // T is the return value of the function.
-    private Function<String, T> valueParser;
-    private T defaultValue;
-
-    private SingleValueOptionParser(Function<String, T> valueParser, T defaultValue) {
-        this.valueParser = valueParser;
-        this.defaultValue = defaultValue;
-    }
+public class OptionParsers<T> {
 
     public static OptionParserRefactored<Boolean> bool() {
         // To represent an anonymous class with using Lambda function.
@@ -32,11 +23,6 @@ public class SingleValueOptionParser<T> implements OptionParserRefactored<T>{
                 .map(it -> parseValue(option, it.get(0), valueParser)).orElse(defaultValue);
     }
 
-    @Override
-    public T parse(List<String> arguments, Option option) {
-        return values(arguments, option, 1)
-                .map(it -> parseValue(option, it.get(0), valueParser)).orElse(defaultValue);
-    }
 
     private static Optional<List<String>> values(List<String> arguments, Option option, int expectedSize) {
         int index = arguments.indexOf("-" + option.value());

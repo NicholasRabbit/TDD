@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * 3, Intimate Inner Class
  * We can use anonymous inner class or nested inner class to implement this kind of test double.
  *
- * The test throws "NullPointer Exception" because the "thead" in this test is null. I will handle
+ * The test throws "NullPointer Exception" because the "thread" in this test is null. I will handle
  * that later. Right now I just write code to understand what is "Intimate Inner Class" in test patters.
  * */
 public class IntimateAnonymousInnerClassTest {
