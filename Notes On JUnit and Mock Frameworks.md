@@ -28,9 +28,9 @@ factory = createMock(SessionFactory.class);
 
 ### 4, mock entity
 
-1. You can only get the mock value when **the getter is called**. These mock values won't be displayed when debugging. If you didn't mock, all the values of fields would be default. Hence the default value of primitive data type is 0. 
+1. You can only get the mock value when **the getters of a mock object is called**. These mock values won't be displayed when debugging. If you didn't mock, all the values of fields would be default. Hence the default value of primitive data type is 0. 
 
-   **Caution:**  Don't use `assertNotNull` for primitive data type and its package class such as Integer, Long and so on, because 0 is not null and is the default value of a mock Long, Integer and so forth(Why? It should be null for these package class.).
+   **Caution:**  Don't use `assertNotNull` for primitive data type and its package class such as Integer, Long and so on, because 0 is not null and is the default value of a mock Long, Integer and so forth(Why? It should be null for these package classes.).
 
 ```java
 		when(compInfo.getSortOrder()).thenReturn(1);
@@ -87,7 +87,7 @@ See: `SingleValueOptionParserTest` of TDD in Practice
 
 ### 7, given(...)
 
-`given(...)` is as same as `when(...)` in Mockito. The `given(...)` is commonly used in BDD(Behaviour-Driven Development) while the later is mostly used in traditional unit test.
+`given(...)` is as same as `when(...)` in Mockito. The `given(...)` is commonly used in BDD(Behaviour-Driven Development) while the latter is mostly used in traditional unit test.
 
 ```java
 	@Test

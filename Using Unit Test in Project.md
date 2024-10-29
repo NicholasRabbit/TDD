@@ -57,7 +57,7 @@ mybatis-plus:
   configuration:
     jdbc-type-for-null: 'null'
     call-setters-on-nulls: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 开启sql日志打印
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # To print SQL log.
 ```
 
 `application-test.yml` :
@@ -105,7 +105,9 @@ public class PlanMapperTest {
 	}
 ```
 
-`MapperApplication` : Prevent detecting a real `@SpringBootApplication.`
+Why should we create`MapperApplication`?  
+
+Preventing detecting a real `@SpringBootApplication.`
 
 ![1720583140087](note-images/1720583140087.png)
 
