@@ -47,7 +47,15 @@ factory = createMock(SessionFactory.class);
    when(teachingResourceService.findResourceByTeacherId(page, ownerId)).thenReturn(mockPage);
    ```
 
-   
+3. Use `@Mock` and `when(...)` to return mock values of getters in which there are dependencies which is impossible to mock.
+
+   ```java
+   private void getName(){
+    return        RedisCacheUmpsHelper.getInstance().getDeptById(d.getParentId()).getName();
+   }
+   ```
+
+   The `RedisCacheUmpsHelper` is so hard to mock that we use `when(entity.getName()).then("Name")` to get a mock `deptName`. Otherwise there will be a `NullPointerException` throwed out because `RedisCacheUmpsHelper.getInstance()`  is null.
 
 ### 5, assertThrows(...)
 
@@ -204,3 +212,5 @@ You can use `@Commit`if you want to commit transaction after a test method.
 ```
 
 
+
+12, Use @Mock When 
